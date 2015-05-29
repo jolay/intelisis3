@@ -1,0 +1,6 @@
+name = Acquia Portfolio Blocks
+description = Acquia Portfolio Blocks;e.g., Related works, Gallery, ...
+core = 7.x
+
+dependencies[] = ac_portfolio
+package = AcquiaThemes

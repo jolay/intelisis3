@@ -1,0 +1,135 @@
+/** page Section Shortcode
+-----------------------------------*/
+.ac-page-section{
+  position: relative;
+  display: block;
+  float: none;
+	&.ac-no-overlay {
+		.s-overlay{
+			display: none;
+		}
+	}
+	.s-overlay{
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		z-index: 3
+	}
+	.ac-container{
+		position: relative;
+		z-index: 4;
+	}
+  &.ac-bg-enabled{
+    overflow: hidden;
+  }
+  &.ac-parallax{
+    .ac-parallax-img{
+      height: 160%;
+       @include transition(top 0.05s ease);
+    }
+  }
+  // Inherit Color
+  &.ac-custom-color{
+		&.ac-color-white{
+			.ac-page-header, h1,h2,h3,h4,h5,h6,div, blockquote, p{
+				color: $white;
+			}
+		}
+		&.ac-color-black{
+			.ac-page-header, h1,h2,h3,h4,h5,h6,div, blockquote, p{
+				color: $black;
+			}
+		}
+  }
+}
+
+.ac-section-style-1,
+.ac-section-style-2,
+.ac-section-style-3{
+	border-width: 1px 0;
+	border-style: solid;
+}
+
+.l-footer-wrapper,
+.has-two-sidebars,
+.has-no-sidebars,
+.has-one-sidebar{
+  .ac-container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+ .ac-container-padding{
+    .ac-container{
+      padding-left: $medium-space*2;
+      padding-right: $medium-space*2;
+    }
+  }
+}
+
+.l-footer-wrapper,
+.has-one-sidebar{
+  .ac-container{
+    max-width: 100% !important;
+  }
+}
+
+.ac-page-section-container{
+	&.ac-no-t-space{
+		padding-top: 0!important;
+	}
+	&.ac-no-b-space{
+		padding-bottom: 0!important;
+	}
+}
+
+
+.l-page .ac-page-section-container,
+.l-page .vc-row-inner{
+	clear: both;
+}
+
+.ac-page-section-container{
+	>.vc-column{
+		z-index: 2;
+	}
+}
+.vc-row-inner{
+	>.vc-column-inner{
+		z-index: 2;
+	}
+}
+.ac-bg-enabled .ac-page-section-container{
+    @extend %relative-position;
+    z-index: 4;
+}
+.ac-parallax-asset{
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  &.ac-parallax-img{
+    width: 100%;
+    height: 100%;
+  }
+  &.ac-parallax-video{
+	min-width: 100%;
+	min-height: 100%;
+  }
+}
+
+.ac-bg-enabled{
+	.ac-testimonial .t-i{
+		background: rgba($white, .5);
+	}
+}
+
+.video-overlay{
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+}

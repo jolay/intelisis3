@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Aura views feature.
+ */
+
+include_once 'aura_views.features.inc';

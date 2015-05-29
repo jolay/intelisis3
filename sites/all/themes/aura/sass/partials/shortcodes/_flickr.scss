@@ -1,0 +1,15 @@
+/** Flickr Shortcode
+-----------------------------------*/
+.flickr_badge_image {
+  margin-bottom: 10px;
+  @include right-space(10px, 'margin');
+  display: inline-block;
+  .l-footer-wrapper &{
+    width: 33.33%;
+    margin: 0;
+    a{
+      display: block;
+      margin: 0 10px 10px 0;
+    }
+  }
+}

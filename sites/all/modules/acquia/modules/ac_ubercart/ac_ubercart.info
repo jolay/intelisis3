@@ -1,0 +1,14 @@
+name = Acquia Ubercart
+description = "Allows for customizing the ubercart settings of your acquia theme"
+core = 7.x
+
+dependencies[] = acquia
+dependencies[] = fivestar
+dependencies[] = views
+dependencies[] = uc_product
+dependencies[] = uc_cart
+dependencies[] = uc_catalog
+dependencies[] = statistics
+package = AcquiaThemes
+
+

@@ -1,0 +1,14 @@
+/*%header-box{
+	line-height: 92px;
+	height: 92px;
+}*/
+.fixed_header_clone .site-branding__logo img { max-width: 125px; }
+
+.main-menu .menu .sf-sub-indicator { display: inline-block; }
+
+.ac-section-style-2 .ac-contact-style-compact .ac-font-icon-link { border: 0; background: rgba(0, 0, 0, 0.45); display: inline-block; }
+.ac-section-style-2 .ac-contact-style-compact .font-icon { color: white; }
+
+.ac-view-fade-in-bottom .title { font-weight: 500; }
+
+h5.s-title { font-weight: normal; }

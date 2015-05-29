@@ -1,0 +1,50 @@
+/**
+ * $COLLAPSIBLE
+ */
+html.js fieldset.collapsible { // Overspecified
+  padding: 0;
+  border: none;
+
+  &.collapsed{
+    .fieldset-title {
+      @extend %full-border-radius !optional;
+      @extend %light-gradient-box !optional;
+    }
+  }
+  
+  legend {
+    width: 100%;
+    padding: 0;
+  }
+  .fieldset-legend {
+    padding: 0;
+    background: none;
+
+    .summary {
+      @extend %right-float;
+    }
+  }
+  .fieldset-title {
+    @extend %light-bg !optional;
+    @extend %top-edge-circled-border !optional;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %base-font-style !optional;
+    display: block;
+    padding: $medium-space/2;
+    &:hover{
+      @extend %light-gradient-box !optional;
+    }
+  }
+  .fieldset-wrapper {
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %bottom-edge-circled-border  !optional;
+    border-top: 0;
+    padding: $medium-space $horz-spacing-unit;
+  }
+}
+
+html.js fieldset.collapsed { // Overspecified
+  height: 3.7em; // padding-top + padding-bottom + line-height
+}

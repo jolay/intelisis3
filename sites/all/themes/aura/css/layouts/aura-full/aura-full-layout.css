@@ -1,0 +1,18 @@
+/******************************************************************************* _layout.scss  Styling of the "simple" layout demonstrating the Compass grid extension Susy and building mobile first layouts. *****************************************************************************/
+.container { *zoom: 1; max-width: 1240px; padding-left: 40px; padding-right: 40px; margin-left: auto; margin-right: auto; }
+.container:after { content: ""; display: table; clear: both; }
+
+/*%header-box{
+	line-height: 92px;
+	height: 92px;
+}*/
+.l-region--help { margin-bottom: 20px; }
+
+.l-main.ac-fullwidth { padding: 0 !important; max-width: 100%; }
+.l-main.ac-fullwidth .l-content { padding: 0 !important; }
+
+/* Footer */
+/** mobile portrait view **/
+@media (min-width: 300px) { .container { max-width: 1240px; }
+  /* COLUMNS - Making all columns Fullwidth */
+  .col, .l-content, .l-region--sidebar-first, .l-region--sidebar-second { width: 100%; max-width: 100%; margin-right: 0; margin-left: 0; clear: none; } }

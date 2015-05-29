@@ -1,0 +1,18 @@
+/** Text Seperator Shortcode
+-----------------------------------*/
+.vc-text-separator{
+  @extend %theme-border-color !optional;
+  border-width: 0 0 1px;
+  border-style: solid;
+  div{
+    @extend %top-edge-circled-border !optional;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %inline-block-display;
+    @extend %theme-bg !optional;
+    border-bottom: 0;
+    color: $white;
+    padding: 1px 1em;
+    text-transform: capitalize;
+  }
+}

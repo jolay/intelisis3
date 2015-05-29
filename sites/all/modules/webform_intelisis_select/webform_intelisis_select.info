@@ -1,0 +1,5 @@
+name = Intelisis select Options
+description = Customizations for the Webform module using hook_webform_select_options_info.
+core = 7.x
+package = Webform
+dependencies[] = webform

@@ -1,0 +1,115 @@
+/** Superfish
+--------------------------------------------------*/
+
+$link-default-color : #8f8f8f;
+$submenu-bg : #1F1F1F;
+$submenu-li-hover-bg : rgba(0,0,0,.1);
+$submenu-a-color : #ccc;
+/*** ESSENTIAL STYLES ***/
+.dropdownmenu{
+	// 1st Level
+	.menu{
+		@extend %no-list-style;
+		margin: 0;
+		li{
+			line-height: 36px;
+			heigh: 36px;
+			position: relative;
+			display: inline-block;
+			&:hover > ul, &.sfHover > ul{
+					display: block;
+			}
+		}
+		a{
+			display: block;
+			position: relative;
+		}
+		/*** arrows **/
+		.sf-sub-indicator {
+			@extend %ac-font-fontello;
+			display: inline-block;
+			width: 10px;
+			position: relative;
+			font-size: 12px;
+			@include position('left', 4px);
+			// first depth
+			.font-icon:before {
+					content: '\e8ef';
+			}
+		}
+	}
+	
+	// 2nd Level
+  .menu ul {
+		position: absolute;
+		display: none;
+		top: 100%;
+		z-index: 99;
+		min-width: 13em; // allow long menu items to determine submenu width
+		*width: 13em; // no auto sub width for IE7, see white-space comment below
+		@include position('left', 0);
+		li{
+			display: block;
+		}
+		.sf-sub-indicator {
+			@extend %absolute-position;
+			@include position('left', auto);
+			@include position('right', 5px);
+			font-size: 16px;
+			height: 100%;
+			line-height: 100%;
+			.font-icon:before {
+				@extend %mini-fontello-r-arrow;
+			}
+		}
+  }
+
+	// 3rd Level
+	.menu ul ul{
+			top: 0px;
+			@include position('left', 100%);
+	}
+}
+
+/*** DEMO SKIN ***/
+.dropdownmenu-default-skin > ul.menu{
+    li {
+			background: transparent;
+			white-space: nowrap; // no need for Supersubs plugin 
+			*white-space: normal; // ...unless you support IE7 (let it wrap)
+    }
+    ul {
+			background: $submenu-bg;
+			li {
+				display: block;
+				clear: both;
+				&:hover >a,
+				&.sfHover >a{
+					background: $submenu-li-hover-bg;
+				}
+				a{// 2nd level
+					@extend %medium-box;
+					padding: 0 1em;
+					color: $submenu-a-color;
+					@include transition(color 0.3s ease);
+					&:hover{
+						color: $white
+					}
+        }
+      }
+    }
+    a {
+			padding: .75em 1em;
+			text-decoration: none;
+			zoom: 1; // IE7
+			color: $menu-main-color;
+			font-size: 13px
+    }
+
+}
+
+
+
+
+
+

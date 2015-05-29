@@ -1,0 +1,23 @@
+/** gmap Shortcode
+-----------------------------------*/
+.ac-gmap{
+  @extend %relative-position;
+  position: relative;
+  img{
+    max-width: none!important;
+  }
+  &.ac-align-left{
+    @extend %left-float;
+    margin: 0 0 $small-space*2;
+    @include right-space($small-space*2, 'margin');
+  }
+  &.ac-align-center{
+    @extend %center-align;
+    margin: 0 auto;
+  }
+  &.ac-align-right{
+    @extend %right-float;
+    margin: 0 0 $small-space*2;
+    @include left-space($small-space*2, 'margin');
+  }
+}

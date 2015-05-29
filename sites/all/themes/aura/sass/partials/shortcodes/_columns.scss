@@ -1,0 +1,130 @@
+/** Columns Shortcode
+-----------------------------------*/
+div.ac-fullwidth{
+  width: 100%;
+  clear: both;
+  float: none;
+  display: block;
+}
+
+
+.ac-one-half, .ac-one-third, .ac-two-third, .ac-three-fourth,
+.ac-one-fourth, .ac-one-fifth, .ac-two-fifth, .ac-three-fifth,
+.ac-four-fifth, .ac-one-sixth, .ac-five-sixth, .ac-5-12, .ac-7-12, .ac-col {
+ @include left-float;
+}
+.col-inner{
+   position: relative;
+ }
+@include at-breakpoint($mobile-portrait) {
+  .ac-col {
+    padding: 0;
+    margin-bottom: $large-space;
+    width: 100%;
+    float: none;
+    clear: both;
+  }
+}
+
+@include at-breakpoint($mobile-landscape) {
+
+}
+
+@include at-breakpoint($tab) {
+  .col-inner{
+    padding: 0 $medium-space;
+  }
+  .ac-col {
+    width: 50%;
+    clear: none;
+    @if $direction == 'LTR' {
+      float: left;
+    }@else{
+      float: right;
+    }
+  }
+/*  
+  .ac-one-half,
+  .ac-one-third,
+  .ac-one-half,*/
+  .ac-one-fourth{
+    .ac-col{
+      width: 100%;
+    }
+  }
+  
+  .ac-cols-1, .ac-cols-2, .ac-cols-3, .ac-cols-4, .ac-cols-5, .ac-cols-6{
+    margin: 0 (-$medium-space)
+  }
+}
+
+@include at-breakpoint($big-scr) {
+  .ac-col{width: 100%}
+  .ac-one-half {width: 50%; }
+  .ac-one-third { width: 33.33333333333333%; }
+  .ac-two-third { width: 66.66666666666667%; }
+  .ac-one-fourth { width: 25%; }
+  .ac-three-fourth { width: 75%; }
+  .ac-one-fifth { width: 20%; }
+  .ac-one-sixth { width: 16.66666666666667%; }
+  .ac-five-sixth { width: 83.33333333333333%; }
+  .ac-5-12 { width: 40%; }
+  .ac-7-12 { width: 60%; }
+
+/*  div.ac-col.last{
+   @include no-right-margin;
+    > .col-inner{
+      @include no-right-padding;
+    }
+  }*/
+  
+  .col-clear {
+   clear: both;
+  }
+  
+  .ac-cols-1 .ac-col{
+    width: 100%;
+/*    &:last-child{
+      margin-bottom: 0;
+    }*/
+  }
+  .ac-cols-2 .ac-col{
+    width: 49.95%;
+  }
+  .ac-cols-3 .ac-col{
+    width: 33.3%;
+  }
+  .ac-cols-4 .ac-col{
+    width: 24.95%;
+  }
+  .ac-cols-5 .ac-col{
+    width: 19.95%;
+  }
+  .ac-cols-6 .ac-col{
+    width: 16.59%;
+  }
+}
+
+// Misc
+.ac-col-container{
+  clear: both;
+ &.ac-position-left{
+   .ac-col{
+     @extend %left-float
+   }
+ }
+ &.ac-position-center{
+   .ac-col{
+     @extend %center-align
+   }
+ }
+ &.ac-position-right{
+   .ac-col{
+     @extend %right-float;
+   }
+ }
+}
+
+div.vc-row{
+  @extend .ac-position-center;
+}

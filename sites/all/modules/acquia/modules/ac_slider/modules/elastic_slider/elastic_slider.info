@@ -1,0 +1,6 @@
+name = Acquia - elasticSlider
+core = 7.x
+description = Implements elastic slide builder tool.
+dependencies[] = ac_slider
+package = AcquiaThemes
+

@@ -1,0 +1,39 @@
+/** Porfolio - Related Works Block
+-----------------------------------*/
+.acquia-tags-view-list{
+  @extend %side-menu-v-list;
+  @extend %left-align;
+  a{
+    padding: 0;
+    margin: 0;
+    @include left-space($medium-space, padding);
+    &:before{
+      top: 50%;
+      margin-top: -8px
+    }
+  }
+  span{
+    @extend %right-float;
+  }
+}
+
+.acquia-tags-view-tag{
+  li{
+    @extend %left-float;    
+  }
+  a{
+    @extend %large-boxed;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+    @extend %light-gradient-box !optional;
+    display: inline-block;
+    width: auto;
+    padding: 0 ($medium-space/2);
+    margin: 0 0 ($medium-space/2) 0;
+    @include right-space($medium-space/2, margin);
+  }
+  li a{
+    @extend %body-font-size;
+  }
+}

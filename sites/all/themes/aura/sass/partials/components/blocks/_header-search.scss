@@ -1,0 +1,72 @@
+/**
+ * $HEADER-SEARCH
+ */
+#block-ac-blocks-header-search{
+  padding: 0;
+  margin: 0;
+}
+
+.l-page .block--ac-blocks-header-search{
+  width: 36px;
+}
+.l-page .ac-header-search{
+  position: relative;
+  width: 36px;
+  .mobile_active &{
+    display: none;
+  }
+  &.on .form-actions:before{
+    @extend %theme-active-color !optional;
+  }
+  h2{
+    @extend %element-invisible;
+  }
+  .form-item{
+    @extend %no-margin;
+    display: block;
+  }
+  .form-actions{
+    display: block;
+    position: inherit;
+  }
+  input.form-search{
+    @extend %body-bg-color !optional;
+    @extend %xx-large-boxed;
+    @extend %no-margin;
+    display: none;
+    position: absolute;
+    top: 75px;
+    width: 290px;
+    padding: 5px 10px;
+    @include box-shadow(0 2px 5px -1px rgba(0, 0, 0, 0.1));
+    @include position(right, 0);
+  }
+  input.form-submit{
+    @extend %no-margin-padding;
+    @extend %no-border;
+    @extend %no-anim;
+    @extend %no-box-shadow;
+    position: absolute!important;
+    text-indent: -999em;
+    background-color: transparent!important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    bottom: auto!important;
+    display: block;
+    /* vertical-align: middle; */
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    left :0;
+  }
+  input.form-submit:hover,
+  input.form-submit:focus,
+  input.form-submit:active{
+    @extend %no-border;
+    @extend %no-box-shadow;
+    outline: 0;
+  }
+}

@@ -1,0 +1,10 @@
+name = Acquia - Slider Tools
+core = 7.x
+description = Implements slide builder tool.
+
+dependencies[] = acquia
+
+package = AcquiaThemes
+
+; Configuration link
+configure = admin/config/media/acquia_slider

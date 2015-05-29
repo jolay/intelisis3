@@ -1,0 +1,98 @@
+<?php
+/**
+ * @file
+ *
+ * Skin Generator for Acquia themes
+ */
+
+// Defult font family if font is nor provided
+define('AC_SKIN_DEFAULT_FONT_FAMILY', ', Helvetica, Arial, Verdana, sans-serif');
+define('ACQUIA_SKINS_CID', 'acquia_theme_skins');
+define('ACQUIA_SKIN_LOGOS_CID', 'acquia_theme_skins_logos');
+
+ /**
+  * Implementing hook_acquia_include_directory()
+  */
+function ac_skin_acquia_include_directory($plugin){
+	if ($plugin == 'skin') {
+		return 'skin';
+	}
+}
+/**
+ * Implements hook_menu().
+ */
+function ac_skin_menu() {
+
+	$items[ACQUIA_MENU_PATH . '/skin'] = array(
+    'title' => 'Acquia Skin',
+    'description' => 'Administer Acquia skins.',
+    'position' => 'right',
+    'weight' => -8,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ac_skin_generator_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'includes/admin.inc',
+	);
+	
+	/** generator **/
+	$items[ACQUIA_MENU_PATH . '/skin/generator'] = array(
+    'title' => 'Generator',
+    'description' => 'Administer Acquia generator.',
+    'position' => 'right',
+    'weight' => -8,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ac_skin_generator_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'includes/admin.inc',
+		'type' => MENU_LOCAL_TASK
+	);
+
+	// generator
+	$items[ACQUIA_MENU_PATH . '/skin/group'] = array(
+    'title' => 'Configuration',
+    'description' => 'Administer Acquia configuration.',
+    'position' => 'right',
+    'weight' => -8,
+    'access arguments' => array('access administration pages'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('ac_skin_config_skin_settings_form', 'general'),
+		'file' => 'includes/admin.inc',
+		'type' => MENU_LOCAL_TASK,
+	);
+
+	foreach (ac_skin_get_all_groups_def() as $group =>
+$attrs) {
+		$items[ACQUIA_MENU_PATH . '/skin/group/'.$group] = array(
+			'title' => isset($attrs['title']) ? $attrs['title'] : t($group),
+			'description' => isset($attrs['description']) ? $attrs['description'] : '',
+			'position' => 'right',
+			'weight' => -8,
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('ac_skin_config_skin_settings_form', $group),
+			'access arguments' => array('access administration pages'),
+			'file' => 'includes/admin.inc',
+			'type' => MENU_LOCAL_TASK,
+		);
+		if (isset($attrs['weight'])) {
+			$items[ACQUIA_MENU_PATH . '/skin/group/'.$group]['weight'] = $attrs['weight'];
+		}
+
+	}
+
+	$items[ACQUIA_MENU_PATH . '/skin/group/general']['type'] = MENU_LOCAL_TASK & MENU_DEFAULT_LOCAL_TASK;
+		
+  return $items;
+}
+
+
+/**
+ * get list of skin settings defined by modules
+ */
+function ac_skin_get_all_groups_def(){
+	$settings = &drupal_static(__FUNCTION__, null);
+	if (!isset($settings)) {
+		acquia_include('plugins');
+		$settings = acquia_load_includes('skin', 'settings');
+	}
+	return $settings;
+}

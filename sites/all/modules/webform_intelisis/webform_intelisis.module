@@ -1,0 +1,431 @@
+<?php
+/**
+ * Implementation of hook_form_alter() to validate submitted email & register data using IntelisisREST
+ */
+ 
+$GLOBALS['nodeid'] = '';
+ 
+function webform_intelisis_form_alter(&$form, &$form_state, $form_id) {
+  // Add validation for Webform node 719
+  // Canal Orgánico
+  if ($form_id == 'webform_client_form_719') {
+    // Add the additional validate handler.
+    $form['#validate'][] = 'webform_intelisis_validate_719';
+  }
+  
+  // Add validation for Webform node 470
+  // Canal Eblast
+  if ($form_id == 'webform_client_form_470') {
+    // Add the additional validate handler.
+    $form['#validate'][] = 'webform_intelisis_validate_470';
+  }
+  
+  // Add validation for Webform node 715
+  // Descarga de casos de exito
+  if ($form_id == 'webform_client_form_715') {
+    // Add the additional validate handler.
+    $form['#validate'][] = 'webform_intelisis_validate_715';
+	$form['#submit'][] = 'webform_intelisis_submit_715';
+  }
+    
+}
+
+
+/**
+ * Validation handler for Webform ID #719.
+ * Canal: Orgánico
+ */
+function webform_intelisis_validate_719(&$form, &$form_state) {
+
+ $nombre = $form_state['values']['submitted']['nombre'];
+ $empresa = $form_state['values']['submitted']['empresa'];
+ $email = $form_state['values']['submitted']['email'];
+ $telefono = $form_state['values']['submitted']['lada_y_telefono'];
+ $canal = (empty($_GET['gclid']) ? 'Orgánico' : 'SEA'); 
+ 
+  $valido = validar($email);
+  if ($valido == 0)  
+   form_set_error('', t('El Email no es correcto'));  
+  else
+   registro($nombre, $empresa, $email, $telefono, $canal);
+
+}
+
+
+/**
+ * Validation handler for Webform ID #470.
+ * Canal: Eblast
+ */
+function webform_intelisis_validate_470(&$form, &$form_state) {
+
+ $nombre = $form_state['values']['submitted']['nombre'];
+ $empresa = $form_state['values']['submitted']['empresa'];
+ $email = $form_state['values']['submitted']['email'];
+ $telefono = $form_state['values']['submitted']['lada_telefono'];
+  
+  $valido = validar($email);
+  if ($valido == 0)  
+   form_set_error('', t('El Email no es correcto'));  
+  else
+   registro($nombre, $empresa, $email, $telefono, 'Eblast');
+
+}
+
+
+/**
+ * Validation handler for Webform ID #715.
+ * Descarga de casos de exito
+ */
+ 
+function webform_intelisis_getdata($tipo, $nodeid) {
+  $resultado = '';
+  $user = 'agarcias';
+  $pass = '872caf1f9d75ef368fc08f7ba3d38f4d';
+  
+  $data_string = '
+   {
+     "Intelisis": {
+      "@Sistema": "Intelisis",
+      "@Contenido": "Solicitud",
+      "@Referencia": "Intelisis.CRM.CasosExito.Listado",
+      "@SubReferencia": "",
+      "@Version": "1.0",
+      "Solicitud": {
+        "@Usuario": "'.$user.'",
+        "@Contrasena": "'.$pass.'",
+        "@Tipo": "'.$tipo.'",
+        "@NodoID": "'.$nodeid.'"	
+      }
+    }
+  }';  
+  
+  $url = "http://201.116.126.10/IntelisisService/index.php/IntelisisService/GetIntelisisService";
+  $c=curl_init($url);
+  $options = array( 
+    CURLOPT_RETURNTRANSFER => true,       
+    CURLOPT_TIMEOUT        => 4,         
+    CURLOPT_FAILONERROR    => false,
+    CURLOPT_POST           => 1,
+    CURLOPT_POSTFIELDS     => $data_string,
+    CURLOPT_PROTOCOLS      => CURLPROTO_HTTP,
+    CURLOPT_HTTPHEADER     => array("Content-Type:application/json")
+  ); 
+    
+  curl_setopt_array($c, $options);    
+    
+  /* Run cURL, parse info, and close it */
+  $results=curl_exec($c);
+  curl_close($c);
+    
+  /* decode the JSON results */
+  $answer=json_decode($results, true);
+  
+  /* leer el resultado */
+  if(!empty($answer))
+   foreach ($answer as $key => $value)  
+    if (is_array($value))
+     foreach ($value as $k => $v) 
+      if (is_array($v))
+       foreach ($v as $k1 => $v1) 
+        if (is_array($v1))
+         foreach ($v1 as $k2 => $v2) 
+  	      $resultado = $v2;
+
+ return $resultado;
+}
+ 
+ 
+function webform_intelisis_submit_715(&$form, &$form_state) { 
+ $resultado = webform_intelisis_getdata('URL', $GLOBALS['nodeid']);
+
+ /* redirect de la pagina */
+ if (!empty($resultado))
+  $form_state['redirect'] = $resultado;  
+ }
+  
+ 
+function webform_intelisis_validate_715(&$form, &$form_state) {
+ $datos = array();
+ $datos['nombre'] = $form_state['values']['submitted']['nombre'];
+ $datos['apellido'] = $form_state['values']['submitted']['apellido'];
+ $datos['telefono'] = $form_state['values']['submitted']['telefono'];
+ $datos['empresa'] = $form_state['values']['submitted']['empresa'];
+ $datos['empleados'] = $form_state['values']['submitted']['empleados'];
+ $datos['cargo'] = $form_state['values']['submitted']['cargo'];
+ $datos['otro_cargo'] = $form_state['values']['submitted']['otro_cargo'];
+ $datos['razon'] = $form_state['values']['submitted']['razon'];
+ $GLOBALS['nodeid'] = $form_state['values']['submitted']['url'];
+
+ //form_set_error('datos', t(implode($datos)));
+ registrarDescarga($datos);
+ 
+}
+
+
+
+/**
+ * Validate using BriteVerify
+ */
+function validar($email)
+{ 
+   $apikey="13ddc7a3-e8f4-40c5-a74d-492fb40a91a2";
+   $url = "https://bpi.briteverify.com/emails.json?address=".$email."&apikey=".$apikey;
+   $valid = 0;    
+       
+   /* Set up cURL */
+   $c=curl_init($url);
+   curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+   curl_setopt($c, CURLOPT_FAILONERROR, false);
+   curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
+   curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 0);
+   curl_setopt($c, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS); 
+   curl_setopt($c, CURLOPT_TIMEOUT, 2);
+
+   /* Run cURL, parse info, and close it */
+   $results=curl_exec($c);
+   $info=curl_getinfo($c);
+   curl_close($c);
+
+   /* decode the JSON results */
+   $answer=json_decode($results);
+
+   /* Make sure you have a valid HTTP status code, and it parsed into the expected JSON object */
+   if($info['http_code'] && isset($answer->address)) 
+    if(($answer->status <> 'invalid') || ($answer->status <> 'unknown'))
+     $valid = 1;
+
+  return $valid;
+}    
+
+
+
+/**
+ * Register using IntelisisREST
+ */
+function registro($nombre, $Empresa, $email, $Telefono, $canal)
+{ 
+    $nombre = slugify($nombre);
+    $Empresa = slugify($Empresa);
+    $Telefono = slugify($Telefono);
+
+    $pageURL = request_uri();
+
+    $user = 'agarcias';
+    $pass = '872caf1f9d75ef368fc08f7ba3d38f4d';    
+    
+    $data_string = '
+    {
+      "Intelisis": {
+        "@Sistema": "Intelisis",
+        "@Contenido": "Solicitud",
+        "@Referencia": "Intelisis.CRM.Prospecto.Alta",
+        "@SubReferencia": "",
+        "@Version": "1.0",
+        "Solicitud": {
+            "@Usuario": "'.$user.'",
+            "@Contrasena": "'.$pass.'",
+            "@Prospecto": "",
+            "@Nombre": "'.$nombre.'",
+            "@Tipo": "Contacto",
+            "@Direccion": "",
+            "@DireccionNumero": "",
+            "@DireccionNumeroInt": "",
+            "@EntreCalles": "",
+            "@Plano": "",
+            "@Observaciones": "'. $pageURL.'",
+            "@Delegacion": "",
+            "@Colonia": "",
+            "@Poblacion": "",
+            "@Estado": "",
+            "@Pais": "",
+            "@Zona": "",
+            "@CodigoPostal": "",
+            "@RFC": "",
+            "@CURP": "",
+            "@Telefonos": "'.$Telefono.'",
+            "@TelefonoLada": "",
+            "@Fax": "",
+            "@PedirTono": "",
+            "@PaginaWeb": "",
+            "@eMail": "'.$email.'",
+            "@eMail1": "",
+            "@SIC": "",
+            "@Origen": "",
+            "@Agente": "",
+            "@InteresadoEn": "",
+            "@CargaRID": "",
+            "@NombreComercial": "'.$Empresa.'",
+            "@GrupoEmpresarial": "",
+            "@ReferidoNombre": "",
+            "@ReferidoMail": "",
+            "@ReferidoTelefono": "",
+            "@ReferidoRFC": "",
+            "@EmpresaTipo": "",
+            "@Fuente": "",
+            "@RelacionReferencia": "",
+            "@Canal": "'.$canal.'"
+        }
+      }
+    }';  
+    
+    $url = "http://201.116.126.10/IntelisisService/index.php/IntelisisService/GetIntelisisService";
+    $c=curl_init($url);
+    $options = array( 
+        CURLOPT_RETURNTRANSFER => false,       
+        CURLOPT_TIMEOUT        => 4,         
+        CURLOPT_FAILONERROR    => false,
+        CURLOPT_POST           => 1,
+        CURLOPT_POSTFIELDS     => $data_string,
+        CURLOPT_PROTOCOLS      => CURLPROTO_HTTP,
+        CURLOPT_HTTPHEADER     => array("Content-Type:application/json")
+    ); 
+    
+    curl_setopt_array($c, $options);    
+    
+    /* Run cURL, parse info, and close it */
+    $results=curl_exec($c);
+    $info=curl_getinfo($c);
+    curl_close($c);
+    
+    /* decode the JSON results */
+    //$answer=json_decode($results);
+  
+}
+
+
+// Descarga de casos de exito
+
+/**
+ * Registrar using IntelisisREST
+ */
+function registrarDescarga($datos)
+{ 
+    $canal = 'Orgánico';
+    $pageURL =  webform_intelisis_getdata('Titulo', $GLOBALS['nodeid']);
+	
+	$nombre = $datos['nombre'];
+	$apellido = slugify($datos['apellido']);
+    $telefono = slugify($datos['telefono']);
+    $empresa = slugify($datos['empresa']);
+    $empleados = $datos['empleados'];
+    $cargo = $datos['cargo'];
+    $otro_cargo = slugify($datos['otro_cargo']);
+    $razon = $datos['razon'];    
+
+    $user = 'agarcias';
+    $pass = '872caf1f9d75ef368fc08f7ba3d38f4d';    
+    
+    $data_string = '
+    {
+      "Intelisis": {
+        "@Sistema": "Intelisis",
+        "@Contenido": "Solicitud",
+        "@Referencia": "Intelisis.CRM.Contacto.Alta",
+        "@SubReferencia": "",
+        "@Version": "1.0",
+        "Solicitud": {
+            "@Usuario": "'.$user.'",
+            "@Contrasena": "'.$pass.'",
+            "@Prospecto": "",
+            "@Nombre": "'.$empresa.'",
+            "@Tipo": "Contacto",
+            "@Direccion": "",
+            "@DireccionNumero": "",
+            "@DireccionNumeroInt": "",
+            "@EntreCalles": "",
+            "@Plano": "",
+            "@Observaciones": "'. $pageURL.'",
+            "@Delegacion": "",
+            "@Colonia": "",
+            "@Poblacion": "",
+            "@Estado": "",
+            "@Pais": "",
+            "@Zona": "",
+            "@CodigoPostal": "",
+            "@RFC": "",
+            "@CURP": "",
+            "@Telefonos": "'.$telefono.'",
+            "@TelefonoLada": "",
+            "@Fax": "",
+            "@PedirTono": "",
+            "@PaginaWeb": "",
+            "@eMail": "",
+            "@eMail1": "",
+            "@SIC": "",
+            "@Origen": "",
+            "@Agente": "",
+            "@InteresadoEn": "",
+            "@CargaRID": "",
+            "@NombreComercial": "",
+            "@GrupoEmpresarial": "",
+            "@ReferidoNombre": "",
+            "@ReferidoMail": "",
+            "@ReferidoTelefono": "",
+            "@ReferidoRFC": "",
+            "@EmpresaTipo": "",
+            "@Fuente": "",
+            "@RelacionReferencia": "",
+            "@Canal": "'.$canal.'",
+			"@Comentarios": "'.$pageURL.'", 
+			"@Empleados": "'.$empleados.'",
+			"@Cargo": "'.$cargo.'",
+			"@OtroCargo": "'.$otro_cargo.'",
+			"@NombreCto": "'.$nombre.'",
+			"@ApellidoCto": "'.$apellido.'"			
+        }
+      }
+    }';  
+    
+    //$data_string = json_encode($data_string, JSON_PRETTY_PRINT);
+    
+    $url = "http://201.116.126.10/IntelisisService/index.php/IntelisisService/GetIntelisisService";
+    $c=curl_init($url);
+    $options = array( 
+        CURLOPT_RETURNTRANSFER => true,       
+        CURLOPT_TIMEOUT        => 4,         
+        CURLOPT_FAILONERROR    => false,
+        CURLOPT_POST           => 1,
+        CURLOPT_POSTFIELDS     => $data_string,
+        CURLOPT_PROTOCOLS      => CURLPROTO_HTTP,
+        CURLOPT_HTTPHEADER     => array("Content-Type:application/json")
+    ); 
+    
+    curl_setopt_array($c, $options);    
+    
+    /* Run cURL, parse info, and close it */
+    $results=curl_exec($c);
+    $info=curl_getinfo($c);
+    curl_close($c);
+    
+    /* decode the JSON results */
+    //$answer=json_decode($results);
+  
+}
+
+
+
+function slugify($text,$strict = false) {
+    $text = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+    // replace non letter or digits by -
+    $text = preg_replace('~[^\\pL\d.]+~u', '-', $text);
+
+    // trim
+    $text = trim($text, '-');
+    setlocale(LC_CTYPE, 'en_GB.utf8');
+    // transliterate
+    if (function_exists('iconv')) {
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    }
+
+    // remove unwanted characters
+    $text = preg_replace('~[^-\w.]+~', '', $text);
+    // remove -
+    $text = str_replace("-", " ", $text);
+    
+    if ($strict) {
+        $text = str_replace(".", "_", $text);
+    }
+    return $text;
+}
+
+?>

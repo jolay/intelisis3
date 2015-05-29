@@ -1,0 +1,114 @@
+/** counter Shortcode
+-----------------------------------*/
+.ac-pie {
+  z-index: 0;
+  text-align: center;
+  padding: $medium-space $medium-space*2;
+  &.ac-bg_style-light *{
+      color: $white;
+  }
+  .font-icon{
+    @extend %large-boxed;
+    margin-top: $medium-space;
+  }
+
+  .unit{
+    font-size: 60%;
+    position: absolute;
+    display: block;
+    width: 100%;
+  }
+}
+
+.ac-one-sixth,
+.ac-one-fifth{
+  .ac-pie-fill{
+    font-size: 18px;
+  }
+}
+
+.ac-pie-wrap {
+  position: relative;
+  margin: 0 auto;
+  canvas{
+    position: relative;
+    z-index: 100;
+  }
+}
+.ac-pie-bg {
+  @extend %circled-border;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  border-width: $small-space/3;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  .ac-bg_style-light &{
+    border-color: rgba($white, 0.2);
+  }
+}
+
+.ac-pie-fill{
+  @extend %header-font !optional;
+  font-size: 300%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.ac-pie-title{
+  @extend %small-font;
+  margin: ($medium-space/2) (-$medium-space*2);
+}
+
+// Unit position
+.ac-unit_pos-tr,
+.ac-unit_pos-br{
+  .unit{
+    top: 15%;
+    @include right-space(20%, padding);
+    @extend %right-align;
+  }
+}
+.ac-unit_pos-br{
+  .unit{
+    top: auto;
+    bottom: 22%;
+  }
+}
+
+// Unit position
+.ac-unit_pos-tc,
+.ac-unit_pos-bc{
+  .unit{
+    top: 10%;
+    left: 0;
+    text-align: center;
+  }
+}
+
+// Unit position
+.ac-unit_pos-bc{
+  .unit{
+    top: auto;
+    bottom: 15%;
+  }
+}
+// cc position
+.ac-unit_pos-cc{
+  .unit{
+    top: 50%;
+    margin-top: -15px;
+    @extend %right-align;
+    @include right-space(14%, padding);
+  }
+}

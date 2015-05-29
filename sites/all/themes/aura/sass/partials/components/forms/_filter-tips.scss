@@ -1,0 +1,62 @@
+/**
+ * $FILTER-TIPS
+ */
+fieldset.filter-wrapper {
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @extend %body-bg-color !optional;
+  position: relative;
+  padding: 20px;
+  .filter-guidelines{
+    @extend %no-margin-padding;
+  }
+  .tips{
+    margin: 0;
+  }
+  .form-item{
+    padding: 0;
+    margin-bottom: $large-space/2;
+    float: none;
+  }
+  .customSelect,
+  select{
+    background: $white;
+  }
+}
+
+.filter-help{
+  @extend %x-small-font;
+  padding: 0;
+  position: absolute;
+  top: $medium-space/2;
+  right: $medium-space/2;
+  z-index: 10;
+  a{
+    text-indent: -999em;
+    display: block;
+  }
+}
+.form-textarea-wrapper{
+  position: relative;
+}
+.wysiwyg-toggle-wrapper{
+  @include position('right',0);
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: $small-space/2;
+  a{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+    @extend %body-bg-color !optional;
+    height: 18px;
+    font-size: 12px;
+    margin: 5px 5px 0 0;
+    padding: 4px 5px 2px;
+    cursor: pointer;
+    color: #999;
+    z-index: 10;
+  }
+}
+

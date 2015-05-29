@@ -1,0 +1,199 @@
+/** Misc Shortcode
+-----------------------------------*/
+/** hr **/
+.hr{
+  @extend .col-clear;
+}
+
+/** Acquia Paddings **/
+.ac-padding-zero{
+  @extend %no-padding
+}
+
+.ac-padding-small{
+  padding-top: 20px!important;
+  padding-bottom: 20px!important;
+}
+
+.ac-padding-default{
+  padding-top: 60px;
+  padding-bottom: 60px!important;
+}
+
+.ac-padding-large{
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.ac-padding-x-large{
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.ac-padding-xx-large{
+  padding-top: 170px;
+  padding-bottom: 170px;
+}
+
+.ac-padding-xxx-large{
+  padding-top: 210px;
+  padding-bottom: 210px;
+}
+
+/** Acquia Margins **/
+.l-page .ac-margin-zero{
+  @extend %no-margin;
+}
+
+.l-page .ac-margin-small{
+  margin: 0 0 20px;
+}
+
+.l-page .ac-margin-x-small{
+  margin: 0 0 10px;
+}
+.l-page  h5, h6{
+  &.ac-margin-small{
+    margin-bottom: 10px!important
+  }
+}
+
+.l-page .ac-margin-default{
+  margin: 0 0 40px;
+}
+
+.l-page .ac-margin-large{
+  margin: 0 0 75px;
+}
+
+/** {{ac_highlight}} - Highlight Text **/
+.ac-highlight {
+  @extend %theme-bg !optional;
+  @extend %full-border-radius !optional;
+  color: $white;
+  padding: 0 3px;
+  &.ac-bg_color-silver{
+    color: $black;
+  }
+}
+
+.vc-column-text{
+  margin-bottom: $medium-space;
+  a{
+    @extend %anchor-border-color !optional;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+// Contact Form
+.ac-contact{
+  @extend %table;
+  width: 100%;
+  .element-inner,
+  .form-label{
+    display: block;
+  }
+  &.ac-style-centered{
+    @extend %center-align;
+    .form-actions{
+      @extend %center-align;
+    }
+    .form-item{
+      width: 100%;
+      display: block;
+      padding: 0;
+    }
+  }
+  &.ac-minimal-style{
+    .form-item-copy,
+    .form-item-name{
+      display: none
+    }
+    .form-actions{
+      @extend %left-align;
+    }
+  }
+  &.ac-minimal-style.ac-style-simple{
+    .form-actions{
+      @extend %left-align;
+    }
+    .form-item{
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  p{
+    display: none;
+  }
+  .form-item-name{
+    @include right-space(5px, padding);
+  }
+  .form-item-mail{
+    @include left-space(5px, padding);
+  }
+  .form-item-name, .form-item-mail{
+    @extend %table-cell;
+    width: 50%;
+    padding-bottom: 15px;
+  }
+  .form-item-subject{
+    padding: 0;
+    display: block;
+  }
+  .form-textarea{
+    min-height: 170px;
+  }
+  .form-item-copy{
+    @extend %left-float;
+  }
+}
+
+/** {{ac_highlight}} - Highlight Text **/
+.ac-dropcap {
+  @extend %header-font !optional;
+  @extend %relative-position;
+  @extend %inline-block-display;
+  @extend %left-float;
+  @extend %x-large-boxed;
+  @extend %theme-bg-color !optional;
+  margin-top: 5px;
+  font-size: 30px;
+  color: $white;
+  text-align: center;
+  @include right-space($small-space, margin);
+  &.ac-subtle-style{
+    @extend %theme-active-color !optional;
+    @extend %theme-border-color !optional;
+    border-width: 1px;
+    border-style: solid;
+    background: transparent!important;
+  }
+}
+
+iframe{
+  border: 0
+}
+
+.clients-logo,
+.ac-grayscale-effect{
+  img{
+    @extend %grayscale-img;
+    @extend %default-anim;
+    &:hover{
+      filter: none;
+      -webkit-filter: none;
+      -moz-filter: none;
+      -ms-filter:none;
+      -o-filter: none;
+      filter: none;
+      -webkit-filter: none;
+    }
+  }
+}
+
+.ac-frame{
+  padding: $large-space
+}

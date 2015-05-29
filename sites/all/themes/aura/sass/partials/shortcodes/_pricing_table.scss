@@ -1,0 +1,268 @@
+/**  pricing table Shortcode
+-----------------------------------*/
+.ac-pt{
+  height: auto;
+  overflow: hidden;
+  clear: both;
+  padding-bottom: 20px;
+  .pt-col{
+  }
+}
+ 
+.l-page .ac-pt{
+  margin: 0;
+}
+// standard style
+.ac-pt.ac-type-standard{
+  .pt-col{
+    .inner{
+      @extend %center-align;
+    }
+  }
+  .pt-col:first-child{
+  }
+}
+// Bordered
+.ac-pt.ac-type-bordered{
+  .pt-col{
+    //@extend %full-border-radius !optional;
+    @include right-margin(2%);
+    &:last-child {
+      @extend %no-right-margin;
+    }
+  }
+  div.pt-package .inner{
+    border-color: transparent;
+  }
+  .ac-highlight-col{
+    .pt-package{
+      color: $grey;
+    }
+    .pt-package .inner{
+      background: transparent;
+    }
+  }
+}
+
+// bordered_alt Type
+.ac-pt.ac-type-bordered_alt{
+  @extend .ac-pt.ac-type-bordered;
+  .pt-col.ac-highlight-col{
+    @extend %theme-bg !optional;
+    div.pt-package, div.pt-price{
+      @extend %default-inv-text-shadow;
+      color: $white;
+    }
+  }
+  .pt-price{
+    @extend %right-float;
+    @extend %small-font;
+    padding: 0 $large-space 0 0;
+    .inner{
+      @extend %tiny-font;
+    }
+  }
+  div.pt-package{
+    @extend %left-float;
+    padding: 0 0 0 $large-space;
+  }
+  div.pt-package, div.pt-price{
+    @extend %small-font;
+    line-height: 45px;
+    height: 45px;
+    border: 0px;
+    background: transparent;
+    color: $black;
+    .inner{
+      padding: 0;
+      background: transparent;
+    }
+  }
+  .pt-details{
+    @extend %content-divider-color !optional;
+    border-width: 1px 0 0;
+    border-style: solid;
+    clear: both;
+  }
+}
+
+// Labled Type
+.ac-pt.ac-type-labeled{
+  @extend .ac-pt.ac-type-standard;
+  .pt-col{
+    margin-top: 15px;
+    border-right-width: 0;
+    &:nth-child(2){
+      .pt-price{
+        //@include border-radius(6px 0 0 0);
+      }
+     .pt-row:last-child {
+        //@include border-radius(0 0 0 6px);
+      }
+    }
+    &:last-child{
+      border-right-width: 1px;
+    }
+  }
+  .pt-row{
+    border-width: 0 0 1px;
+    background: $white;
+  }
+  .ac-highlight-col{
+    @extend %relative-position;
+    @extend %top-edge-circled-border !optional;
+    margin:0 -1px;
+    @include box-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+    .pt-price {
+      @extend %top-edge-circled-border !optional;
+      padding-bottom: 12px;
+    }
+    .pt-package{
+      padding: $medium-space 0;
+    }
+    .ac-pt-btn{
+      @extend %bottom-edge-circled-border  !optional;
+      padding: 20px 0;
+    }
+  }
+  .ac-pt-btn .ac-button{
+    @extend %no-margin;
+   }
+  .ac-label-col{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-right: 0;
+  }
+  .pt-price{
+    @extend %hard-gradient-box !optional;
+    font-weight: 300;
+    @extend %medium-font;
+    padding: 10px 30px;
+  }
+  .pt-package{
+    @extend %small-font;
+    @extend %theme-bg !optional;
+    color: $white;
+    border-bottom-style: solid;
+    .inner{
+      border-color: transparent;
+    }
+  }
+  .pt-col {
+    .pt-row:last-child{
+      border: 0;
+    }
+  }
+}
+
+.pt-row{
+  @extend %content-divider-color !optional;
+  @extend %body-bg-color !optional;
+  border-width: 0 1px 0 0;
+  border-style: solid;
+  text-align: center;
+  padding: 12px;
+  &.ac-alt{
+    @extend %light-bg !optional;
+  }
+  &.ac-pt-btn{
+    @extend %light-bg !optional;
+    @extend %hard-gradient-box !optional;
+    @extend %content-divider-color !optional;
+    border-width: 1px 0;
+    border-style: solid;
+  }
+}
+
+.pt-col{
+  @extend %left-float;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  //@extend %full-border-radius !optional;
+  overflow: hidden;
+  &:first-child {
+    @extend %content-divider-color !optional;
+    //@include border-radius(6px 0 0 6px);
+  }
+  &:last-child {
+    //@include border-radius(0 6px 6px 0);
+  }
+  &.ac-highlight-col{
+    div.pt-price {
+      @extend %default-inv-text-shadow;
+      @extend %theme-bg !optional;
+      @extend %theme-border-color !optional;
+      border-style: solid;
+      color: $white;
+    }
+    .pt-package {
+      @extend %light-bg !optional;
+      @extend %content-divider-color !optional;
+      color: $white;
+      border-width: 0 0 1px;
+      border-style: solid;
+      .inner{
+          @extend %theme-bg !optional;
+          border-color: $white;
+      }
+    }
+    .pt-details {
+      @extend %light-gradient-box !optional;
+    }
+  }
+}
+
+.pt-price{
+  @extend %light-gradient-box !optional;
+  @extend %large-type;
+  @extend %header-font !optional;
+  @extend %content-divider-color !optional;
+  border-width:  0 0 2px;
+  border-style: solid;
+  padding: $medium-space ($large-space $medium-space/2);
+  font-weight: 100;
+  span{
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 4px;
+  }
+}
+
+.pt-package{
+  @extend %content-divider-color !optional;
+  border-width: 0 0 1px;
+  border-style: dotted;
+  padding: $medium-space/2 0;
+  font-size: 18px;
+  .inner{
+    @extend %bordered-box;
+    border-color: $white;
+    @extend %full-border-radius !optional;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px 15px;
+  }
+}
+
+.pt-details {
+  padding: $medium-space $large-space;
+}
+
+
+/** big screens < X **/
+@include at-breakpoint($big-scr) {
+  .ac-pt.ac-type-bordered{
+    &.ac-cols-2 .ac-col{
+      width: 49%;
+    }
+    &.ac-cols-3 .ac-col{
+      width: 32%;
+    }
+    &.ac-cols-4 .ac-col{
+      width: 23.5%;
+    }
+    &.ac-cols-5 .ac-col{
+      width: 18.4%;
+    }
+  }
+}

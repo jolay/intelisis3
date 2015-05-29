@@ -1,0 +1,198 @@
+/** Progress Bar Shortcode
+-----------------------------------*/
+.ac-progressbar{
+  list-style-type:none;
+  padding: 0;
+  @extend %no-margin-padding;
+	&.ac-no-striped{
+		.progress .bar{
+			background-image: none;
+		}
+	}
+  li{
+	@extend %relative-position;
+	margin-bottom: $medium-space/2;
+	.label{
+	  display: block;
+	  padding: 0.5em 0;
+	  font-size: .9em;
+	}
+	.font-icon{
+	  font-size: 20px;
+	}
+	.units{
+	  margin-left: 5px;
+	}
+	.progress{
+	  @extend %relative-position;
+	 // @extend %small-circled;
+	  @extend %bordered-box;
+	  @extend %content-divider-color !optional;
+	  width: 100%;
+	  height: 27px;
+	  line-height: 25px;
+	  position: relative;
+	  background-color: #f7f7f7;
+	  background-color: rgba(55, 58, 65, 0.04);
+	  .bar-outer{
+			@extend %absolute-position;
+			height: 100%;
+			top: 0;
+			width: 0;
+			background-size: 32px 32px;
+			border-radius: 3px;
+			@include position('left', 0);
+	  }
+	  .bar{
+			@extend %absolute-position;
+			//@extend %small-circled;
+			@extend %ac-bg-move-anim;
+			@extend %no-margin-padding;
+			border: 0;
+			height: 100%;
+			top: 0;
+			width: 100%;
+			background-size: 32px 32px;
+			@include position('left', 0);
+	  }
+	}
+	
+		.progress.ac_start_animation .bar-outer{
+			@extend %ac-expand-anim;
+			width: 100%
+		}
+  }
+}
+
+// Color Schemes 
+.ac-progressbar-item{
+	.bar{
+		@include background-image(linear-gradient(-45deg, rgba(#000, .2) 25%, rgba($white, 0.35) 25%, rgba($white, 0.35) 50%, rgba(#000, .2) 50%, rgba(#000, .2) 75%, rgba($white, 0.35) 75%, rgba($white, 0.35)));
+	}
+	&.grey-bar .bar{
+		background: #555;
+		@include background-image(linear-gradient(-45deg, #666 25%, #444 25%, #444 50%, #666 50%, #666 75%, #444 75%, #444));
+	}
+	
+	&.blue-bar .bar{
+		background: #7bb0e7;
+		@include background-image(linear-gradient(-45deg, #96C8FB 25%, #74a6d9 25%, #74a6d9 50%, #96C8FB 50%, #96C8FB 75%, #74a6d9 75%, #74a6d9));
+	}
+	
+	&.green-bar .bar{
+		background: $green;
+		@include background-image(linear-gradient(-45deg, #A5CA68 25%, #83a846 25%, #83a846 50%, #A5CA68 50%, #A5CA68 75%, #83a846 75%, #83a846));
+	}
+	
+	&.orange-bar .bar{
+		background: $orange;
+		@include background-image(linear-gradient(-45deg, #EDAE44 25%, #FFCF66 25%, #FFCF66 50%, #EDAE44 50%, #EDAE44 75%, #FFCF66 75%, #FFCF66));
+	}
+	
+	&.black-bar .bar{
+		background:$black;
+		@include background-image(linear-gradient(-45deg, #222 25%, #444 25%, #444 50%, #222 50%, #222 75%, #444 75%, #444));
+	}
+	
+	&.red-bar .bar{
+		background: #B02B2C;
+		@include background-image(linear-gradient(-45deg, #B02B2C 25%, #D24D4E 25%, #D24D4E 50%, #B02B2C 50%, #B02B2C 75%, #D24D4E 75%, #D24D4E));
+	}
+	
+	&.teal-bar .bar{
+		background: #5F8789;
+		@include background-image(linear-gradient(-45deg, #5F8789 25%, #7FA9AB 25%, #7FA9AB 50%, #5F8789 50%, #5F8789 75%, #7FA9AB 75%, #7FA9AB));
+	}
+	
+	&.aqua-bar .bar{
+		background: #4ECAC2;
+		@include background-image(linear-gradient(-45deg, #4ECAC2 25%, #6FECE4 25%, #6FECE4 50%, #4ECAC2 50%, #4ECAC2 75%, #6FECE4 75%, #6FECE4));
+	}
+	
+	&.purple-bar .bar{
+		background: #745F7E;
+		@include background-image(linear-gradient(-45deg, #745F7E 25%, #967F9F 25%, #967F9F 50%, #745F7E 50%, #745F7E 75%, #967F9F 75%, #967F9F));
+	}
+	
+	&.pink-bar .bar{
+		background: #D65799;
+		@include background-image(linear-gradient(-45deg, #D65799 25%, #F879BB 25%, #F879BB 50%, #D65799 50%, #D65799 75%, #F879BB 75%, #F879BB));
+	}
+	
+	&.white-bar .bar{
+		background: $white;
+		@include background-image(linear-gradient(-45deg, $white 25%, #c7c7c7 25%, #c7c7c7 50%, $white 50%, $white 75%, #c7c7c7 75%, #c7c7c7));
+	}
+	
+	&.silver-bar .bar{
+		background: #D7D7D7;
+		@include background-image(linear-gradient(-45deg, #D7D7D7 25%, #F9F9F9 25%, #F9F9F9 50%, #D7D7D7 50%, #D7D7D7 75%, #F9F9F9 75%, #F9F9F9));
+	}
+}
+	
+// Compact Style
+ul.ac-style-compact{
+  li{
+		margin-bottom: $medium-space;
+		&:hover{
+			.ico-wrap{
+				@extend %theme-bg !optional;
+				@extend %theme-border-color !optional;
+				color: $white;
+			}
+		}
+		&.ac-icon-enabled{
+			@include left-space(45px, 'margin');
+		}
+  }
+  .label {
+		@extend %no-padding;
+		font-size: 11px;
+  }
+  .ico-wrap{
+		@extend %circled-border;
+		@extend %bordered-box;
+		@extend %content-divider-color !optional;
+		background: transparent;
+		color: darken($grey-border, 10%);
+		position: absolute;
+		top: -4px;
+		@include position('left', -45px);
+  }
+  .font-icon{
+		@extend %medium-boxed;
+		font-size: 16px;
+		display: block;
+		&:before{
+			margin: 0;
+			width: 100%;
+		}
+  }
+  .inner{
+		//@extend %small-circled;
+		color: $white;
+		background: #000;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 2;
+		bottom: 2px;
+		padding: 0 10px;
+		position: absolute;
+		top: 2px;
+		@include position('left', 2px);
+  }
+}
+
+// Extended Style
+ul.ac-style-extended{
+	li .label{
+		@extend %block-header-style;
+		margin: 0;
+		font-size: 100%
+	}
+  .progress{
+		height: 13px;
+  }
+  .units{
+		@extend %right-float;
+  }
+}

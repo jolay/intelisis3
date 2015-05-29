@@ -1,0 +1,54 @@
+/** visibility Shortcode
+-----------------------------------*/
+// Mobile Devices - portrait
+@include at-breakpoint($mobile-portrait) {
+  .ac-type-hidden-phone{
+    display: none !important;
+  }
+  .ac-type-visible-phone{
+    display: block !important;
+  }
+  .ac-type-visible-tablet{
+    display: none !important;
+  }
+  .ac-type-visible-desktop{
+    display: none !important;
+  }
+}
+
+// Mobile Devices - landscape
+@include at-breakpoint($mobile-landscape) {
+
+}
+
+// Tablet Screens
+@include at-breakpoint($tab) {
+  .ac-type-hidden-phone{
+    display: block !important;
+  }
+  .ac-type-hidden-tablet{
+    display: none !important;
+  }
+  .ac-type-visible-tablet{
+    display: block !important;
+  }
+  .ac-type-visible-phone{
+    display: none !important;
+  }
+}
+
+// Big screens
+@include at-breakpoint($big-scr) {
+  .ac-type-hidden-tablet{
+    display: block !important;
+  }
+  .ac-type-visible-tablet{
+    display: none !important;
+  }
+  .ac-type-hidden-desktop{
+    display: none !important;
+  }
+  .ac-type-visible-desktop{
+    display: block !important;
+  }
+}

@@ -1,0 +1,295 @@
+%smaller-box {
+  height: 24px;
+  line-height: 24px;
+}
+
+%small-box {
+  height: 32px;
+  line-height: 32px;
+}
+
+%medium-box{
+  height: 38px;
+  line-height: 38px;
+}
+
+%large-box{
+  height: 44px;
+  line-height: 44px;
+}
+
+%x-large-box{
+  height: 52px;
+  line-height: 52px;
+}
+
+%main-menu-box{
+  height: 88px;
+  line-height: 88px;
+}
+
+@mixin main-menu-box{
+  height: 88px;
+  line-height: 88px;
+}
+
+// ---------------------------------------------------------- //
+//     x-tiny
+// ---------------------------------------------------------- //
+$x-tiny-unit: 14px;
+%x-tiny-font{
+  font-size: $x-tiny-unit;
+}
+%x-tiny-type{
+  @extend %x-tiny-font;
+  line-height: $x-tiny-unit;
+}
+%x-tiny-boxed{
+  @extend %x-tiny-type;
+  width: $x-tiny-unit;
+  height: $x-tiny-unit;
+}
+
+// ---------------------------------------------------------- //
+//     tiny
+// ---------------------------------------------------------- //
+$tiny-unit: 16px;
+%tiny-font{
+  font-size: $x-tiny-unit;
+}
+%tiny-type{
+  @extend %tiny-font;
+  line-height: $tiny-unit;
+}
+%tiny-boxed{
+  @extend %tiny-type;
+  width: $tiny-unit;
+  height: $tiny-unit;
+}
+
+// ---------------------------------------------------------- //
+//     X-Small
+// ---------------------------------------------------------- //
+$x-small-unit: 13px;
+%x-small-font{
+  @include font-size($x-small-unit);
+}
+%x-small-type{
+  @extend %x-small-font;
+  line-height: $x-small-unit;
+}
+%x-small-boxed{
+  @extend %x-small-type;
+  width: $x-small-unit;
+  height: $x-small-unit;
+}
+
+// ---------------------------------------------------------- //
+//     Small
+// ---------------------------------------------------------- //
+$small-unit: 16px;
+%small-font{
+ @include font-size($small-unit);
+}
+%small-type{
+  @extend %small-font;
+  line-height: $small-unit;
+}
+%small-boxed{
+  @extend %small-type;
+  width: $small-unit;
+  height: $small-unit;
+}
+@mixin small-boxed() {
+  @extend %small-type;
+  width: $small-unit;
+  height: $small-unit;
+}
+// ---------------------------------------------------------- //
+//     Medium Boxed
+// ---------------------------------------------------------- //
+$medium-unit: 26px;
+%medium-font{
+  @include font-size($medium-unit - (2px));
+}
+%medium-type{
+  @extend %medium-font;
+  line-height: $medium-unit;
+}
+%medium-boxed{
+  @extend %medium-type;
+  width: $medium-unit;
+  height: $medium-unit;
+}
+
+// ---------------------------------------------------------- //
+//     Large Boxed
+// ---------------------------------------------------------- //
+$large-unit: 36px;
+%large-font{
+  @include font-size($large-unit);
+}
+%large-type{
+  @extend %large-font;
+  line-height: $large-unit;
+}
+%large-boxed{
+  @extend %large-type;
+  width: $large-unit;
+  height: $large-unit;
+}
+// ---------------------------------------------------------- //
+//     X-Large Boxed
+// ---------------------------------------------------------- //
+$x-large-unit: 46px;
+%x-large-font{
+  @include font-size($x-large-unit);
+}
+%x-large-type {
+  @extend %x-large-font;
+  line-height: $x-large-unit;
+}
+%x-large-boxed{
+  @extend %x-large-type;
+  height: $x-large-unit;
+  width: $x-large-unit;
+}
+// ---------------------------------------------------------- //
+//     XX-Large Boxed
+// ---------------------------------------------------------- //
+$xx-large-unit: 52px;
+%xx-large-font{
+  font-size : $xx-large-unit;
+}
+%xx-large-type {
+  @extend %xx-large-font;
+  line-height: $xx-large-unit;
+}
+%xx-large-boxed{
+  @extend %xx-large-type;
+  width: $xx-large-unit;
+  height: $xx-large-unit;
+}
+// ---------------------------------------------------------- //
+//     XXX-Large Boxed
+// ---------------------------------------------------------- //
+$xxx-large-unit: 62px;
+%xxx-large-font{
+  @include font-size($xxx-large-unit);
+}
+%xxx-large-type {
+  @extend %xxx-large-font;
+  line-height: $xxx-large-unit;
+}
+%xxx-large-boxed {
+  @extend %xxx-large-type;
+  width: $xxx-large-unit;
+  height: $xxx-large-unit;
+}
+// ---------------------------------------------------------- //
+//     Boxed Icon
+// ---------------------------------------------------------- //
+%boxed-icon{
+  display: block;
+  text-align: center;
+  &:before{
+    margin: 0;
+    width: 100%;
+  }
+}
+
+%boxed-icon-default-style{
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 32px;
+}
+
+%boxed-icon-xx-large{
+  @extend %boxed-icon;
+  @extend %xxx-large-boxed;
+  .font-icon{
+    @extend %xxx-large-boxed;
+    display: block;
+  }
+}
+
+%boxed-icon-x-large{
+  @extend %boxed-icon;
+  @extend %xx-large-boxed;
+  .font-icon{
+    @extend %xx-large-boxed;
+    display: block;
+  }
+}
+
+%boxed-icon-large{
+  @extend %boxed-icon;
+  @extend %x-large-boxed;
+  .font-icon{
+    @extend %x-large-boxed;
+    display: block;
+  }
+}
+
+%boxed-icon-medium{
+  @extend %boxed-icon;
+  @extend %medium-boxed;
+  .font-icon{
+    @extend %medium-boxed;
+    display: block;
+  }
+}
+
+%boxed-icon-small{
+  @extend %boxed-icon;
+  @extend %small-boxed;
+  .font-icon{
+    @extend %small-boxed;
+    @extend %small-font;
+    display: block;
+  }
+}
+
+%boxed-icon-tiny{
+  @extend %boxed-icon;
+  @extend %tiny-boxed;
+  margin-right: 10px;
+  .font-icon{
+    @extend %tiny-font;
+  }
+}
+
+%circled-avatar{
+  @extend %circled-border;
+  @extend %center-align;
+  width: 65px;
+  height: 65px;
+  display: inline-block;
+  overflow: hidden;
+  img{
+    @extend %body-bg-color !optional;
+    @extend %circled-border;
+  }
+  .ac-f, canvas{
+    @extend %circled-border;
+  }
+}
+
+%sub-header-boxed{
+  @if $use-less != 'TRUE' {
+    height: $xxx-large-unit;
+    line-height: $xxx-large-unit;
+  }
+}
+
+
+$icon-margin-factor : .5;
+$x-tiny-margin: (($x-tiny-unit * $icon-margin-factor)+2)/2;
+$tiny-margin: (($tiny-unit * $icon-margin-factor)+2)/2 + 2px;
+$small-margin: $small-unit * $icon-margin-factor;
+$medium-margin: $medium-unit * $icon-margin-factor;
+$large-margin: $large-unit * $icon-margin-factor;
+$x-large-margin: $x-large-unit * $icon-margin-factor;
+$xx-large-margin: $xx-large-unit * $icon-margin-factor;
+$xxx-large-margin: $xxx-large-unit * $icon-margin-factor;

@@ -1,0 +1,244 @@
+@import "toolkit/border-box";
+
+body{
+  background: $body-bg-color;
+}
+
+audio, canvas, video{
+  max-width: 100%;
+}
+.clearfix {
+  @extend %clearfix;
+}
+
+/* Background Move Animation */
+%ac-bg-move-anim{
+  -webkit-animation: ac_bg_move 1.2s linear infinite; /* Safari 4+ */
+  -moz-animation:    ac_bg_move 1.2s linear infinite; /* Fx 5+ */
+  -o-animation:      ac_bg_move 1.2s linear infinite; /* Opera 12+ */
+  animation:         ac_bg_move 1.2s linear infinite; /* IE 10+ */
+}
+
+@-webkit-keyframes ac_bg_move {
+  @if $direction == 'LTR' {
+    0% { background-position: -31px 0;}
+  }@else{
+    0% { background-position: 31px 0;}
+  }
+  100% { background-position: 0 0; }
+}
+@-moz-keyframes ac_bg_move {
+  @if $direction == 'LTR' {
+    0% { background-position: -31px 0;}
+  }@else{
+    0% { background-position: 31px 0;}
+  }
+  100% { background-position: 0 0; }
+}
+@-o-keyframes ac_bg_move {
+  @if $direction == 'LTR' {
+    0% { background-position: -31px 0;}
+  }@else{
+    0% { background-position: 31px 0;}
+  }
+  100% { background-position: 0 0; }
+}
+@keyframes ac_bg_move {
+  @if $direction == 'LTR' {
+    0% { background-position: -31px 0;}
+  }@else{
+    0% { background-position: 31px 0;}
+  }
+  100% { background-position: 0 0; }
+}
+
+/* Expand Animation */
+%ac-expand-anim{
+  -webkit-animation: ac_expand 1.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Safari 4+ */
+  -moz-animation:    ac_expand 1.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Fx 5+ */
+  -o-animation:      ac_expand 1.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Opera 12+ */
+  animation:         ac_expand 1.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* IE 10+ */
+}
+
+@-webkit-keyframes ac_expand {
+  0%   { width:0%; }
+  100% { width:100%; }
+}
+@-moz-keyframes ac_expand {
+  0%   { width:0%; }
+  100% { width:100%; }
+}
+@-o-keyframes ac_expand {
+  0%   { width:0%; }
+  100% { width:100%; }
+}
+@keyframes ac_expand {
+  0%   { width:0%; }
+  100% { width:100%; }
+}
+
+/*
+   Animation example, for ac_spinners
+*/
+%ac-spin {
+  -moz-animation: ac_spin 1s infinite linear;
+  -o-animation: ac_spin 1s infinite linear;
+  -webkit-animation: ac_spin 1s infinite linear;
+  animation: ac_spin 1s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes ac_spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes ac_spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes ac_spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes ac_spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes ac_spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/** scaled-in-out anim **/
+%ac-rotate{
+  -moz-animation: ac-rotate 1.2s infinite ease-in-out;
+  -o-animation: ac-rotate 1.2s infinite ease-in-out;
+  -webkit-animation: ac-rotate 1.2s infinite ease-in-out;
+  animation: ac-rotate 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes ac-rotate {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes ac-rotate{
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+/** scaled-in-out anim **/
+%scaled_in_out{
+  -moz-animation: scaled_in_out 1s ease-in infinite;
+  -o-animation: scaled_in_out 1s ease-in infinite;
+  -webkit-animation: scaled_in_out 1s ease-in infinite;
+  animation: scaled_in_out 1s ease-in infinite;
+  display: inline-block;
+}
+
+@-webkit-keyframes scaled_in_out {
+	0% {
+		-webkit-transform: scale(1)
+	}
+	50% {
+		-webkit-transform: scale(0.8)
+	}
+	100% {
+		-webkit-transform: scale(1)
+	}
+}
+@-moz-keyframes scaled_in_out {
+	0% {
+		-moz-transform: scale(1)
+	}
+	50% {
+		-moz-transform: scale(0.8)
+	}
+	100% {
+		-moz-transform: scale(1)
+	}
+}
+@-o-keyframes scaled_in_out {
+	0% {
+		-o-transform: scale(1);
+	}
+	50% {
+		-o-transform: scale(0.8);
+	}
+	100% {
+		-o-transform: scale(1);
+	}
+}
+@keyframes scaled_in_out {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.8);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

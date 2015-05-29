@@ -1,0 +1,251 @@
+// Acquia Menu Global Styles
+.ac-menu{
+  .block__content{
+    @extend %no-flickering;
+  }
+  // First Level
+  .menu{
+    @extend %no-margin-padding;
+    text-transform: capitalize;
+  }
+}
+
+// Vertical menu
+.ac-menu-v{
+  /** 1st Level **/
+  // Expanded menu
+  .expanded {
+    &.active{
+      >a{
+        @extend %theme-active-color !optional;
+        &:after{
+          @extend %theme-border-color !optional;
+        }
+      }
+    }
+    a:after{
+      @extend %ac-font-fontello;
+      @extend %mini-fontello-d-arrow;
+      @extend %bordered-box;
+      @extend %circled-border;
+      @extend %no-anim;
+      @extend %tiny-boxed;
+      border-color: $mid-grey;
+      display: block;
+      position: absolute;
+      top: 14px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      @include position('right', 0);
+      @include font-size(17px);
+    }
+    a:hover{
+      &:after{
+        @extend %theme-border-color !optional;
+      }
+    }
+  }
+  // Anchors
+  .menu li {
+    display: block;
+  }
+  .menu a {
+    display: block;
+    padding: 10px 0;
+    position: relative;
+  }
+  .menu a.active-trail{
+    @extend %theme-active-color !optional;
+    &:after{
+      @extend %theme-border-color !optional;
+    }
+  }
+  
+  /** 2nd Level **/
+  .menu ul{
+    background: darken($lighter-grey, 2%);
+    li{
+      margin: 0 $medium-space;
+    }
+    a{
+      font-size: 90%;
+    }
+  }
+  .menu ul{
+    a:after{
+      @extend %mini-fontello-r-arrow;
+      @extend %x-tiny-boxed;
+    }
+  }
+}
+
+// Horizontial Menu
+.ac-menu-h{
+  .menu {
+    @extend %hlist;
+    a{
+      @extend %large-type;
+      font-size: $base-font-size;
+      line-height: 1.5;
+      &:after{
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        position: absolute;
+        width: 1px;
+        @include position(right, -10px);
+        content: '';
+        height: 16px;
+        top: 50%;
+        margin-top: -8px;
+        display: block;
+        line-height: 1;
+      }
+    }
+    li{
+      @include left-space($medium-space/2, 'margin');
+      @include left-space($medium-space/2, 'padding');
+      position: relative;
+      &.last{
+        a:after{
+          display: none;
+        }
+      }
+      li a:after{
+        display: none;
+      }
+    }
+  }
+  .menu li{
+    padding: 0;
+    a{
+      padding: 0 10px;
+    }
+  }
+  .menu ul{
+    min-width: 7em;
+    *width: 7em;
+    li{
+      &.last{
+        border: 0;
+      }
+      margin: 0;
+      a{
+        font-size: 100%;
+        height: 36px!important;
+        line-height: 36px!important;
+      }
+    }
+    a{
+      @extend %large-type;
+    }
+  }
+}
+
+// Bordered Menu
+.ac-menu-borderd{
+  // First level
+  .menu{
+    li{
+      @extend %bordered-box;
+      @extend %content-divider-color !optional;
+      border-width: 0 0 1px;
+    }
+    li:last-child, li:last-child > a{
+      border-width:0!important;
+    }
+    li:last-child.expanded.active > a{
+      @extend %square-border;
+      border-width: 0 0 1px!important;
+    }
+  }
+}
+
+// Fancy Menu
+.ac-fancy-menu{
+  &.ac-menu-borderd{
+    .expanded{
+      border-width: 0;
+      &.active {
+        border-width: 0 0 1px;
+      }
+      > a{
+        @extend %bordered-box;
+        @extend %content-divider-color !optional;
+        border-width: 0 0 1px;
+      }
+    }
+    .menu ul{
+      a{
+        padding-left:0;
+        padding-right:0;
+        &:after{
+          @include position('right', 0);
+        }
+      }
+    }
+  }
+  .block__content{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+    padding: $medium-space/2 0;
+    a:before{
+      display: none;
+    }
+    .menu > li:last-child > ul{
+      margin-bottom: -$medium-space/2;
+      @extend %bottom-edge-circled-border  !optional;
+    }
+  }
+  .block__content > .menu >li.first a{
+    @extend %top-edge-circled-border !optional;
+  }
+  .block__content > .menu >li.last a{
+    @extend %bottom-edge-circled-border  !optional;
+  }
+  /** 1st Level **/
+  .menu{
+    a{
+      @include transition(all 0.05s linear);
+      padding-left: $medium-space;
+      padding-right: $medium-space;
+    }
+    a:after{
+      @include position('right', $medium-space);
+    }
+  }
+}
+// Fancy Menu with gradient background
+.ac-menu-gradient{
+  .block__content{
+    @extend %light-gradient-box !optional;
+  }
+  // 1st level
+  .menu{
+    a{
+      @extend %light-gradient-box !optional;
+      @include transition(all 0.05s linear);
+    }
+  }
+  // 2nd level
+  .menu ul {
+    a{
+      background: transparent;
+    }
+  }
+}
+
+
+/** Simple Horizontal **/
+.ac-simple-menu-h .menu{
+  @extend %hlist;
+  text-transform: capitalize;
+  li{
+    @include right-space($small-space, margin);
+    &:last-child{
+      margin: 0;
+    }
+  }
+}
+
+

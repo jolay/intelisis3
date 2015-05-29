@@ -1,0 +1,40 @@
+//  $HLIST
+
+%hlist {
+  @extend %left-align;
+  list-style: none;
+  margin:0;
+  padding: 0;
+  @include clearfix(true);
+  > li {
+    list-style: none;
+    display: inline-block;
+    > a {
+      display: block;
+      vertical-align: top;
+    }
+  }
+}
+
+%hlist-menu{
+  > li {
+    margin-right: 10px;
+    &.active > a{
+      @extend %theme-active-color !optional;
+    }
+    > a {
+      @extend %smaller-box;
+      @extend %inline-block-display;
+      padding: 0 10px;
+      text-transform: capitalize;
+      &:hover{
+        @extend %theme-active-color !optional;
+      }
+    }
+  }
+}
+
+%no-list-style{
+  @extend %no-padding;
+  list-style: none;
+}

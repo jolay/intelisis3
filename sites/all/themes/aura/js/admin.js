@@ -1,0 +1,400 @@
+(function($) {
+	$(document).ready(function(){
+
+		// Preview
+		if ( $( ".ac-g-fonts" ).length > 0 ) {
+
+			$( ".ac-g-fonts" ).on( "change", function() {
+				var _this = $( this ),
+					id = _this.attr( "id" ),
+					value = _this.val(),
+					font_header = value.replace( / /g, "+" ),
+					font_style = value.split( "&" )[0],
+					target = $('.ac-target-' + _this.attr('data-target')),
+					fontStyle = fontW = '';
+					font_style = font_style.split( ":" );
+
+				if ( font_style[1] ) {
+
+					var vars = font_style[1].split( 'italic' );
+
+					if ( 2 == vars.length ) { fontStyle = "italic"; }
+
+					if ( '700' == vars[0] || 'fontW' == vars[0] ) {
+
+						fontW = "bold";
+					} else if ( '400' == vars[0] || 'normal' == vars[0] ) {
+
+						fontW = "normal";
+					} else if ( vars[0] ) {
+
+						fontW = parseInt( vars[0] );
+					} else {
+
+						fontW = "normal";
+					}
+
+				}else {
+
+					fontW = "normal;";
+				}
+
+				var protocol = 'http:';
+				if ( typeof document.location.protocol != 'undefined' ) {
+					protocol = document.location.protocol;
+				}
+
+				var linkHref = protocol + '//fonts.googleapis.com/css?family=' + font_header;
+				var style = '<link id="' + id + '-font-preview" href="' + linkHref + '" rel="stylesheet" type="text/css">';
+
+				target.hide();
+
+				$('#' + id + '-font-preview').remove();
+
+				if ( !ac_is_safe_web_font( value ) ) {
+					$('head').append( style );
+				}
+				target.css('font-family', font_style[0]);
+				if (!fontStyle.length > 0) {
+					target.css('font-style', fontStyle);
+				}
+				
+				if (!fontW.length > 0) {
+					target.css('font-weight', fontW);
+				}
+				
+				target.show();
+			});
+			$( ".ac-g-fonts" ).trigger( 'change' );
+		}
+
+		function ac_is_safe_web_font( font ) {
+			var safeFonts = [
+					'Andale Mono',
+					'Arial',
+					'Arial:600',
+					'Arial:400italic',
+					'Arial:600italic',
+					'Arial Black',
+					'Comic Sans MS',
+					'Comic Sans MS:600',
+					'Courier New',
+					'Courier New:600',
+					'Courier New:400italic',
+					'Courier New:600italic',
+					'Georgia',
+					'Georgia:600',
+					'Georgia:400italic',
+					'Georgia:600italic',
+					'Impact Lucida Console',
+					'Lucida Sans Unicode',
+					'Marlett',
+					'Minion Web',
+					'Symbol',
+					'Times New Roman',
+					'Times New Roman:600',
+					'Times New Roman:400italic',
+					'Times New Roman:600italic',
+					'Tahoma',
+					'Trebuchet MS',
+					'Trebuchet MS:600',
+					'Trebuchet MS:400italic',
+					'Trebuchet MS:600italic',
+					'Verdana',
+					'Verdana:600',
+					'Verdana:400italic',
+					'Verdana:600italic',
+					'Webdings'
+				];
+
+			if ( -1 == safeFonts.indexOf( font ) ) {
+				return false;
+			}
+
+			return true;
+		}
+		
+		// Color Picker
+		$( ".ac-skin-color" ).each(function(){
+			$(this).on('colorChanged', function(){
+				var attr = $(this).attr('data-css-attr');
+				console.log($('.ac-target-' + $(this).attr('data-target')));
+				$('.ac-target-' + $(this).attr('data-target')).css(attr, $(this).val());
+				var ieColor = $(this).closest('.form-wrapper').find('.ac-ie-color');
+				
+				if (ieColor.length > 0){
+					ieColor.val($(this).val());
+					ieColor.siblings('.selectpicker').find('div').css(attr, $(this).val());
+				}
+			});
+			
+			$(this).trigger('colorChanged');
+		});
+		
+    /** 
+	   * Slider
+	   */
+			$( ".ac-slider" ).each(function() {
+				var $input = $(this),
+					$slider = $('<div class="ac-slider-ui"></div>').insertBefore($input),
+					value = $input.val(),
+					min = $input.attr('data-min'),
+					max = $input.attr('data-max'),
+					step = $input.attr('data-step'),
+					attr = $input.attr('data-css-attr'),
+					suffix = $input.attr('data-val-suffix');
+
+					jQuery($slider).slider({
+						value: parseInt(value),
+						min: parseInt(min),
+						max: parseInt(max),
+						step: parseInt(step),
+						range: 'min',
+						slide: function( event, ui ) {
+							attr = $input.attr('data-css-attr');
+							suffix = $input.attr('data-val-suffix');
+							$input.val( ui.value ).trigger('keyup');
+							value = ui.value;
+							if (typeof suffix != 'undefined') {
+								value += suffix;
+							}	
+
+							if (attr == 'opacity') {
+								color = $input.closest('.form-wrapper').find('.field-colorpicker').first().val();
+								value = hexToRgba(color, value);
+								attr = 'background-color';
+							}
+							if (typeof $input.attr('data-target') != "undefined") {
+								$('.ac-target-' + $input.attr('data-target')).css(attr, value);
+							}
+						}
+					});
+					if (typeof suffix != 'undefined') {
+						value += suffix;
+					}
+					if (attr == 'opacity') {
+						color = $input.closest('.form-wrapper').find('.field-colorpicker').first().val();
+						value = hexToRgba(color, value);
+						attr = 'background-color';
+					}
+					if (typeof $input.attr('data-target') != "undefined") {
+						$('.ac-target-' + $input.attr('data-target')).css(attr, value);
+					}
+					
+			});
+			
+			var changeCase = function(el, _case){
+				var target = el.attr('data-target');
+				container = $('.ac-target-' + target);
+				switch(_case) {
+					case 'cap':
+						container.css({'text-transform':'capitalize', 'font-style': 'normal'});
+						break;
+
+					case 'up':
+						container.css({'text-transform':'uppercase', 'font-style': 'normal'});
+						break;
+						
+					case 'it':
+						container.css({'text-transform':'normal', 'font-style': 'italic'});
+						break;
+						
+					case 'lo':
+					default:
+						container.css({'text-transform':'lowercase', 'font-style': 'normal'});
+						break;
+				}
+			};
+			
+			$( ".ac-transform" ).each(function(){
+				$(this).on('change', function(){
+					changeCase($(this), $(this).val());
+				});
+				changeCase($(this), $(this).val());
+			});	
+			
+			$(".ac-bg-sel .ac-sel").on('click', function(){
+				$(this).closest('.ac-bg-sel').find('.ac-sel').removeClass('active');
+				$(this).addClass('active');
+				var $target = $(this).closest('.ac-bg-sel').attr('data-target');
+				if (typeof $target !="undefined" && $target !='') {
+					$target = $('input[name="'+$target+'"], select[name="'+$target+'"]');
+				}else{
+					$target = $(this).closest('.form-wrapper').find('.ac-img-sel-target');
+				}
+
+				if ($target.is('select')) {
+					$target
+						.val($(this).attr('data-uri'))
+						.attr('data-src', $(this).attr('data-src')).trigger('change');
+				}else{
+					$target
+						.val($(this).attr('data-uri'))
+						.attr('data-src', $(this).attr('data-src')).trigger('inputChange');
+				}
+				
+			});
+			
+			// Upload
+			$(".upload-btn").live('click', function(e) {
+				e.preventDefault();
+				uploadInput = $(this).closest('.form-item').find('input');
+				
+				Drupal.media.popups.mediaBrowser(function(t) {
+					var mediaFile = t[0];
+					console.log(mediaFile);
+					$(uploadInput).val(mediaFile.url);
+					$(uploadInput).attr('data-src', mediaFile.url);
+					$(uploadInput).trigger('inputChange');
+				});
+					return false;
+			});
+			
+			// background image
+			$(".ac-img-sel-target").on('inputChange', function(){
+				var target = $(this).attr('data-target');
+				$('.ac-target-' + target).css('backgroundImage', 'url(' +$(this).attr('data-src') + ')');
+			});
+			
+			// set active from bg input
+			$(".ac-img-sel-target").each(function(){
+				$input = $(this),
+				$val = $input.val();
+				$input.trigger("inputChange");
+				if ($input.is('.ac-hidden')) {
+					$input.closest('.el').hide();
+				}
+				if ($val !='') {
+					$input.closest('.form-item').find('.ac-sel').each(function(){
+						if ($(this).attr('data-uri') == $val) {
+							$(this).addClass('active');
+						}
+					});
+				}
+			});
+			
+			
+			// background image
+			$(".field-suffix .ac-reset").on('click', function(){
+				var $input = $(this).closest('.form-item').find('.form-text');
+				$input
+					.val('')
+					.attr('data-src', '').trigger('inputChange');
+				if ($input.is('.ac-img-sel-target')) {
+					$input.closest('.form-item').find('.ac-sel').removeClass('active');
+				}
+			});
+			
+	});
+}(jQuery));
+
+(function($) {
+$(document).ready(function(){
+
+	$('body').addClass('has-js');
+	
+	/** THEME ADMIN PAGE **/
+	// Set Equal height for vertical tab columns
+	//setEqualHeightVtabs();
+	setVtabsListClass();
+	fakeSubmitBTN();
+	layoutSelector();
+
+	/**
+	 * equal height for vertical tab lists and panes
+	 */
+	function setEqualHeightVtabs(){		
+		var container = $('.vertical-tabs'),
+		col1 = container.find('.vertical-tabs-list:first'),
+		col2 = container.find('.vertical-tabs-panes:first'),
+		col1MaxH = col1.height(),
+		setHeight = function(el){
+			var col2H = col2.height();
+			if (typeof el == 'object') {
+				var index = jQuery(el).parent('li:first').index();
+				col2H = col2.find('> .vertical-tabs-pane').eq(index).height();
+			}
+			var col1H  = col1.height();
+			if (col1MaxH > col2H) {
+				col1.css({'height': col1MaxH});
+				col2.css({'min-height': col1MaxH});
+			}else{
+				col1.css({'height': col2H});
+				col2.css({'min-height': col2H});
+			}
+		};
+		
+		setHeight();
+		col1.find('a').click(function(){
+			setHeight(this);
+		});
+	}
+
+	/**
+	 * Add fieldset class of theme settings form to vertical panel list items
+	 */
+	function setVtabsListClass(){		
+		var container = $('.vertical-tabs'),
+		list = container.find('.vertical-tabs-list:first .vertical-tab-button'),
+		panes = container.find('.vertical-tabs-panes:first .vertical-tabs-pane');
+		
+		panes.each(function(){
+			list.eq($(this).index()).addClass($(this).attr('id'));
+		});
+
+	}
+
+	/**
+	 * Add behavior to fake submit button
+	 */
+	function fakeSubmitBTN() {
+		$('.fake-submit').on('click', function(){
+			var target = $(this).data('target');
+			$(target).submit();
+		});
+	}
+
+	/**
+	 * Add behavior to fake submit button
+	 */
+	function layoutSelector() {
+		$('#edit-omega-layout').once('omega-layout-selection', function(){
+			var container = $(this).addClass('ac-sel');
+				$('.omega-layout-selection-wrapper', this).each(function(){
+					var $el = $(this);
+					title = $el.find('label').text();
+					radio = $el.find('input');
+					$el.find('.omega-layout-icon').wrap($('<a></a>', {class: 'omega-layout-sel ac-sel', 'href': '#', 'title': title})).removeClass('omega-layout-icon');
+					if (radio.attr('checked') == 'checked') {
+						$el.find('.ac-sel').addClass('active');
+					}
+					$el.find('.omega-layout-sel').append('<i></i>').on('click', function(e){
+						e.preventDefault();
+						container.find('.omega-layout-selection-wrapper').find('.ac-sel').removeClass('active');
+						$(this).closest('.omega-layout-selection-wrapper').find('.ac-sel').addClass('active').find('input').attr('checked', 'checked');
+					});
+				});
+		});
+	}
+	
+});
+}(jQuery));
+
+function hexToRgba(hex, opacity) {
+	var rgb = hexToRgb(hex);
+	if (rgb != null){
+		return 'rgba('+rgb.r+', '+rgb.g+', '+rgb.b+', '+(opacity/100)+')';
+	}
+}
+
+function hexToRgb(hex) {
+		if (hex.length == 4) {
+			hex += hex.substring(1);
+		}
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}

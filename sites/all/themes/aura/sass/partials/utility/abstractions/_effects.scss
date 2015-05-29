@@ -1,0 +1,17 @@
+// Fancy Shadow On Hover
+%fancy-shadow-hover{
+  /** $SKIN **/
+  @include box-shadow(0 0 0 0 $theme-default-bg-color);
+}
+%fancy-shadow{
+  @include transition(box-shadow .4s ease-in-out);
+  @include box-shadow(0 0 0 10px rgba(0, 0, 0, 0));
+  @include transform(translate3d(0,0,0));
+  // Theme Background Color
+  // $SKIN
+  @if $use-less != 'TRUE' {
+     &:hover{
+       @extend %fancy-shadow-hover;
+     }
+  }
+}

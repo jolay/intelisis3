@@ -1,0 +1,36 @@
+/** Content Slider
+-----------------------------------*/
+.contentSlider-wrap{
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  .ac-col{
+    margin: 0;
+    padding: 0 $medium-space;
+  }
+}
+
+.ac-slides-nav{
+  @extend %nav-prevnext;
+  position: absolute;
+  text-indent: -999em;
+  background-position: center center;
+  width: 45px;
+  height: 45px;
+  &.next{
+    @extend %light-nav-next;
+  }
+  &.prev{
+    @extend %light-nav-prev;
+  }
+}
+
+.ac-slides-pager{
+  @extend %no-margin-padding;
+  @extend %mini-slider-pager;
+  bottom: $medium-space/2;
+  z-index: 5;
+  li{
+    vertical-align: top;
+  }
+}

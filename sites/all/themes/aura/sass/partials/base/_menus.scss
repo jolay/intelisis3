@@ -1,0 +1,27 @@
+/**
+ * $tabs
+ */
+.l-page .tabs--primary{
+	border: none;
+	a{
+		@extend %bordered-box;
+		@extend %content-divider-color !optional;
+		//@extend %full-border-radius !optional;
+		&:hover, &.active{
+			@extend %theme-active-color !optional;
+			@extend %theme-border-color !optional;
+			@extend %body-bg-color !optional;
+			background: transparent;
+		}
+	}
+}
+
+// Main Content
+.messages,
+.tabs--primary{
+  margin: $medium-space 0;
+}
+
+.tabs a{
+	@extend %light-gradient-box !optional;
+}

@@ -1,0 +1,317 @@
+/** Misc Acquia Styles
+--------------------------------------------------*/
+// Border types
+.ac-border-left{
+  @extend %content-divider-color !optional;
+  border: none;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+.ac-border-right{
+  @extend %content-divider-color !optional;
+  border: none;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+.ac-border-top{
+  @extend %content-divider-color !optional;
+  border: none;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+.ac-border-bottom{
+  @extend %content-divider-color !optional;
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.ac-border-horizontal{
+  @extend .ac-border-top;
+  @extend .ac-border-bottom;
+}
+.ac-border-vertical{
+  @extend .ac-border-left;
+  @extend .ac-border-right;
+}
+.ac-border-all{
+  @extend .ac-border-horizontal;
+  @extend .ac-border-vertical;
+}
+.ac-border-no{
+  @extend %no-border;
+}
+
+
+.l-page .ac-border-circled{
+  @extend %circled-border;
+}
+.l-page .ac-border-square{
+  @extend %square-border;
+}
+.l-page .ac-border-rounded{
+  @extend %full-border-radius !optional;
+}
+.l-page .ac-border-square-dashed{
+  @extend %square-border;
+  border-style: dashed;
+}
+.l-page .ac-border-rounded-dashed{
+  @extend %full-border-radius !optional;
+  border-style: dashed;
+}
+
+// Spaces
+.l-page .ac-h-space{
+  margin-left: $horz-spacing-unit;
+  margin-right: $horz-spacing-unit;
+}
+// Bottom Space
+.l-page .ac-b-space{
+   margin-bottom: $medium-space;
+}
+// Top space
+.l-page .ac-t-space{
+   margin-top: $medium-space;
+}
+
+// Sticky
+.ac-sticky-footer > .ac-container > .ac-page-section-container > .vc-column{
+  margin-bottom: -(2 * $medium-space);
+  float: left;
+}
+
+//
+.ac-no-display{
+  @extend %element-invisible;
+}
+
+.ac-no--b-margin{
+  margin-bottom: 0!important
+}
+.ac-no-margin{
+  @extend %no-margin;
+}
+
+.ac-hr-sep{
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  border-width: 1px 0 0;
+  margin: $medium-space 0;
+  clear: both;
+}
+
+.no-block-title .block__title{
+  @extend %element-invisible;
+}
+
+// Cleared
+.ac-cleared{
+  @extend %cleared;
+}
+
+// acquia table
+.ac-t{
+  @extend %table;
+}
+.ac-c{
+  @extend %table-cell;
+}
+
+// No List Style
+.ac-s-li{
+  @extend %no-list-style;
+  margin: 0;
+}
+
+// Spaced and No Spaced Items
+/*.ac-spaced {
+  margin: 0 -($small-space/2);
+  &.ac-full-container-width{
+    margin: 0;
+  }
+  .item-i{
+    margin: $small-space/2;
+    .item-i{
+      margin: 0;
+    }
+  }
+}
+.ac-no-spaced{
+  .caroufredsel_nav a.prev{
+    left: $small-space/2
+  }
+}*/
+
+// progress animation
+.ac-ajax-paginator{
+  @extend  %center-align;
+	clear: both;
+  margin: $medium-space*2 0 $medium-space;
+  a:hover{
+    .loading-icon-bg{
+      fill: $white;
+    }
+  }
+  .loading-icon{
+    @extend %small-boxed;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 0;
+    height: 100%;
+    @include right-space(10px, 'margin');
+  }
+}
+
+.ac-style-2d .loading-icon-bg{
+  fill: $white;
+}
+
+.ac-style-subtle .loading-icon-bg{
+  @extend %theme-fill-color !optional;
+}
+
+.ls-loading-container .ls-loading-indicator,
+.ac-preloader .loading-icon,
+.ac-in-progress .loading-icon{
+  @extend  %ac-spin;
+}
+
+.rev_slider .tp-loader,
+.ls-container div.ls-loading-container,
+.ac-preloader{
+  @extend %circled-border;
+  @extend %content-divider-color !optional;
+  @extend %light-gradient-box !optional;
+  display: block;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 80px auto 0;
+  position: absolute;
+  left: 50%;
+  margin-left: -25px;
+	@include box-shadow(0 0px 15px rgba(#000, 0.17));
+  .block--ac-slider &{
+    margin-top: -30px;
+    top: 50%;
+  }
+}
+
+.ac-preloader{
+  .block--ac-slider &{
+    margin-top: -25px;
+    top: 50%;
+  }
+}
+
+.ac-preloading{
+	.ac-slides-pager,
+	.ac-slides-nav{
+		@extend %no-opacity;
+	}
+}
+
+.rev_slider .tp-loader .dot1,
+.l-page .ls-loading-container .ls-loading-indicator,
+.ac-preloader .loading-icon{	
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100%;
+}
+
+.rev_slider .tp-loader .dot1,
+.l-page .ls-loading-container .ls-loading-indicator,
+.loading-icon{
+  @extend %theme-fill-color !optional;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 16px;
+}
+
+// Slider Rev Loader
+.rev_slider .tp-loader{
+	background-image: none;
+	top: 50%;
+	margin-top: -30px;
+}
+.ac-init-hidden{
+  @extend %no-opacity;
+}
+
+// Share links
+.acquia-share-links{
+  @extend %right-float;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li, .ac-font-icon-wrap{
+    display: inline-block;
+    margin: 0 5px 3px 0;
+  }
+  li a, .ac-font-icon-wrap a{
+		@extend %high-opacity;
+    @extend %x-large-circled;
+    @extend %bordered-box;
+    @extend %theme-border-color !optional;
+    @extend %theme-active-color !optional;
+    display: inline-block;
+		&:hover{
+			@extend %full-opacity;
+		}
+  }
+  i, .font-icon{
+		 @extend %boxed-icon;
+  }
+  .ac-font-icon{
+    margin: 0;
+		display: block;
+  }
+}
+
+//Table And Cell
+.ac-table{
+  @extend %table;
+}
+.ac-cell{
+  @extend %table-cell;
+}
+.ac-li-bordered li{
+  border-bottom: 1px solid;
+	margin-bottom: $medium-space/2;
+	padding-bottom: $medium-space/2;
+  &:last-child, &.last{
+    border-width: 0;
+  }
+}
+
+//
+.l-page .ac-slider_style-nav{
+	text-align: center;
+		.rslides_nav{
+			@extend %full-opacity;
+			width: $large-space;
+			height: $large-space;
+			position: inherit;
+			display: inline-block!important;
+			left: 0;
+			margin: $medium-space ($medium-space/4) 0;
+		}
+}
+
+.l-page .ac-no-border{
+	border: 0;
+}
+
+.l-page .ac-no-b-border{
+	border-bottom: 0;
+}
+
+.l-page .ac-no-t-border{
+	border-top: 0;
+}
+
+.l-page .ac-circled{
+	@extend %x-large-circled;
+}

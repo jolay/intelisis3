@@ -1,0 +1,76 @@
+/** Banner Shortcode
+-----------------------------------*/
+.ac-banner {
+  @extend %inline-block-display;
+  @extend %no-margin-padding;
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  >.item-i{
+    position: relative;
+  }
+  br{display: none;}
+  > p{margin: 0;}
+  img{
+    @extend %relative-position;
+    display: block;
+    width: 100%;
+    z-index: 10;
+  }
+  .shader{
+    @extend %full-border-radius !optional;
+    position: absolute;
+    left: $medium-space/2;
+    right: $medium-space/2;
+    top: $medium-space/2;
+    bottom: $medium-space/2;
+    z-index: 20;
+    @include opacity(35);
+  }
+  .sec td{
+    @extend %no-opacity;
+
+  }
+}
+
+.banner-i{
+  @extend %absolute-position;
+  @extend %center-align;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  text-align: center;
+  &:hover{
+    td{
+      @extend %no-opacity;
+    }
+    .sec td{
+      @extend %full-opacity;
+    }
+  }
+  table{
+    @extend %no-margin;
+    @extend %absolute-position;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  td{
+    vertical-align: middle;
+    background: none!important;
+    padding: 0 $large-space;
+    br{
+      display: block;
+     }
+    -webkit-backface-visibility: hidden;
+    @include transition(opacity .5s ease-in-out);
+    @include transform(translateZ(0px));
+  }
+}
+
+.shader{
+  background-color: $black;
+}

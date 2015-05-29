@@ -1,0 +1,159 @@
+/*******************************************************************************
+ * _layout.scss
+ *
+ * Styling of the "simple" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+@import "../../partials/utility";
+
+.container {
+  @extend %container;
+}
+
+/* Header */
+.l-region--header {
+
+}
+
+/* Content Area */
+.l-hero {
+}
+.l-region--help {
+  margin-bottom: $medium-space;
+}
+
+.main-wrap{
+}
+
+.l-main {
+}
+/* Footer */
+.l-footer-wrapper {
+}
+
+/** mobile portrait view **/
+@include at-breakpoint($mobile-portrait) {
+  .container {
+    @include set-container-width;
+  }
+
+  /* COLUMNS - Making all columns Fullwidth */
+  .col,
+  .l-content,
+  .l-region--sidebar-first,
+  .l-region--sidebar-second{
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    clear: none;
+  }
+}
+
+/** mobile landscape view **/
+@include at-breakpoint($mobile-landscape) {
+
+}
+
+/** tablet view **/
+@include at-breakpoint($tab) {
+	// Region Divider
+	.l-region--sidebar-first:after,
+	.l-region--sidebar-second:before,
+	.l-content:before,
+	.l-content:after {
+		display: none;
+		position: absolute;
+		top: $large-space;
+		width: 1px;
+		bottom: $large-space;
+		content: "";
+		border-right-width: 1px;
+		border-right-style: solid;
+		height: auto;
+	}
+	
+  /* Sidebars */
+  .has-sidebar-first {
+    .l-content {
+      @include span-columns(12 omega, 16); // Span the last (omega) 12 columns of 16.
+			@include left-space(60px, padding);
+			width: 75%;
+			margin: 0;
+			&:before{
+				display: block;
+				left: $medium-space;
+			}
+    }
+    .l-region--sidebar-first {
+			@include span-columns(4, 16); // Span 4 out of 16 columns.
+			width: 25%;
+			margin: 0;
+			@include right-space($medium-space, padding);
+			&:after{
+				display: block;
+				right: -($medium-space + 1px);
+			}
+    }
+  }
+  .has-sidebar-second {
+    .l-content {
+      @include span-columns(12, 16); // Span 12 out of 16 columns.
+			@include right-space(60px, padding);
+			width: 75%;
+			margin: 0;
+			&:after{
+				display: block;
+				right: $medium-space;
+			}
+    }
+    .l-region--sidebar-second {
+			@include span-columns(4 omega, 16); // Span the last (omega) 12 columns of 16.
+			width: 25%;
+			margin: 0;
+			clear: none;
+			@include left-space($medium-space, padding);
+			&:before{
+				display: block;
+				left: -($medium-space + 1px);
+			}
+    }
+  }
+
+  .has-two-sidebars {
+    .l-content {
+			width: 50%;
+			 margin: 0;
+      @include span-columns(8, 16); // Span 12 out of 16 columns.
+      @include push(4, 16);  // Push element by adding 4 out of 16 columns of left margin.
+			@include left-space(25%,margin);
+    }
+    .l-region--sidebar-first,
+    .l-region--sidebar-second {
+      @include span-columns(4, 16); // Span 4 out of 16 columns.
+	  width: 25%;
+	  margin: 0;
+    }
+    .l-region--sidebar-first {
+      @include pull(12, 16); // Pull element by adding 12 out of 16 columns of negative left margin.
+	  @include left-space(-75%,margin);
+    }
+    .l-region--sidebar-second {
+      @include omega; // This element spans the last (omega) column.
+      clear: none;
+    }
+  }
+
+}
+
+/** tablet view **/
+@include at-breakpoint($big-scr) {
+  .container {
+  }
+}
+
+/** desk view **/
+@include at-breakpoint($desk) {
+
+}
+

@@ -1,0 +1,76 @@
+// Load utility, base and components
+@import "partials/utility";
+
+$section-1-divider-color:#383838;
+$section-1-frame-color:#383838;
+
+// Section style
+.ac-contact-style-compact{
+	.ac-section-style-2 &{
+		.ac-font-icon-link{
+      border: 0;
+			background: rgba(#000, .45);
+			display: inline-block
+		}
+		.font-icon{
+		 color: $white;
+		}
+	}
+}
+
+// Page Section Style
+.ac-section-style-1{
+	.ac-slider_style-nav .rslides_nav{
+		background-color: #E7E7E7;
+	}
+	
+	// Tabs
+	.fancy-style.no-sep-style .ac-tabs-tabs{
+		@include background-image(linear-gradient(top, #fff 0, #f2f2f2));
+		li.selected{
+			background: rgba(255, 255, 255, 0.07);
+		}
+	}
+	
+	.simple-style{
+		.ac-tabs-tabs li{
+			background: darken($section-1-divider-color, 5%);
+			&.selected{
+				background: $section-1-frame-color;
+			}
+		}
+		&.top-position.no-sep-style{
+			li.selected{
+				background: $section-1-frame-color;
+				border-bottom-color: $section-1-frame-color;
+			}
+		}
+	}
+	.ac-tabs-tabs,
+	.ac-tabs .ac-tabs-tabs li{
+		//border-color: $section-1-divider-color;
+	}
+		
+}
+
+// Features style
+.features a,
+.ac-sf .features b{
+	&:hover{
+		background-color: $black;
+	}
+}
+
+// Fancy search
+.l-page .ac-header-search input.form-search{
+	text-transform: capitalize;
+	font-weight: normal;
+}
+
+body.mceContentBody,
+.customSelect,
+.form-item .form-select,
+.form-item .form-text,
+.form-item .form-textarea{
+	background-color: rgba(236, 236, 236, 0.3);
+}

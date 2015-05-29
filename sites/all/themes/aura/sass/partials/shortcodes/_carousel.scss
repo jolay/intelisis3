@@ -1,0 +1,95 @@
+/** Carousel Shortcode
+-----------------------------------*/
+.ac-carousel{
+  text-align: center;
+  > .ac-col{
+    height: 100%;
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  >.ac-media{
+    text-align: center;
+  }
+}
+.caroufredsel_wrap,
+.caroufredsel_overflow{
+  @extend %relative-position;
+}
+
+.caroufredsel_overflow{
+  overflow: hidden;
+}
+
+.caroufredsel_wrapper{
+  margin: 0 auto;
+  @include box-sizing(content-box);
+  cursor: grab!important;
+  cursor: -moz-grab!important;
+  cursor: -webkit-grab!important;
+}
+
+.ac-swipe-indicator {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 76px;
+  width: 76px;
+  margin-left: -38px;
+  margin-top: -38px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0) url('../images/shortcodes/swipe_indicator.png') no-repeat center center;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+
+// Navigation
+.caroufredsel_nav a{
+  @extend %nav-prevnext;
+  @extend %ac-font-fontello;
+  @extend %full-border-radius !optional;
+  background-image: none;
+  text-indent: 0;
+  color: $white;
+  z-index: 100;
+  &:hover{
+    @extend %full-opacity;
+  }
+  span{
+    @extend %boxed-icon;
+    @extend %small-boxed;
+  }
+  &.prev{
+    @extend %light-nav-prev;
+    @include position(left, 5px);
+    .ac-full-container-width &{
+      @include position(left, $medium-space);
+    }
+  }
+  &.next{
+    @extend %light-nav-next;
+    @include position(right, 5px);
+    .ac-full-container-width &{
+      @include position(right, $medium-space);
+    }
+  }
+}
+
+.caroufredsel_overflow:hover a{
+  @extend %full-opacity;
+}
+
+@include at-breakpoint($mobile-landscape-max) {
+  .caroufredsel_overflow{
+    padding: 0;
+  }
+}

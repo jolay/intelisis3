@@ -1,0 +1,40 @@
+/** counter Shortcode
+-----------------------------------*/
+.ac-counter{
+  @extend %center-align;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @extend %full-border-radius !optional;
+  @extend %sub-color !optional;
+  padding: $medium-space;
+  &.ac-style-simple{
+    background: transparent;
+    border: 0;
+  }
+  &.ac-bg_style-light{
+    border-color: $white;
+    *{
+      color: $white;
+    }
+    .sep{
+      border-color: $white;
+    }
+  }
+  .font-icon{
+    @extend %center-align;
+    @extend %large-boxed;
+    width: 100%;
+    margin: 20px 0;
+    display: block;
+  }
+}
+.ac-counter-counter{
+  @extend %theme-active-color !optional;
+  span{
+    font-size: 250%;
+    font-weight: lighter
+  }
+}
+.ac-counter-title{
+  margin-top: $medium-space;
+}

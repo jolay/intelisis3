@@ -1,0 +1,27 @@
+/** scroll top **/
+#scroll-top{
+  @extend %x-large-circled;
+  @extend %fancy-shadow;
+  color: $white;
+  background: $black;
+  background: rgba($black, .95);
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  position: fixed;
+  bottom: -40px;
+  z-index: 1000;
+  cursor: pointer;
+ @include opacity(40);
+ @include position('right', 20px);
+ padding: 10px;
+ &:hover{
+   @extend %full-opacity;
+   @extend %theme-bg-color !optional;
+ }
+ span{
+  @extend %boxed-icon;
+  @extend %small-boxed;
+  @extend %ac-font-fontello;
+ }
+}

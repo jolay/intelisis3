@@ -1,0 +1,342 @@
+/** Teammate Shortcode
+-----------------------------------*/
+
+.ac-team-wrap{
+  tr{
+    border: 0;
+  }
+}
+
+.ac-team{
+  // section styles frame
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  .ac-section-style-1 &, 
+  .ac-section-style-2 &, 
+  .ac-section-style-3 &{
+    .ac-team-name{
+      padding: 0 $medium-space $medium-space;
+    }
+  }
+  .title{
+    margin-bottom: 0
+  }
+  .job{
+    //@extend %base-l-font-style;
+    @extend %theme-active-color !optional;
+    font-weight: normal;
+    margin: $medium-space/4 0 $medium-space/2;
+  }
+  .socials{
+    @extend %no-flickering;
+  }
+  .socials .ac-font-icon-wrap{
+    margin:5px;
+  }
+  .socials a{
+    @extend %inline-block-display;
+    @include transition(opacity .5s ease 0);
+  }
+  .ac-font-icon{
+    @extend %no-flickering;
+    @extend %x-large-circled;
+    @extend %no-margin;
+    span{
+      @extend %tiny-boxed;
+    }
+  }
+}
+
+// Blur effect
+.ac-team-wrap.ac-type-blur{
+  .ac-font-icon{
+    @extend %theme-bg-color !optional;
+  }
+}
+.ac-team-profile{
+  @extend %relative-position;
+  margin-bottom: $medium-space;
+  max-width: 100%;
+  .img-wrap{
+    @extend %center-align;
+    overflow: hidden;
+  }
+}
+.ac-team-name{
+  @extend %relative-position;
+  .socials .inner{
+    a{
+      @extend %theme-active-color !optional;
+      @extend %high-opacity;
+      &:hover{
+        @extend %full-opacity;
+      }
+    }
+  }
+}
+
+
+/** No Effect **/
+.ac-team-wrap.ac-type-simple {
+  text-align: center;
+  .ac-team{
+  }
+  .socials{
+    margin-top: $medium-space;
+  }
+  .socials a .font-icon{
+    font-size: 15px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+  }
+  .ac-font-icon{
+    @extend %theme-border-color !optional;
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+
+/** Simple - glow style **/
+.ac-team-wrap.ac-type-simple.ac-type-glow {
+  .ac-team{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    padding: $medium-space/2;
+    @include box-shadow(0 0.125em 0.275em 0 rgba(0, 0, 0, 0.125));
+  }
+}
+
+/** Simple - Overlaid style **/
+.ac-team-wrap.ac-type-simple.ac-type-animated {
+  .socials-wrap{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    @extend %left-align;
+    @include left-space($small-space, margin);
+  }
+  .socials-wrap{
+    a{
+      margin: 0 $small-space/3
+    }
+    .ac-font-icon{
+      display: block;
+      border: 0;
+      background: transparent
+    }
+    .font-icon{
+      @extend %small-boxed;
+      font-size: 19px;
+      color: $white;
+      &:hover{
+        color: inherit;
+      }
+    }
+  }
+
+}
+
+/** Overlay Effect **/
+div.ac-team-wrap.ac-type-circled{
+  .ac-team{
+    @extend %full-border-radius !optional;
+    @extend %no-box-shadow;
+    padding: $medium-space;
+    &:hover{
+      @extend %theme-border-color !optional;
+    }
+  }
+  .img-wrap{
+    @extend %circled-border;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    overflow: hidden;
+    width: 80% !important;
+    img{
+     @extend %circled-border;
+    }
+  }
+}
+/** overlaid Effect **/
+.ac-team-wrap.ac-type-overlaid {
+  margin-bottom: 0!important;
+  &:hover, &.hover{
+    figcaption{
+      @extend %full-height;
+      bottom: 0;
+      top: 0;
+    }
+    img{
+       @extend %flow-top-transform;
+    }
+  }
+  .ac-team-profile{
+    margin: 0;
+  }
+  img{
+      @include transition(transform 0.4s);
+  }
+  figure{
+    position: relative;
+    overflow: hidden;
+  }
+  figcaption{
+    @extend %overlaid-style;
+    @extend %height-transform;
+    @extend %no-height;
+    background: $black;
+    padding: $medium-space;
+    bottom: 0;
+    top: auto;
+  }
+  .title{
+    color: $white;
+  }
+  .socials {
+    margin-top: $small-space;
+    .ac-font-icon{
+      background: #000;
+    }
+    a:hover{
+      .ac-font-icon{
+        @extend %theme-bg !optional;
+      }
+    }
+  }
+  .bio{
+    color: #eee
+  }
+}
+/** Blur Effect **/
+.ac-team-wrap.ac-type-blur{
+  &:hover{
+    .socials a{
+      @extend %full-opacity;
+    }
+  }
+  .socials-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    text-align: center;
+  }
+  .socials {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    .inner{
+      @extend %center-align;
+    }
+    a{
+      @extend %no-opacity;
+      @include transition(opacity 0.5s ease-in-out);
+    }
+  }
+}
+
+/** Overlay Effect **/
+.ac-team-wrap.ac-type-columns{
+  .ac-font-icon{
+    @extend %body-bg-color-drk !optional;
+  }
+  .ac-section-style-1 &, 
+  .ac-section-style-2 &, 
+  .ac-section-style-3 &{
+    .ac-frame-on{
+      padding: $medium-space/2;
+    }
+  }
+}
+
+/** compact style **/
+.ac-team-wrap.ac-type-compact {
+  .ac-frame-on{
+    background: transparent!important;
+    border: 0!important;
+  }
+  .ac-team-name{
+    padding: 0!important;
+  }
+  figure.ac-team{
+    @extend %no-box-shadow;
+    border: 0;
+    padding: 0;
+  }
+  figcaption{
+    @extend %left-align;
+  }
+  .ac-table{
+    width: 100%;
+    .ac-cell{
+      width: 50%;
+      vertical-align: top;
+    }
+  }
+  .ac-cell.teammate-info{
+    @extend %left-align;
+    width: 58%;
+  }
+  .title{
+    margin-top: 0;
+    font-size: 16px;
+  }
+  .socials {
+    @extend %right-align;
+    margin: 0;
+    a{
+      margin-top: 0;
+    }
+  }
+  .ac-font-icon{
+    @extend %theme-active-color !optional;
+    background: transparent;
+    &:before{
+      @extend %no-box-shadow;
+    }
+  }
+  .ac-font-icon-wrap{
+    margin: 0 5px 5px 0;
+  }
+}
+
+/** Overlay Effect **/
+.ac-team-wrap.ac-type-blur,
+.ac-team-wrap.ac-type-columns{
+  .title{
+    @extend %title-cap-style !optional;
+  }
+}
+
+.ac-team-wrap.ac-type-overlaid,
+.ac-team-wrap.ac-type-blur{
+  .font-icon{
+    color: $white
+  }
+}
+
+@media (max-width: $big-scr-width) {
+  .ac-team-wrap.ac-type-blur .socials{
+    position: relative;
+    margin: $medium-space 0 0;
+    div.inner a{
+      @include opacity(100);
+    }
+  }
+  .ac-team-wrap .ac-font-icon span{
+    font-size: 15px;
+    line-height: 15px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+

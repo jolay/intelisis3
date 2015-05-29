@@ -1,0 +1,203 @@
+/** node--product
+-----------------------------------*/
+.ac-related-products{
+
+}
+
+.ac-products{
+	ul{
+    clear: both;
+    .ac-col{
+      @extend %no-margin-padding;
+    }
+  }
+	.o-info{
+		padding: 20px 0 15px;
+		.ac-section-style-1 &,
+		.ac-section-style-2 &,
+		.ac-section-style-3 &{
+			padding: 10px;
+		}
+		.title{
+			//margin-top: 0;
+		}
+	}
+	.meta{
+		font-size: 110%;
+		.old{
+			color: $grey;
+		}
+	}
+	ins{
+		text-decoration: none;
+	}
+	
+	.fivestar-widget-static,
+	.fivestar-widget{
+		.star{
+			width: 12px;
+			&:before{
+				@include font-size(12px);	
+			}
+		}
+	}
+	.form-actions{
+		@extend %left-align;
+		margin: 0;
+		input{
+			line-height: 1.2;
+			height: auto;
+			padding: 0;
+			@include right-space(20px, padding);
+			border: 0!important;
+			text-transform: capitalize;
+		}
+		.list-add-to-cart{
+			background-repeat: no-repeat;
+			background-position: right center;
+			//background-size: 100%;
+		}
+	}
+}
+
+/* -- product list images -- */
+.product_images{
+  position: relative;
+  display: block;
+  overflow: hidden;
+	&:hover{
+		.back-image{
+			@extend %full-opacity;
+		}
+	}
+	.features{
+		position: absolute;
+		z-index: 3;
+		top: 0;
+		right: 0
+	}
+	.front-image {
+		display: block;
+		width: auto;
+		height: auto;
+		img {
+			//display: block;
+		}
+	}
+	
+	.back-image {
+		@extend %no-opacity;
+		@extend %default-anim;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		right: 0;
+		//display: block;
+	}
+}
+
+.onsale{
+	position: absolute;
+	z-index: 3;
+	pointer-events: none;
+	span{
+		@extend %no-box-shadow;
+		display: block;
+		text-align: center;
+		span{
+			display: inline;
+			font-size: 80%
+		}
+	}
+}
+
+// Views
+.view-filters{
+	margin-bottom: $large-space;
+}
+
+.view-products,
+.view-uc-catalog{
+	.view-filters{
+		display: table;
+		width: 100%;
+		.ac-catalog-layouts,
+		>form{
+			display: table-cell;
+			vertical-align: top;
+		}
+		>form{
+			@extend %right-align;
+		}
+		.form-label{
+			width: auto;
+			@include right-space(10px, margin);
+		}
+		.form-label,
+		.element-inner{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.views-exposed-widgets{
+		}
+		.views-exposed-widget{
+			display: inline-block;
+			vertical-align: top;
+			padding: 0;
+			float: none;
+		}
+		.l-page & .form-submit{
+			margin: 0;
+			@include left-space($small-space, margin);
+		}
+		.element-inner{
+			min-width: 150px;
+		}
+	}
+}
+
+.ac-catalog-layouts{
+	a{
+		@extend %no-anim;
+		@extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+		border-color: #A8A8A8;
+		display: inline-block;
+		@include right-space(10px, margin);
+		background-repeat: no-repeat;
+		background-position: center center;
+		padding: $medium-space/2;
+	}
+	svg{
+		width: 13px;
+		height: 13px;
+		display: block;
+	}
+}
+// Catalog
+.catalog.menu{
+	@extend %side-menu-v-list;
+	@extend %no-margin-padding;
+	>li{
+		border: 0;
+		>.trail{
+			display: block;
+			border-bottom-width:1px;
+			border-bottom-style: solid;
+		}
+	}
+	li{
+		@extend %no-margin-padding;
+	}
+	li:last-child{
+		border-bottom-width: 1px;
+	}
+	a{
+		span{
+			display: inline-block;
+			@extend %right-float;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+.ls-glass{
+  margin-bottom: 30px !important;
+}
+
+.l-page .ls-container{
+  &.ls-carousel{
+    overflow: hidden;
+    .ls-thumbnail{
+      top: 0
+    }
+  }
+  .ls-nav-prev,
+  .ls-nav-next{
+    @extend %nav-prevnext;
+    background: $white;
+    &.ls-nav-prev,
+    &.ls-nav-prev:hover{
+      @extend %light-nav-prev;
+    }
+    &.ls-nav-next,
+    &.ls-nav-next:hover{
+      @extend %light-nav-next;
+    }
+  }
+  .ls-thumbnail-inner{
+    @extend %full-border-radius !optional;
+    padding: 10px 15px;
+  }
+}

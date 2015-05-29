@@ -1,0 +1,40 @@
+/**
+ * $Global Blocks Styling
+ */
+.block {
+  .s-i{
+    @extend %clearfix;
+  }
+}
+
+.block__title{
+  @extend %block-header-style;
+  &, &:after, &:before{
+    border-style: solid;
+  }
+}
+
+.l-main, .l-footer{
+  .s-i{
+    @extend %section-inner;
+  }
+}
+
+.l-main{
+  >.ac-container-wrap{
+    margin: 0
+  }
+}
+
+.has-two-sidebars,
+.has-one-sidebar{
+  aside, .l-main{
+    > section:first-child{
+      >.s-i{
+        padding-top: 0
+      }
+    } 
+  }
+}
+
+

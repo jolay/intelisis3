@@ -1,0 +1,244 @@
+%relative-position{
+  position: relative;
+}
+
+%absolute-position{
+  position: absolute;
+}
+
+%bottom-spaced {
+  margin-bottom: $medium-space;
+}
+
+// ALIGN
+%left-align {
+  @if $direction == 'LTR' {
+    text-align: left;
+  }@else {
+    text-align: right;
+  }
+}
+%center-align {
+  float: none;
+  margin: 0 auto;
+  text-align: center;
+}
+%right-align {
+  @if $direction == 'LTR' {
+    text-align: right;
+  }@else {
+    text-align: left;
+  }
+}
+
+// Align MIXINS
+@mixin align($align){
+  @if $direction == 'LTR' {
+    @if $align == 'left' {
+      text-align: left;
+    }@else {
+      text-align: right;
+    }
+  }@else {
+    @if $align == 'left' {
+      text-align: right;
+    }@else {
+      text-align: left;
+    }
+  }
+}
+
+
+// FLOAT
+%left-float {
+  @if $direction == 'LTR' {
+    float: left;
+  }@else {
+    float: right;
+  }
+  display: inline-block;
+}
+
+%right-float {
+  @if $direction == 'LTR' {
+    float: right;
+  }@else {
+    float: left;
+  }
+  display: inline-block;
+}
+
+%no-float-block{
+  float: none;
+  display: block;
+}
+
+// CLEAR
+%left-clear {
+  @if $direction == 'LTR' {
+    clear: left;
+  }@else {
+    clear: right;
+  }
+}
+
+%right-clear {
+  @if $direction == 'LTR' {
+    clear: right;
+  }@else {
+    clear: left;
+  }
+}
+
+%no-clear{
+  clear: none;
+}
+
+// FLOAT MIXINS
+@mixin left-float(){
+  @if $direction == 'LTR' {
+    float: left;
+  }@else {
+    float: right;
+  }
+  display: inline-block;
+}
+
+@mixin right-float(){
+  @if $direction == 'LTR' {
+    float: right;
+  }@else {
+    float: left;
+  }
+  display: inline-block;
+}
+
+@mixin no-float-block(){
+  float: none;
+  display: block;
+}
+
+/////////////////////////////////////////////////
+// Margin
+/////////////////////////////////////////////////
+@mixin left-margin($margin) {
+  @if $direction == 'LTR' {
+    margin-left: $margin;
+  }@else {
+    margin-right: $margin;
+  }
+}
+
+@mixin right-margin($margin) {
+  @if $direction == 'LTR' {
+    margin-right: $margin;
+  }@else {
+    margin-left: $margin;
+  }
+}
+/////////////////////////////////////////////////
+// Spacing
+/////////////////////////////////////////////////
+@mixin left-space($space, $type) {
+  @if $direction == 'LTR' {
+    @if $type == 'padding' {
+      padding-left: $space;
+    }@else{
+      margin-left: $space;
+    }
+  }@else {
+    @if $type == 'padding' {
+      padding-right: $space;
+    }@else{
+      margin-right: $space;
+    }
+  }
+}
+
+@mixin right-space($space, $type) {
+  @if $direction == 'LTR' {
+    @if $type == 'padding' {
+      padding-right: $space;
+    }@else{
+      margin-right: $space;
+    }
+  }@else {
+    @if $type == 'padding' {
+      padding-left: $space;
+    }@else{
+      margin-left: $space;
+    }
+  }
+}
+/////////////////////////////////////////////////
+// REMOVE SPACE
+/////////////////////////////////////////////////
+// MARGIN + PADDING
+%no-margin {
+  margin: 0!important;
+}
+
+%no-side-padding {
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
+
+%no-padding {
+  padding: 0!important;
+}
+
+%no-margin-padding {
+  padding: 0;
+  margin: 0;
+}
+
+%no-right-margin{
+  @if $direction == 'LTR' {
+    margin-right: 0;
+  }@else {
+    margin-left: 0;
+  }
+}
+
+@mixin no-right-margin(){
+  @if $direction == 'LTR' {
+    margin-right: 0;
+  }@else {
+    margin-left: 0;
+  }
+}
+
+@mixin no-right-padding(){
+  @if $direction == 'LTR' {
+    padding-right: 0;
+  }@else {
+    padding-left: 0;
+  }
+}
+
+// position
+@mixin position($pos, $dist){
+  @if $direction == 'LTR' {
+    @if $pos == 'left' {
+      left: $dist;
+    }@else{
+      right: $dist;
+    }
+  }@else {
+    @if $pos == 'left' {
+      right: $dist;
+    }@else{
+      left: $dist;
+    }
+  }
+}
+
+%cleared{
+  clear: both;
+}
+
+
+%middle-valign-icon {
+  vertical-align: middle;
+  @include right-space(15px , 'margin');
+}

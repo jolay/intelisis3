@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implementing hook_install()
+ */
+function ac_ubercart_install(){
+	variable_set('uc_product_add_to_cart_qty', 1);
+	variable_set('uc_product_update_node_view', 1);
+	variable_set('uc_payment_method_free_order_checkout', 1);
+	variable_set('uc_payment_method_check_checkout', 1);
+	variable_set('uc_payment_method_credit_checkout', 1);
+}

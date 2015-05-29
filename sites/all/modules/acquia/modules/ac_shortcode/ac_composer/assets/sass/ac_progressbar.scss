@@ -1,0 +1,102 @@
+@import "partials/utility";
+
+div.progressbar_progress{
+  border: 1px solid #CFCFCF;
+  height: 20px;
+  float: left;
+  width: 500px;
+  max-width: 100%;
+  @include border-radius(5px);
+  .progress{
+    height: 100%;
+    -webkit-animation: ac_bg_move 1.2s linear infinite; /* Safari 4+ */
+    -moz-animation:    ac_bg_move 1.2s linear infinite; /* Fx 5+ */
+    -o-animation:      ac_bg_move 1.2s linear infinite; /* Opera 12+ */
+    animation:         ac_bg_move 1.2s linear infinite; /* IE 10+ */
+    background: #fc0000;
+    -moz-background-size: 6px 6px;
+    background-size: 6px 6px;
+    -webkit-background-size: 6px 5px;
+    @include background(linear-gradient(-45deg, #fc0000 25%, #fe2222 25%, #fe2222 50%, #fc0000 50%, #fc0000 75%, #fe2222 75%, #fe2222));
+  }
+}
+
+.progressbar_title{
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+  height: 30px;
+  line-height: 25px;
+  font-size: 11px;
+}
+
+/*background animation*/
+@-webkit-keyframes ac_bg_move {
+  0%   { background-position: -31px 0;  }
+  100% { background-position: 0 0; }
+}
+@-moz-keyframes ac_bg_move {
+  0%   { background-position: -31px 0;  }
+  100% { background-position: 0 0; }
+}
+@-o-keyframes ac_bg_move {
+  0%   { background-position: -31px 0;  }
+  100% { background-position: 0 0; }
+}
+@keyframes ac_bg_move {
+  0%   { background-position: -31px 0;  }
+  100% { background-position: 0 0; }
+}
+
+/** *Full Control Widgets */
+.ac_composer_full_controll .wpb_element_wrapper{
+  border: 1px solid #DFDFDF;
+  background-color: #FFFFFF;
+  padding: 0;
+}
+
+.postbox .wpb_header_enabled > .wpb_element_wrapper{
+  border-top: 0;
+  padding: 10px;
+  background: #fff
+}
+
+.ac_composer_full_controll > .wpb_element_wrapper{
+  border-top: none;
+}
+
+.ac_composer_full_controll .wpb_content_element .wpb_element_wrapper{
+  //border: 1px dashed #CCC;
+}
+
+.ac_composer_full_controll .wpb_content_element .wpb_element_wrapper:hover{
+  //border: 1px dashed #222;
+  //cursor: n-resize;
+}
+
+.ac_composer_full_controll.wpb_header_enabled > .bottom-controls{
+  top: auto;
+  bottom: 7px;
+}
+
+.ac_composer_full_controll.wpb_header_enabled .wpb_content_element > div.controls{
+  top: 7px;
+  text-align: right;
+}
+
+.ac_composer_full_controll .wpb_content_element > .wpb_element_wrapper{
+  padding: 20px;
+}
+
+
+/** Banner **/
+.wpb_ac_banner_item > .controls_column .column_clone,
+.wpb_ac_banner_item > .controls_column .column_delete{display: none!important;}
+.wpb_ac_banner > .wpb_element_wrapper{
+  border: none;
+  padding: 0!important
+}
+/** iconList**/
+.wpb_ac_iconlist_item .controls{
+  top: 10px;
+}

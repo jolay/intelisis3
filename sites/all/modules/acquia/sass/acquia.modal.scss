@@ -1,0 +1,190 @@
+@import "partials/utility";
+
+.acquia-modal-wrap {
+	-webkit-animation: acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Safari 4+ */
+	-moz-animation:    acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Fx 5+ */
+	-o-animation:      acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* Opera 12+ */
+	animation:         acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275); /* IE 10+ */
+	.acquia-modal-content{
+		border: none;
+		width: auto;
+		@extend %no-margin-padding;
+	}
+}
+
+.acquia-modal{
+	background: $header-color;
+	div.modal-header {
+		/** Modal header **/
+		@extend %bg-gradient;
+		background-color: $vtabs-bg-color;
+		height: 50px;
+		line-height: 50px;
+		position: relative;
+		padding: 0 10px;
+	}
+	div.modal-header .modal-title{
+		position: absolute;
+		top: 0;
+		margin: 0;
+		line-height: 53px;
+		left: 14px;
+		color: #fff;
+		padding: 0;
+		margin: 0;
+		font-size: 18px;
+	}
+	.modal-close{
+		position: absolute;
+		right: 15px;
+		margin: 0;
+		span{
+			color: $danger;
+			@extend %ac-font-admin;
+			padding: 8px 12px;
+			&:before{
+				content: '\e802';
+			}
+		}
+		&:hover{
+			background-position: bottom left;
+		}
+	}
+
+	.modal-footer {
+		/** Modal Footer **/
+		height: 50px;
+		border-top: 1px solid #DFDFDF;
+		box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+		position: relative;
+		bottom: 0;
+		background: $footer-color;
+		width: 100%;
+		text-align: right;
+		padding: 0;
+	}
+	.acquia-modal-save {
+		color: #fff !important
+	}
+	.modal-throbber-wrapper {
+	  text-align: center;
+		img {
+		  margin-top: 160px;
+		}
+	}
+	
+	.colorpicker{
+		z-index: 100000;
+	}
+}
+
+/** Modal Content **/
+div.acquia-modal-content {
+	background: #fff;
+	color: #000;
+	width: 600px;
+	text-align: left;
+	&.ps-container{
+		overflow: hidden;
+	}
+	.inner{
+		margin: 20px;
+	}
+}
+
+div.acquia-modal-content .modal-title {
+  font-size: 120%;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+div.acquia-modal-content .modal-header a {
+  color: white;
+}
+
+div.acquia-modal-content .modal-content {
+  padding:0;
+  position: relative; /* Keeps IE7 from flowing outside the modal. */
+}
+
+/** modal forms CSS **/
+div.acquia-modal-content .form-item {
+  position: relative;
+}
+
+div.acquia-modal-content .form-item label {
+  width: 15em;
+  float: left;
+}
+
+div.acquia-modal-content .form-item label.option {
+  width: auto;
+  float: none;
+}
+
+div.acquia-modal-content .form-item .description {
+  clear: left;
+}
+
+div.acquia-modal-content .form-item .description .tips {
+  margin-left: 2em;
+}
+
+div.acquia-modal-content .no-float .form-item * {
+  float: none;
+}
+
+div.acquia-modal-content .modal-form .no-float label  {
+  width: auto;
+}
+
+div.acquia-modal-content fieldset,
+div.acquia-modal-content .form-radios,
+div.acquia-modal-content .form-checkboxes {
+  clear: left;
+}
+
+div.acquia-modal-content .resizable-textarea {
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+div.acquia-modal-content .container-inline .form-item {
+  margin-right: 2em;
+}
+
+#views-exposed-pane-wrapper .form-item {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div.acquia-modal-content label.hidden-options {
+  background: transparent url(../images/arrow-active.png) no-repeat right;
+  height: 12px;
+  padding-right: 12px;
+}
+
+div.acquia-modal-content label.expanded-options {
+  background: transparent url(../images/expanded-options.png) no-repeat right;
+  height: 12px;
+  padding-right: 16px;
+}
+
+div.acquia-modal-content .option-text-aligner label.expanded-options,
+div.acquia-modal-content .option-text-aligner label.hidden-options {
+  background: none;
+}
+
+div.acquia-modal-content .dependent-options {
+  padding-left: 30px;
+}
+
+
+/** Misc **/
+.acquia-modal-on .colorpicker{z-index: 1002}
+
+.save-btn-on #edit-submit{display:none;}
+

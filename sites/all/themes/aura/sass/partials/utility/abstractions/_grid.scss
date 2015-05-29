@@ -1,0 +1,26 @@
+$debug-grid: false !default;
+
+@mixin grid-background {
+  @if $debug-grid == true {
+    @include susy-grid-background;
+  }
+}
+
+%container {
+  @include container;
+  @include grid-background;
+}
+
+%table{
+  display: table;
+  border-collapse: collapse;
+}
+
+%table-cell{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+%inline-block-display{
+  display: inline-block;
+}

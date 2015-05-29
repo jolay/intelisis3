@@ -1,0 +1,156 @@
+/**
+ * $FORM-ITEM
+ */
+.form-item {
+  @extend %relative-position;
+  margin-bottom: $small-space;
+	.ajax-progress-throbber{
+		position: absolute;
+		@include position(left, -30px);
+		top: 50%;
+		margin-top: -10px;
+	}
+  br{
+    display: none;
+  }
+  label {
+    @extend %sub-color !optional;
+    @extend %medium-type;
+    font-weight: normal;
+    @include font-size(13px);
+    &.option{
+      @include left-space(10px, 'padding');
+    }
+  }
+  .form-select,
+  .form-text,
+  .form-textarea {
+    //@extend %full-border-radius !optional;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %border-box-sizing;
+		height: $large-unit;
+		line-height: $large-unit;
+    width: 100%;
+    padding: 0 $medium-space/2;
+    background-color: #F6F6F6;
+    background-color: rgba(246, 246, 246, 0.4);
+    color: $mid-grey;
+    vertical-align: middle;
+  }
+  .form-textarea{
+    height: auto;
+    line-height: 1.7em;
+    padding: $medium-space/2;
+  }
+  .description {
+    @extend %sub-color !optional;
+    margin-top: 0.2em;
+    font-style: italic;
+  }
+  
+  html.js & .form-autocomplete{
+    background-image: url(../images/override/throbber.gif);
+  }
+  html.js & .throbbing {
+    background-position: 100% -28px;
+    /* LTR */
+  }
+}
+// form in background enabled sections
+.ac-bg-enabled{
+  .form-select,
+  .form-text,
+  .form-textarea {
+    background: $white;
+    background: rgba($white, .9);
+    border: 0;
+  }
+  .ac-bg_style-dark{
+    .form-select,
+    .form-text,
+    .form-textarea{
+      background: #000;
+      background: rgba(#000, .45);
+			color: $white;
+    }
+    label{
+      color: $white;
+    }
+  }
+	.ac-bg_style-light{
+    .contact_text,
+		label{
+      color: $black;
+    }
+  }
+}
+
+.container-inline {
+  .form-select,
+  .form-text,
+  .form-textarea {
+    width: auto;
+    vertical-align: top;
+  }
+}
+
+select,
+input,
+textarea {
+  &:focus {
+		// Theme Background Color
+		// $SKIN
+		@if $use-less != 'TRUE' {
+			@include box-shadow(0 0 0 1px rgba($theme-default-color, .5));
+		}
+  }
+}
+
+.form-type-select{
+	text-align: left;
+	.el{
+		position: relative;
+	}
+}
+.grippie{
+  display: none;
+}
+
+.form-radios{
+  .form-item{
+    margin: 0;
+  }
+}
+
+.l-page {
+	.ajax-progress{
+		.throbber{
+			@extend  %ac-spin;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			height: 100%;
+			margin: -2px 0 0;
+			width: 20px;
+		}
+		.message{
+			@include left-space(25px, padding);
+		}
+	}
+}
+
+.form-actions{
+	@extend %right-align;
+	input{
+		&:last-child{
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+}
+.ac-fancy-form{
+	.form-label, .element-inner{
+		display: block;
+	}
+}

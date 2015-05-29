@@ -1,0 +1,17 @@
+name = test
+description = test
+core = 7.x
+package = Features
+version = 1.x-1.0
+project = test
+dependencies[] = ac_blog
+dependencies[] = ac_shortcode
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = locale
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[filter][] = full_html
+features[language][] = en
+features[language][] = es
+features[taxonomy][] = noticias_intelisis

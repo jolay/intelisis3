@@ -1,0 +1,61 @@
+/** $Aligned **/
+%section-inner{
+  padding-top: 30px;
+  padding-bottom: 25px;
+}
+
+#admin-menu-wrapper{
+  .admin-menu-account{
+    strong{
+      color: $white;
+    }
+  }
+}
+// rss syndicate
+.rss-syndicate{
+  @extend %boxed-icon-medium;
+  @extend %full-border-radius !optional;
+  @extend %bordered-box;
+  @extend %theme-border-color !optional;
+  @extend %theme-active-color !optional;
+  background: transparent;
+  display: block;
+  margin: 20px 0;
+  .font-icon{
+    font-size: 14px;
+  }
+}
+
+// Blog and portfolio items
+ul{
+  &.ac-cols-6{
+    .title{
+      @extend %tiny-font;
+    }
+  }
+}
+
+// Blog, Portfolio titles
+.pager, .filter a{
+  font-size: $base-font-size;
+}
+
+// 404 Page
+.ac-404-page{
+  margin: 30px auto;
+  .form-item-keys{
+    label{
+      @extend %tiny-font;
+      font-weight: 400;
+    }
+  }
+}
+.ac-404-title{
+  @extend %center-align;
+  @extend %sub-color !optional;
+  padding-bottom: 30px;
+}
+
+.page-error404 .l-content{
+  min-height: 660px;  
+}

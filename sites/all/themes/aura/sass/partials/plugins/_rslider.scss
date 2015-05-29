@@ -1,0 +1,56 @@
+/** Responsive Slider - Mini slider
+--------------------------------------------------*/
+.ac-min-slider{
+  @extend %pager-space;
+  position: relative;
+  .rslides > *{
+    margin: 0;
+  }
+  .rslides_nav{
+    width: 35px;
+    height: 35px;
+    margin-top: -17px;
+  }
+}
+
+.rslides_tabs{
+  @extend %no-margin-padding;
+  @extend %mini-slider-pager;
+  bottom: -5px;
+  z-index: 5;
+  li, a{
+    @extend %x-large-circled;
+  }
+  // dark navigation style
+/*  .dark_nav &{
+    @extend %mini-slider-pager;
+    bottom: -1px;
+    a{
+      border-width: 1px;
+    }
+    .rslides_here a, a:hover{
+      background: transparent;
+    }
+  }*/
+  li{
+    vertical-align: top;
+  }
+}
+
+.rslides_nav{
+  @extend %nav-prevnext;
+  position: absolute;
+  text-indent: -999em;
+  &.next{
+    @extend %light-nav-next;
+  }
+  &.prev{
+    @extend %light-nav-prev;
+  }
+}
+
+.ac-lightstyle{
+  .rslides_tabs, .flex-control-nav{
+    @extend %light-slider-style;
+  }  
+}

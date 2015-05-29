@@ -1,0 +1,20 @@
+/** Banner Shortcode
+-----------------------------------*/
+.ac-contentbox{
+  @extend %relative-position;
+  overflow: hidden;
+  margin: 0 0 1.5em;
+  padding: 40px 0;
+  background-repeat: repeat;
+  &.ac-no-repeat{
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+}
+
+.ac-contentbox-content {
+  white-space: normal;
+  margin: 0 auto;
+  width: 86%;
+}

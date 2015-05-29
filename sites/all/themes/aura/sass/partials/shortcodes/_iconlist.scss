@@ -1,0 +1,232 @@
+/** IconList Shortcode
+-----------------------------------*/
+.ac-iconlist{
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  &.ac-style-static_color .ac-iconlist-item{
+    color: $white;
+  }
+  &.ac-ico_color-white .ac-iconlist-item{
+    color: $white;
+  }
+  &.ac-ico_color-blue .ac-iconlist-item{
+    color: $blue;
+  }
+  &.ac-ico_color-red .ac-iconlist-item{
+    color: $red;
+  }
+  &.ac-ico_color-orange .ac-font-icon{
+    color: $orange;
+  }
+  &.ac-ico_color-aqua .ac-font-icon{
+    color: $aqua;
+  }
+  &.ac-ico_color-teal .ac-font-icon{
+    color: $teal;
+  }
+  &.ac-ico_color-purple .ac-font-icon{
+    color: $purple;
+  }
+  &.ac-ico_color-pink .ac-font-icon{
+    color: $pink;
+  }
+  &.ac-ico_color-silver .ac-font-icon{
+    color: $silver;
+  }
+  &.ac-ico_color-grey .ac-font-icon{
+    color: $grey;
+  }
+  &.ac-ico_color-green .ac-font-icon{
+    color: $green;
+  }
+  &.ac-ico_color-black .ac-font-icon{
+    color: $black;
+  }
+  &.ac-ico_bg-white .ac-font-icon{
+    background: $white;
+  }
+  &.ac-ico_bg-blue .ac-font-icon{
+    background: $blue;
+  }
+  &.ac-ico_bg-red .ac-font-icon{
+    background: $red;
+  }
+  &.ac-ico_bg-orange .ac-font-icon{
+    background: $orange;
+  }
+  &.ac-ico_bg-aqua .ac-font-icon{
+    background: $aqua;
+  }
+  &.ac-ico_bg-teal .ac-font-icon{
+    background: $teal;
+  }
+  &.ac-ico_bg-purple .ac-font-icon{
+    background: $purple;
+  }
+  &.ac-ico_bg-pink .ac-font-icon{
+    background: $pink;
+  }
+  &.ac-ico_bg-silver .ac-font-icon{
+    background: $silver;
+  }
+  &.ac-ico_bg-grey .ac-font-icon{
+    background: $grey;
+  }
+  &.ac-ico_bg-black .ac-font-icon{
+    background: $black;
+  }
+  &.ac-no-desc{
+    .item{
+      display: table;
+    }
+    .title{
+      margin: 0;
+    }
+  }
+  &.ac-size-tiny {
+    .title{
+      @include font-size(13px);
+    }
+  }
+  &.ac-size-small {
+    .title{
+      @include font-size(15px);
+    }
+  }
+  &.ac-size-medium {
+    .font-icon{
+      @extend %medium-boxed;
+    }
+  }
+  &.ac-size-large {
+    .title{
+      @include font-size(22px);
+    }
+  }
+  &.ac-size-x-large {
+    .title{
+      @extend %title-cap-style !optional;
+    }
+  }
+  &.ac-size-xx-large {
+    .title{
+      @include font-size(26px);
+    }
+  }
+  &.ac-size-xxx-large {
+    .title{
+      @include font-size(28px);
+    }
+  }
+  &.ac-size-xxx-large,&.ac-size-xx-large, &.ac-size-x-large{
+    .item{
+      padding-bottom: $large-space;
+    }
+  }
+  // border type
+  &.ac-size-large,
+  &.ac-size-x-large,
+  &.ac-size-xx-large{
+    &.ac-border-rounded .ac-font-icon{
+      @extend %large-circled-border;
+    }
+  }
+  &.ac-border-simple{
+    .icon{
+      color: $grey;
+    }
+    .ac-font-icon{
+      border: 0;
+      padding: 0;
+      background: transparent;
+    }
+  }
+  &.ac-border-square{
+    .ac-font-icon{
+      @extend %square-border;
+    }
+  }
+  &.ac-border-rounded{
+    .ac-font-icon{
+      @extend %full-border-radius !optional;
+    }
+  }
+  &.ac-border-circled{
+    .ac-font-icon{
+      @extend %circled-border;
+    }
+  }
+  .item{
+    margin: 0 0 $medium-space;
+    @include right-space(10px, 'margin');
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  
+  .ac-iconlist-item{
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .font-icon{
+    @extend %boxed-icon;
+  }
+  .icon{
+    @extend %left-float;
+    .ac-font-icon{
+      @extend %circled-border;
+    }
+  }
+  .icon, .ac-iconlist-item-content-wrap{
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .title{
+    margin-top: 0;
+    text-transform: capitalize
+  }
+}
+
+.ac-iconlist-item-content-wrap{
+  margin-left: 98px;
+}
+
+
+// Alter Color Style
+.ac-iconlist.ac-style-alt_color {
+  .ac-iconlist-item {
+    background: transparent;
+    @extend %bordered-box;
+    @extend %default-border-drk-color !optional;
+    color: $light-grey;
+  }
+  .item{
+    cursor: pointer;
+    &:hover{
+      .ac-iconlist-item {
+        @extend %theme-border-color !optional;
+        @extend %theme-bg !optional;
+        color: $white;
+      }
+    }
+  }
+}
+
+.ac-iconlist.ac-place-left{
+  .icon{
+    @extend %left-float;
+    @include right-margin(20px);
+  }
+}
+
+.ac-iconlist.ac-place-right{
+  text-align: right;
+  .icon{
+    @extend %right-float;
+    @include left-margin(20px);
+  }
+}
+  
+

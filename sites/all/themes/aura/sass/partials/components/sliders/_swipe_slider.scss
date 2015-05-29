@@ -1,0 +1,179 @@
+/** Swipe Slider Styles
+-----------------------------------*/
+.swiper-outter{
+  position: relative;
+  .ac-preloader{
+    top: 50%;
+    margin-top: -25px;
+  }
+}
+.l-page {
+  .ac-swipe-slider{
+    .ac-swiper-nav{
+      @extend %no-opacity;
+      @extend %default-anim;
+    }
+    &:hover{
+      .ac-swiper-nav{
+        @extend %full-opacity;
+      }
+    }
+  }
+}
+
+.ac-swipe-slider{
+  direction: ltr;
+  text-align: left;
+  // Overlay
+  .ac-overlay-black{
+    .ac-overlay{
+      background: #000;
+      @include opacity(20);
+    }
+    .swiper-header{
+      @include text-shadow(0 1px 6px rgba(#000, .3));
+    }
+  }
+  .ac-overlay-white{
+    .ac-overlay{
+      background: $white;
+      @include opacity(20);
+    }
+    .swiper-header{
+      @include text-shadow(0 1px 6px rgba(#000, .3));
+    }
+  }
+  .ac-overlay{
+    display: block;
+    position: absolute;left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.swiper-slide{
+  @extend %left-align;
+  float: left!important;
+  direction: ltr!important;
+  overflow: hidden;
+  >.container{
+    position: relative;
+    z-index: 100;
+  }
+  &.ac-style-light{
+    .swiper-header *,
+    .swiper-buttons{
+      //color: $white;
+    }
+  }
+  &.ac-style-dark{
+    .swiper-header *,
+    .swiper-buttons{
+      //color: $black;
+    }
+  }
+}
+.swiper-header{
+/*  h3{
+    line-height: 1;
+    margin-bottom: $medium-space;
+    @include font-size(53px);
+    line-height: 1.1em;
+  }
+  p{
+    @extend %body-font!optional;
+    @extend %header-color;
+    @include font-size(35px);
+    line-height: 1.5em;
+    font-weight: 300;
+    font-style: italic;
+  }*/
+}
+
+// center Caption
+.caption-pos-cc{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+// Right Caption
+.caption-pos-rt, 
+.caption-pos-rc, 
+.caption-pos-rb{
+  @extend %right-float;
+}
+
+// Top Caption
+.caption-pos-lt, 
+.caption-pos-ct, 
+.caption-pos-rt{
+  margin-top: 50px!important;
+}
+
+// Center Caption
+.l-page {
+    .caption-pos-ct, 
+    .caption-pos-cc, 
+    .caption-pos-cb{
+      //width: 70%;
+      @extend %center-align;
+    }
+}
+// Nav Control
+.ac-swiper-nav{
+  @extend %nav-prevnext;
+  &.next{
+    @extend %light-nav-next;
+  }
+  &.prev{
+    @extend %light-nav-prev;
+  }
+}
+
+.l-page{
+  .ac-swiper-nav{
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background-color: rgba($white, .8);
+    &:hover{
+      background-color: $white;
+    }
+  }
+}
+.pagination{
+  @extend %slider-pager-wrap;
+  span{
+    @extend %slider-pager;
+    &.swiper-active-switch{
+      @extend %slider-pager-active;
+    }
+  }
+}
+
+
+/** tablet view **/
+@include at-breakpoint($tab-max) {
+  .swiper-caption-wrap{
+    margin: $medium-space*2
+  }
+  .swiper-caption{
+    width: 100;
+    h2, h3{
+      line-height: 1.2;
+      span{
+        font-size: 80%;
+      }
+    }
+  }
+  .ac-swiper-nav{
+    display: none;
+  }
+}
+
+@include at-breakpoint($tab) {
+  .swiper-caption{
+    width: 50%
+  }
+}

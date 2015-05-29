@@ -1,0 +1,16 @@
+/** Code Shortcode
+-----------------------------------*/
+.ac-code {
+ @extend %full-border-radius !optional;
+ @extend %content-frame-color !optional;
+ white-space: normal;
+ clear: both;
+ border: 0;
+ p{
+  @extend %no-margin-padding;
+ }
+ code{
+  @extend %header-font !optional;
+  font-weight: 300;
+ }
+}

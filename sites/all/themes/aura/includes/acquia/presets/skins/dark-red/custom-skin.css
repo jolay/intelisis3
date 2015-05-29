@@ -1,0 +1,58 @@
+/*%header-box{
+	line-height: 92px;
+	height: 92px;
+}*/
+.l-page .fixed_header_clone { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; }
+
+.l-topbar .ac-topbar-socials li a, .l-page .fixed_header_clone.fixed_showed, .ac-button:focus, .ac-button:hover, button:focus, button:hover, .button:focus, .button:hover, input[type="submit"]:focus, input[type="submit"]:hover, input[type="button"]:focus, input[type="button"]:hover, input.form-submit:focus, input.form-submit:hover, #toggle-nav:focus, #toggle-nav:hover, .l-page .acquia-share-links a:focus, .l-page .acquia-share-links a:hover, .l-page .ac-button.ac-style-2d-soft:focus, .l-page .ac-button.ac-style-2d-soft:hover, .l-page .project-meta .flag-like a:focus, .l-page .project-meta .flag-like a:hover { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; }
+
+.l-header .ac-mini-cart .cart-i-frame, .l-header .main-menu .menu ul { -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
+
+.l-topbar a:hover, .l-topbar .menu a:hover, .l-topbar .menu .sfHover > a, .l-topbar .menu a:hover { color: #FE7474; }
+.l-topbar .ac-topbar-socials li a { color: #bc4247; }
+.l-topbar .ac-topbar-socials li a:hover { color: white; }
+
+.l-header .ac-mini-cart .cart-i-frame, .l-header .main-menu .menu ul { margin-top: -20px; }
+.l-header .main-menu .menu ul ul { margin: 0; }
+
+.site-branding__logo img { height: 50px; }
+
+.main-menu .menu .sf-sub-indicator .font-icon:before { content: "\e892" !important; }
+.main-menu .menu ul .sf-sub-indicator .font-icon { font-size: 10px; font-size: 0.76923rem; }
+
+.l-page .fixed_header_clone { -webkit-transition: opacity, 0.45; -moz-transition: opacity, 0.45; -o-transition: opacity, 0.45; transition: opacity, 0.45; top: 0; }
+
+.l-page .page-title { text-transform: uppercase; }
+
+.ac-button, button, .button, input[type="submit"], input[type="button"], input.form-submit, #toggle-nav, .l-page .acquia-share-links a, .l-page .ac-button.ac-style-2d-soft, .l-page .project-meta .flag-like a { background: #F9F9F9; border: 1px solid #D7D7D7; color: #303030; -webkit-box-shadow: 0 3px rgba(0, 0, 0, 0.07); -moz-box-shadow: 0 3px rgba(0, 0, 0, 0.07); box-shadow: 0 3px rgba(0, 0, 0, 0.07); }
+.ac-button:focus, .ac-button:hover, button:focus, button:hover, .button:focus, .button:hover, input[type="submit"]:focus, input[type="submit"]:hover, input[type="button"]:focus, input[type="button"]:hover, input.form-submit:focus, input.form-submit:hover, #toggle-nav:focus, #toggle-nav:hover, .l-page .acquia-share-links a:focus, .l-page .acquia-share-links a:hover, .l-page .ac-button.ac-style-2d-soft:focus, .l-page .ac-button.ac-style-2d-soft:hover, .l-page .project-meta .flag-like a:focus, .l-page .project-meta .flag-like a:hover { background: #bc4247; }
+.ac-button span, button span, .button span, input[type="submit"] span, input[type="button"] span, input.form-submit span, #toggle-nav span, .l-page .acquia-share-links a span, .l-page .ac-button.ac-style-2d-soft span, .l-page .project-meta .flag-like a span { color: #303030; }
+.ac-button span.ac-button-icon, button span.ac-button-icon, .button span.ac-button-icon, input[type="submit"] span.ac-button-icon, input[type="button"] span.ac-button-icon, input.form-submit span.ac-button-icon, #toggle-nav span.ac-button-icon, .l-page .acquia-share-links a span.ac-button-icon, .l-page .ac-button.ac-style-2d-soft span.ac-button-icon, .l-page .project-meta .flag-like a span.ac-button-icon { color: #bc4247; }
+.ac-button:hover span, .ac-button:focus span, button:hover span, button:focus span, .button:hover span, .button:focus span, input[type="submit"]:hover span, input[type="submit"]:focus span, input[type="button"]:hover span, input[type="button"]:focus span, input.form-submit:hover span, input.form-submit:focus span, #toggle-nav:hover span, #toggle-nav:focus span, .l-page .acquia-share-links a:hover span, .l-page .acquia-share-links a:focus span, .l-page .ac-button.ac-style-2d-soft:hover span, .l-page .ac-button.ac-style-2d-soft:focus span, .l-page .project-meta .flag-like a:hover span, .l-page .project-meta .flag-like a:focus span { color: white !important; }
+
+.ac-button.ac-bg_color-black span { color: white; }
+
+.acquia-share-links .ac-font-icon-wrap a:hover { border-color: #bc4247; }
+
+.ac-view-fade-in-left .features a { background: rgba(188, 66, 71, 0.75); }
+.ac-view-fade-in-left .features a:hover { background: #bc4247; }
+
+.ac-section-style-2 .ac-button, .ac-section-style-2 button, .ac-section-style-2 .button, .ac-section-style-2 input[type="submit"] { border-color: #fff; border: 1px solid rgba(255, 255, 255, 0.14); }
+.ac-section-style-2 .ac-button:hover, .ac-section-style-2 button:hover, .ac-section-style-2 .button:hover, .ac-section-style-2 input[type="submit"]:hover { border-color: #963539; }
+
+.l-page .overlay, .ac-overlay, .ac-f, .ac-popup-video .ac-f:hover { background: rgba(255, 255, 255, 0.5); }
+
+.l-page .ac-mini-feature .ac-f b { border: 0; background: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20enable-background%3D%22new%200%200%2016%2016%22%20fill%3D%22#bc4247%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20x%3D%227%22%20width%3D%222%22%20height%3D%2216%22%2F%3E%3Crect%20y%3D%227%22%20width%3D%2216%22%20height%3D%222%22%2F%3E%3C%2Fsvg%3E") no-repeat center center !important; }
+
+.load-more-btn:hover { fill: white; }
+.load-more-btn .loading-icon { fill: #bc4247; }
+
+.project-meta .portfolio-like-btn:hover b { background-image: url('data:image/svg+xml,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve"><path id="favorite-3-icon" fill="white" d="M18,27.2c-7.1-6.9-9.1-9.4-9.5-12C8,12,10.3,8.8,14,8.8c1.6,0,3,0.6,4,1.6	c1-1,2.4-1.6,4-1.6c3.7,0,6.1,3.2,5.5,6.3C27.1,17.7,25.2,20.2,18,27.2z M14,10.7c-1.5,0-2.7,0.7-3.4,2c-1.6,3.2,2,6.5,7.3,11.8	c5.4-5.4,8.9-8.6,7.3-11.8c-0.6-1.3-1.9-2-3.4-2c-2.4,0-3.4,1.9-4,2.8C17.5,12.6,16.5,10.7,14,10.7z"/></svg>'); }
+.project-meta .portfolio-like-btn b { background-image: url('data:image/svg+xml,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve"><path id="favorite-3-icon" fill="#bc4247" d="M18,27.2c-7.1-6.9-9.1-9.4-9.5-12C8,12,10.3,8.8,14,8.8c1.6,0,3,0.6,4,1.6	c1-1,2.4-1.6,4-1.6c3.7,0,6.1,3.2,5.5,6.3C27.1,17.7,25.2,20.2,18,27.2z M14,10.7c-1.5,0-2.7,0.7-3.4,2c-1.6,3.2,2,6.5,7.3,11.8	c5.4-5.4,8.9-8.6,7.3-11.8c-0.6-1.3-1.9-2-3.4-2c-2.4,0-3.4,1.9-4,2.8C17.5,12.6,16.5,10.7,14,10.7z"/></svg>'); width: 28px; }
+
+.l-page .comment__content .item-i { background: transparent; }
+
+.l-page table tr { border: 0; }
+.l-page table tr.odd { background: white; }
+
+.l-page .block__title.ac-margin-default, .l-page .ac-page-header.ac-margin-default { margin-bottom: 25px; }

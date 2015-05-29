@@ -1,0 +1,177 @@
+/**
+ * $BASE-TYPOGRAPHY
+ */
+html {
+  @extend %default-align;
+  @extend %default-direction;
+  @extend %base-font-style !optional;
+  @extend %body-color !optional;
+}
+
+body{
+    -webkit-font-smoothing: antialiased!important;
+}
+/**
+ * $LINKS
+ */
+a{
+  @extend %anchor;
+  &:hover,
+  &:focus {
+    @extend %anchor-hover; 
+  }
+}
+
+/**
+ * $HEADINGS
+ */
+h1, .alpha,
+h2, .beta,
+h3, .gamma,
+h4, .delta,
+h5, .epsilon,
+h6, .zeta {
+  @extend %header-font !optional;
+  @extend %header-color;
+  margin: 10px 0;
+  text-transform: capitalize;
+  font-weight: 500;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/**
+ * $PARAGRAPHS
+ */
+p,
+%p {
+  margin: 0;
+  margin-bottom: 1em;
+}
+p + img {
+  @extend %left-float;
+  margin-right: $horz-spacing-unit;
+}
+
+/**
+ * $QUOTES
+ */
+blockquote {
+  @extend %p;
+  //@extend %full-border-radius !optional;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  padding: 1em 1.5em;
+  border-left-width: 1.2em;
+  font-style: italic;
+  p {
+    margin: 0;
+  }
+}
+
+q {
+  font-style: italic;
+}
+
+/**
+ * $MARKS
+ */
+mark,
+.marker {
+  @extend %theme-bg !optional;
+  padding: 0.1em 0.5em;
+  color: $white;
+  @include font-size(12px);
+  text-transform: capitalize;
+
+  @include border-radius(10px);
+}
+
+/**
+ * $MISC
+ */
+strong {
+ @extend %theme-active-color !optional;
+ font-weight: normal;
+}
+
+b {
+ font-weight: normal;
+}
+
+pre{
+ // @extend %full-border-radius !optional;
+  @extend %content-divider-color !optional;
+  @extend %bordered-box;
+  display: block;
+  padding: $small-space;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+}
+
+h5, .epsilon{
+  @include font-size(16px);
+  font-weight: 600;
+  line-height: 22px;
+}
+h6, .zeta {
+  @include font-size(14px);
+  line-height: 22px;
+}
+
+.page-title{
+  span{
+    font-size: 75%;
+  }
+}
+
+// X < $tab-width
+@include at-breakpoint($tab-max) {
+  h1, .alpha {
+    @include font-size(38px);
+    line-height: 42px;
+    font-weight: 300;
+  }
+  h2, .beta {
+    @include font-size(32px);
+    line-height: 42px;
+    font-weight: 300;
+  }
+  h3, .gamma {
+    @include font-size(24px);
+    font-weight: 300;
+  }
+  h4, .delta {
+    @include font-size(24px);
+    font-weight: 300;
+  }
+}
+
+// X > $tab-width
+@include at-breakpoint($tab) {
+  h1, .alpha {
+    @include font-size(52px);
+    line-height: 52px;
+    font-weight: 300;
+  }
+  h2, .beta {
+    @include font-size(38px);
+    line-height: 50px;
+    font-weight: 300;
+  }
+  h3, .gamma {
+    @include font-size(24px);
+    line-height: 34px;
+    font-weight: 300;
+  }
+  h4, .delta {
+    @include font-size(18px);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 22px;
+  }
+}

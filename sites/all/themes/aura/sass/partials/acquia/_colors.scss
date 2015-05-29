@@ -1,0 +1,174 @@
+/** Acquia Color Styles
+--------------------------------------------------*/
+/** Color Variations **/
+.ac-color-theme-color, .paint-accent-color{
+  @extend %theme-active-color !optional;
+}
+.ac-bg_color-theme-color, .paint-accent-bg{
+  @extend %theme-bg !optional;
+  color: $white;
+}
+
+.ac-button.ac-bg_color-white{
+   background: $white;
+   border-color: $white;
+}
+div.l-page {
+  // Acquia colors, Background colors and Border colors
+ .ac-color-white{
+   /** Blue color **/
+   color: $white;
+ }
+ .ac-bg_color-white{
+   /** Blue BG **/
+   //@extend %theme-active-color !optional;
+   background: $white;
+ }
+ .ac-border_color-grey{
+   /** Blue Border Color **/
+   border-color: $grey;
+ }
+ .ac-border_color-black{
+   /** Blue Border Color **/
+   border-color: $black;
+ }
+ .ac-border_color-silver{
+   /** Blue Border Color **/
+   //border-color: $silver;
+   border-color: #E4E4E4;
+ }
+ .ac-border_color-white{
+   /** Blue Border Color **/
+   border-color: $white;
+ }
+ .ac-color-blue{
+   /** Blue BG **/
+   color: $blue;
+ }
+ .ac-bg_color-blue{
+   /** Blue **/
+   background-color: $blue;
+ }
+ .ac-border_color-blue{
+   /** Blue Border Color **/
+   border-color: $blue;
+ }
+ 
+  .ac-bg_color-red{
+    /** Red BG **/
+    background-color: $red;
+  }
+  .ac-color-red{
+    /** Red Color **/
+    color: $red;
+  }
+  .ac-border_color-red{
+    /** Red Border Color **/
+    border-color: $red;
+  }
+  // Orange
+  .ac-bg_color-orange {
+    /** Orange BG **/
+    background-color: $orange;
+  }
+  .ac-color-orange{
+    /** Orange Color **/
+    color: $orange;
+  }
+  .ac-border_color-orange{
+    /** Orange Border Color **/
+    border-color: $orange;
+  }
+  // Aqua
+  .ac-bg_color-aqua {
+    /** Aqua BG **/
+    background-color: $aqua;
+  }
+  .ac-color-aqua{
+    /** Aqua Color **/
+    color: $aqua;
+  }
+  .ac-border_color-aqua{
+    /** Aqua Border Color **/
+    border-color: $aqua;
+  }
+  // Green
+  .ac-bg_color-green {
+    /** Green BG **/
+    background-color: $green;
+  }
+  .ac-color-green{
+    /** Green Color **/
+    color: $green;
+  }
+  .ac-border_color-green{
+    /** Green Border Color **/
+    border-color: $green;
+  }
+  // Teal
+  .ac-bg_color-teal {
+    /** Teal BG **/
+    background-color: $teal;
+  }
+  .ac-color-teal{
+    /** Teal Color **/
+    color: $teal;
+  }
+  .ac-border_color-teal{
+    /** Teal Border Color **/
+    border-color: $teal;
+  }
+  // Purple
+  .ac-bg_color-purple {
+    /** Purple BG **/
+    background-color: $purple;
+  }
+  .ac-color-purple{
+    /** Purple Color **/
+    color: $purple;
+  }
+  .ac-border_color-purple{
+    /** Purple Border Color **/
+    border-color: $purple;
+  }
+  // Pink
+  .ac-bg_color-pink {
+    /** Pink BG **/
+    background-color: $pink;
+  }
+  .ac-color-pink{
+    /** Pink Color **/
+    color: $pink;
+  }
+  .ac-border_color-pink{
+    /** Pink Border Color **/
+    border-color: $pink;
+  }
+  // Silver
+  
+ .ac-bg_color-silver {
+   /** Silver BG **/
+   background-color: $silver;
+ }
+ .ac-color-silver{
+   /** Silver Color **/
+   color: $silver;
+ }
+ .ac-bg_color-grey {
+   /** Grey BG **/
+   background-color: $grey;
+ }
+ .ac-color-grey{
+   /** Grey Color **/
+   color: $grey;
+ }
+ .ac-bg_color-black {
+   /** Black BG **/
+   background-color: $black;
+   border-color: $black;
+ }
+ .ac-color-black{
+   /** Black Color **/
+   color: $black;
+ }
+}

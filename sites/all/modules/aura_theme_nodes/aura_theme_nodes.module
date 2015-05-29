@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the aura theme nodes feature.
+ */
+
+include_once 'aura_theme_nodes.features.inc';

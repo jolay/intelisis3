@@ -1,0 +1,59 @@
+/** popUp
+--------------------------------------------------*/
+.mfp-container button.mfp-close{
+ @extend %x-large-circled;
+ @extend %medium-boxed;
+ @extend %high-opacity;
+ font-weight: 100!important;
+ background-color: rgba($black, 0.5);
+ padding: 0;
+ top:5px;
+ margin: 0;
+ @include position(right, 0);
+ text-align: center;
+ &:hover{
+  cursor: pointer;
+	@extend %full-opacity;
+ }
+}
+
+.mfp-title{
+ color: $white;
+ small{
+  @extend p;
+ }
+}
+
+.mfp-content,
+.mfp-wrap.mfp-ready .mfp-content{
+	-webkit-animation-name: fadeIn;
+	-moz-animation-name: fadeIn;
+	-o-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+
+.mfp-wrap.mfp-removing .mfp-content {
+   @extend %no-opacity;
+   @include transition(all 0.3s ease-in-out 0s);
+}
+
+body .mfp-img{
+   padding-bottom: 0;
+}
+body .mfp-bottom-bar{
+   margin-top: 5px
+}
+
+.mpf-arrow{
+	 @extend %nav-prevnext;
+	 background-color: $white;
+	 &.mpf-left{
+		 @extend %light-nav-prev;
+	 }
+	 &.mpf-right {
+		 @extend %light-nav-next;
+	 }
+}
+body .mpf-arrow{
+	 background-color: $white;
+}

@@ -1,0 +1,508 @@
+/** Icon Box Shortcode
+-----------------------------------*/
+.ac-iconbox{
+  @extend %relative-position;
+  @extend %full-border-radius !optional;
+  // Sizes
+  &.ac-size-tiny{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($tiny-unit + ($tiny-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($tiny-unit + ($tiny-margin*2) + $medium-space, 'padding');
+    }
+  }
+  &.ac-size-small{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($small-unit + ($small-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($small-unit + ($small-margin*2) + $medium-space, 'padding');
+    }
+  }
+  &,&.ac-size-medium{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($medium-unit + ($medium-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($medium-unit + ($medium-margin*2) + $medium-space, 'padding');
+    }
+  }
+  &.ac-size-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($large-unit + ($large-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($large-unit + ($large-margin*2) + $medium-space, 'padding');
+    }
+  }
+  &.ac-size-x-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($x-large-unit + ($x-large-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($x-large-unit + ($x-large-margin*2) + $medium-space, 'padding');
+    }
+  }
+  &.ac-size-xx-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($xx-large-unit + ($xx-large-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($xx-large-unit + ($xx-large-margin*2) + $medium-space, 'padding');
+    }
+    .icon-wrap{
+      margin-bottom: $large-space;
+    }
+  }
+  &.ac-size-xxx-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($xxx-large-unit + ($xxx-large-margin*2) + $medium-space, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($xxx-large-unit + ($xxx-large-margin*2) + $medium-space, 'padding');
+    }
+    .icon-wrap{
+      margin-bottom: $medium-space *2;
+    }
+  }
+  .text-icon{
+    font-weight: 500
+  }
+  .icon-wrap{
+    margin-bottom: $medium-space
+  }
+  
+}
+
+// Simple - Subtle Style Icon Box
+.ac-iconbox.ac-type-simple{
+  border: 0;
+  //padding: $medium-space;
+  background: transparent!important;
+  &.ac-border_type-circled{
+    .ac-iconbox-icon{
+      border-width: 2px;
+    }
+  }
+  &.ac-icon_position-left,
+  &.ac-icon_position-right{
+    .ac-iconbox-title{
+      margin-top: 0;
+    }
+  }
+  &.ac-icon_position-left{
+    .icon-wrap{
+      @extend %left-float;
+    }
+    .ac-iconbox-content-wrap{
+    }
+  }
+  &.ac-icon_position-right{
+    .ac-iconbox-content-wrap{
+      @extend %right-align;
+    }
+    .icon-wrap{
+      @extend %right-float;
+    }
+  }
+  &.ac-icon_position-center{
+    text-align: center;
+  }
+  .ac-iconbox-icon{
+    display: inline-block;
+    vertical-align: top;
+    @extend %bordered-box;
+    @extend %theme-active-color !optional;
+    .text-icon, .font-icon{
+      @extend %boxed-icon;
+    }
+    a, .font-icon:before{
+      color: inherit;
+    }
+  }
+}
+
+.ac-type-simple .ac-iconbox-icon{
+    @extend %theme-border-color !optional;
+    background: transparent
+}
+
+// Simple - Subtle Style Icon Box
+.ac-iconbox.ac-type-full{
+  .ac-iconbox-icon{
+    //@extend %theme-bg !optional;
+    border: 0;
+    *{
+      color: $white!important;
+    }
+  }
+  .ac-iconbox-title{
+    //text-transform: capitalize;
+  }
+}
+
+// Inline With text
+.ac-iconbox.ac-type-inline{
+  &.ac-icon_position-center{
+    @extend %center-align;
+  }
+  &.ac-icon_position-right{
+    @extend %right-align;
+    .ac-iconbox-icon{
+      @extend %right-float;
+      margin: 0 0 0 $small-space/2;
+    }
+  }
+  .ac-iconbox-icon{
+    display: inline-block;
+    margin: 0 $small-space/2 0 0;
+    background: transparent;
+  }
+  .font-icon{
+    display: block
+  }
+  .icon-title{
+    @include left-space($medium-space, margin);
+  }
+}
+
+.ac-iconbox.ac-type-inline,
+.ac-iconbox.ac-type-boxed-inline{
+  .ac-iconbox-title{
+    margin: 0 0 $medium-space;
+    >span{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .ac-iconbox-icon{
+    background: transparent;
+     @include right-space(20px, margin);
+    .font-icon{
+      margin: 0;
+      display: block;
+    }
+  }
+  .ac-iconbox-content-wrap{
+    padding: 0!important;
+  }
+}
+
+
+%icon-box-fancy{
+  @extend %body-bg-color !optional;
+  @extend %full-border-radius !optional;
+  padding: 40px 30px;
+  .ac-iconbox-content-wrap{
+    :last-child{
+      margin-bottom: 0
+    }
+  }
+}
+
+.ac-iconbox.ac-type-boxed-simple{
+  @extend %center-align;
+  @extend %icon-box-fancy;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  &:hover .ac-iconbox-icon{
+    @extend %fancy-shadow-hover;
+  }
+  .ac-iconbox-icon{
+    @extend %theme-bg !optional;
+    display: inline-block;
+    vertical-align: top;
+    @extend %fancy-shadow;
+    .font-icon{
+      @extend %boxed-icon;
+      color: $white;
+    }
+  }
+}
+
+// Inline With text
+.ac-iconbox.ac-type-boxed-inline{
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @extend %icon-box-fancy;
+}
+
+// Fancy Icon Box
+.ac-iconbox.ac-type-boxed-fancy{
+  @extend %icon-box-fancy;
+  @extend %bordered-box;
+  &.ac-size-small{
+    margin-top: $small-unit;
+    padding-top: $small-unit;
+    .ac-iconbox-icon {
+      top: -$small-unit;
+    }
+  }
+  &.ac-size-medium{
+    margin-top: $medium-unit;
+    padding-top: $medium-unit;
+    .ac-iconbox-icon {
+      top: -$medium-unit;
+    }
+  }
+  &.ac-size-large{
+    margin-top: $large-unit;
+    padding-top: $large-unit;
+    .ac-iconbox-icon {
+      top: -$large-unit;
+    }
+  }
+  &.ac-size-x-large{
+    margin-top: $x-large-unit;
+    padding-top: $x-large-unit;
+    .ac-iconbox-icon {
+      top: -$x-large-unit;
+    }
+  }
+  &.ac-size-xx-large{
+    margin-top: $xx-large-unit;
+    padding-top: $xx-large-unit;
+    .ac-iconbox-icon {
+      top: -$xx-large-unit;
+    }
+  }
+  &.ac-icon_position-left {
+    .ac-iconbox-icon{
+      left: 30px;
+    }
+    .ac-iconbox-content-wrap{
+      @extend %right-align;
+    }
+  }
+  &.ac-icon_position-center {
+    .ac-iconbox-icon {
+      left: 50%;
+      margin-left: -30px;
+    }
+    .ac-iconbox-content-wrap{
+      @extend %center-align;
+    }
+  }
+  &.ac-icon_position-right {
+    .ac-iconbox-icon{
+      @include position('right', 30px);
+    }
+  }
+  .ac-iconbox-icon{
+    @extend %theme-bg !optional;
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    .font-icon{
+      @extend %boxed-icon;
+      color: $white;
+    }
+  }
+}
+
+.ac-iconbox.ac-type-boxed-animated,
+.ac-iconbox.ac-type-boxed-simple,
+.ac-iconbox.ac-type-boxed-fancy{
+  .ac-iconbox-title{
+    margin-top: $large-space;
+  }
+  h5.ac-iconbox-title{
+    text-transform: capitalize!important;
+    margin-bottom: 10px;
+  }
+}
+
+// Image Icon Box
+.ac-iconbox.ac-iconbox-img{
+  .ac-iconbox-icon{
+    @include box-shadow(none);
+    background: transparent!important;
+    overflow: hidden;
+    border: 0;
+    img{
+      margin: 1px
+    }
+  }
+  &.ac-icon_position-left{
+      .ac-iconbox-content-wrap{
+        @include left-space(20px, margin);
+      }
+  }
+  &.ac-size-medium{
+    .ac-iconbox-icon{
+      width: $medium-unit*2;
+    }
+  }
+  &.ac-size-large{
+    .ac-iconbox-icon{
+      width: $large-unit*2;
+    }
+  }
+  &.ac-size-x-large{
+    .ac-iconbox-icon{
+      width: $x-large-unit*2;
+    }
+  }
+  &.ac-size-xx-large{
+    .ac-iconbox-icon{
+      width: $xx-large-unit*2;
+    }
+  }
+  &.ac-size-xxx-large{
+    .ac-iconbox-icon{
+      width: $xxx-large-unit*2;
+    }
+  }
+}
+
+// inline seperated iconbox
+.ac-iconbox.ac-type-inline-sep{
+  @extend .ac-iconbox.ac-type-simple;
+  &.ac-size-tiny{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($tiny-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($tiny-unit, 'padding');
+    }
+  }
+  &.ac-size-small{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($small-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($small-unit, 'padding');
+    }
+  }
+  &,&.ac-size-medium{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($medium-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($medium-unit, 'padding');
+    }
+  }
+  &.ac-size-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($large-margin + 10px, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($large-margin + 10px, 'padding');
+    }
+  }
+  &.ac-size-x-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($x-large-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($x-large-unit, 'padding');
+    }
+  }
+  &.ac-size-xx-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($xx-large-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($xx-large-unit, 'padding');
+    }
+  }
+  &.ac-size-xxx-large{
+    &.ac-icon_position-left .ac-iconbox-content-wrap{
+      @include left-space($xxx-large-unit, 'padding');
+    }
+    &.ac-icon_position-right .ac-iconbox-content-wrap{
+      @include right-space($xxx-large-unit, 'padding');
+    }
+  }
+  .ac-iconbox-icon{
+    border: none;
+    background: transparent;
+    margin-top: 5px;
+    .font-icon{
+      margin: 0;
+    }
+  }
+  &.ac-icon_position-left .ac-iconbox-content-wrap{
+    @include left-space($medium-space, 'margin');
+  }
+}
+
+// border types
+.ac-iconbox.ac-border_type-circled{
+  .ac-iconbox-icon, .ac-iconbox-icon img{
+    @extend %x-large-circled;
+  }
+}
+.ac-iconbox.ac-border_type-rounded{
+  .ac-iconbox-icon, .ac-iconbox-icon img{
+    @extend %full-border-radius !optional;
+  }
+}
+.ac-iconbox.ac-border_type-square{
+  .ac-iconbox-icon, .ac-iconbox-icon img{
+    @extend %square-border;
+  }
+}
+// Animated iconbox
+.ac-type-boxed-animated{
+  height: 246px;
+  position: relative;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  @extend %center-align;
+  &:hover {
+    .ac-front {
+    z-index: 900;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    }
+    .ac-back {
+      z-index: 1000;
+      -webkit-transform: rotateX(0deg) rotateY(0deg);
+      -moz-transform: rotateX(0deg) rotateY(0deg);
+    }
+  }
+  .ac-front, .ac-back{
+    @extend %default-anim;
+    @extend %full-border-radius !optional;
+    @extend %bordered-box;
+    border-color: $light-grey;
+    padding: $medium-space;
+    background: $white;
+    height: inherit;
+  }
+  // front
+  .ac-front{
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    .ac-iconbox-icon{
+      @extend %theme-bg !optional;
+      display: inline-block;
+      vertical-align: top;
+      padding: 5px;
+    }
+    .font-icon{
+      @extend %boxed-icon;
+      color: $white;
+    }
+  }
+  .ac-back{
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+  }
+  p{
+    @extend %sub-color !optional;
+  }
+}

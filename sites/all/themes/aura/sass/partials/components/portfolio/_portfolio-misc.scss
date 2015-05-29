@@ -1,0 +1,898 @@
+/** Porfolio - Misc
+-----------------------------------*/
+ .meta.date-tags{
+    .category{
+      display: inline-block;
+    }
+ }
+ 
+$glow-circled-margin: 8px;
+$bordered-glow-margin: 13px;
+ 
+ /** Global Portfolio */
+.ac-portfolio{
+	 &.ac-no-i-space{
+			>.s-i{
+				 padding: 0;
+			}
+	 }
+  ul{
+    @extend %no-list-style;
+    clear: both;
+    .ac-col{
+        @extend %no-margin-padding;
+    }
+  }
+  .excerpt{
+      margin-bottom: $small-space;
+  }
+	article.item-i{
+			@extend %center-align;
+			.overlaid-portfolio{
+				 @extend %left-align;
+			}
+	}
+}
+ /** scroller **/
+ .ac-portfolio .ac-appearance-scroller{
+	 cursor: pointer;
+	 .overlaid-portfolio{
+			display: block;
+	 }
+	 .excerpt{
+			color: #6D6D6D;
+	 }
+ }
+
+ /** Grid **/
+ .ac-portfolio .ac-appearance-grid{
+  .overlaid-portfolio{
+			display: block;
+  }
+}
+
+/** Masonry **/
+ .ac-portfolio .ac-appearance-masonry{
+  height: 100%;
+  padding: 0;
+  .overlaid-portfolio{
+    display: block;
+  }
+}
+
+/** SLider **/
+.ac-portfolio.ac-slider{
+	 .flex-control-nav{
+			bottom: $medium-space;
+			z-index: 2;
+	 }
+}
+.ac-portfolio .ac-appearance-slider{
+	 margin: 0!important;
+   li{
+      position: relative;
+   }
+   .item-i{
+      padding: 0;
+   }
+   img{
+      width: 100%;
+   }
+   .o-content{
+      background: rgba(#000, .45);
+      position: absolute;
+      width: 50%;
+      top: 0;
+      bottom: 0;
+      @include position(left, 0);
+      .o-info{
+         padding: $large-space;
+      }
+			.title{
+				 @extend %title-cap-style !optional;
+			}
+			.title a{
+				 color: $white;
+				 &:hover{
+						@extend %theme-active-color !optional;
+				 }
+			}
+   }
+	 .meta, .meta a, .excerpt{
+			color: #eee
+	 }
+   .excerpt{
+      @extend %x-small-font;
+   }
+	 &.ac-framed-rounded_borders{
+			.o-content{
+				 margin: 13px;
+			}
+	 }
+	 .s-i{
+			padding: 0
+	 }
+	 .ac-media{
+			display: block;
+	 }
+ }
+ 
+.flexslider.ac-thumb-slider{
+   li.ac-col{
+      position: relative;
+      display: none !important;
+      &.flex-active-slide{
+         display: block!important
+      }
+   }
+}
+
+.p-items.ac-appearance-thumb{
+	 /** Portfolio - Thumb Appearance **/
+	 margin: 0;
+	 .ac-col{
+			width: 33.3333%;
+			display: inline-block;
+			clear: none;
+	 }
+}
+/** Filter **/
+
+.filter {
+  margin: 0;
+	.ac-portfolio &{
+			margin: $medium-space 0 ($medium-space*2);
+	}
+	.pager-o &{
+			margin-bottom: 0
+	}
+  ul.ac-tabs-tabs li.last{
+    @include right-space(0, 'margin');
+  }
+  &.no-sep-style{
+    @extend %no-border;
+    .ac-tabs-tabs{
+      @extend %full-border-radius !optional;
+      @extend %bordered-box;
+      @extend %content-divider-color !optional;
+    }
+  }
+  &.fancy-style.no-sep-style .ac-tabs-tabs li{
+    &.first{
+      border-left: 0;
+      margin-left: 0;
+			@include border-radius($border-radius 0 0 $border-radius);
+    }
+    &.last{
+      border-right: 0;
+      margin-right: 0;
+			@include border-radius(0 $border-radius $border-radius 0);
+    }
+  }
+}
+.filter .ac-tabs-tabs{
+  display: table;
+  li{
+  }
+}
+
+.ex-sortings{
+  @extend %left-float;
+  a{
+    display: inline-block!important;
+    vertical-align: top;
+  }
+  .filter & .ac-tabs-tabs a.active{
+    @extend %theme-active-color !optional;
+  }
+}
+
+.ac-switch{
+  @extend %relative-position;
+  @extend %theme-bg-color !optional;
+  display: inline-block;
+  width: 32px;
+  height: 16px;
+  margin: 12px 7px 0 3px;
+  cursor: pointer;
+  &.right-active:before {
+    left: 18px;
+  }
+  &,&:before{
+    @include border-radius(8px);
+  }
+  &:before{
+    @extend %default-anim;
+		@extend %body-bg-color !optional;
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    content: "";
+  }
+}
+
+.fancy-style .ac-switch{
+  @extend %body-bg-color !optional;
+  border: 1px solid rgba(0,0,0,.1);
+  &:before{
+    @extend %theme-bg-color !optional;
+  }
+}
+
+.ac-portfolio{
+	 .ac-framed-circled,
+	 .ac-framed-glow_circled_border,
+	 .ac-framed-silver {
+		 .ac-f{
+			 margin: $bordered-glow-margin;
+		 }
+	 }
+	 
+	 .ac-framed-bottomshadow {
+		 .media-i{
+			 margin-bottom: ($bordered-glow-margin + 5px);
+		 }
+		 .ac-f{
+				 bottom: ($bordered-glow-margin + 5px)
+		 }
+	 }
+	 
+	 .ac-framed-circled,
+	 .ac-framed-circled_simple,
+	 .ac-framed-glow_circled_border,
+	 .ac-framed-glow_circled{
+			.o-content, .ac-f{
+				 @extend %x-large-circled;
+			}
+			.o-info{
+			 @extend %center-align;
+		 }
+	 }
+		 
+	 .ac-framed-glow_circled{
+			.ac-f{
+				 margin: $glow-circled-margin
+			}
+	 }
+}
+// overlaid center
+.p-items.ac-view-overlaid-center {
+	 &.ac-framed-none{
+			 .o-content{
+				 left: 0;
+				 right: 0;
+				 bottom: 0;
+				 top: 0;
+			 }
+	 }
+	 &.ac-framed-glow_circled{
+			 .o-content{
+				 margin: -4px;
+			 }
+	 }
+	 &.ac-framed-glow_circled_border{
+			 .o-content{
+				 margin: 1px;
+			 }
+	 }
+	 &.ac-framed-bottomshadow {
+			 .o-content{
+				 margin: (-$bordered-glow-margin) (-$bordered-glow-margin) (18px-$bordered-glow-margin);
+			 }
+	 }
+	 .overlaid-portfolio:hover{
+			figure{
+				 @extend %grayscale-img;
+			}
+	 }
+	 .ac-f{
+		 margin: 0;
+	 }
+	 .o-content{
+			left:  $bordered-glow-margin;
+			right:  $bordered-glow-margin;
+			top:  $bordered-glow-margin;
+			bottom:  $bordered-glow-margin;
+			width: auto;
+			height: auto;
+	 }
+}
+
+// Portfolio item View - Simple Sep 
+.p-items.ac-view-simple-sep{
+  // Media
+  figure{
+    position: relative;
+  }
+  .o-info{
+	 @extend %left-align;
+    padding: $medium-space 0 $small-space;
+  }
+	&.ac-framed-bottomshadow{
+			.o-info{
+				 padding-top: 0;
+			}
+	}
+	&.ac-framed-simple-bordered,
+	&.ac-framed-bordered{
+			figure{
+				 margin: 0;
+			}
+			.item-i{
+				 border-style: solid;
+				 border-width: 1px;
+			}
+			.media-i{
+				 padding: 0;
+				 border: 0;
+				 margin: 0;
+			}
+	}
+	&.ac-framed-bordered{
+			.ac-frame-on:hover{
+				 .ac-f{
+						@extend %full-opacity;
+				 }
+			}
+			figure{
+				 margin: ($medium-space/2) ($medium-space/2) 0;
+			}
+			.o-info{
+				 padding: $small-space
+			}
+	}
+  &.ac-framed-circled article.item-i{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+		padding: 20px;
+  }
+}
+
+.p-items.ac-view-simple-bordered{
+	 .item-i{
+			@extend %bordered-box;
+			@extend %content-divider-color !optional;
+			@extend %full-edge-hard-bottom-circled-border;
+	 }
+	 .o-info{
+			padding: 10px 20px
+	 }
+}
+
+.ac-view-simple-sep, 
+.ac-view-fade-in-bottom, 
+.ac-view-simple-bordered{
+  .title{
+			@extend %title-cap-style !optional;
+  } 
+}
+/*.o-content{
+  top: 0;
+  height: 100%;
+}*/
+
+// Portfolio item View - dribbble
+.p-items.ac-view-dribbble{
+   &.ac-cols-4,
+   &.ac-cols-5,
+   &.ac-cols-6{
+      .title{
+        @extend %x-small-font;
+      }
+      .excerpt, .date{
+         font-size: 11px;
+         line-height: 1.4;
+      }
+      .date{
+        @extend %header-font !optional;
+      }
+   }
+   &.ac-cols-5,
+   &.ac-cols-6{
+			.excerpt{
+				 display: none;
+			}
+	 }
+   .ac-f{
+      @extend %left-align;
+      background: $white;
+      background: rgba(white, 0.96);
+      padding: 10px;
+   }
+   .meta{
+      margin: 2px 0 0;
+   }
+	 .title{
+			@extend %header-color;
+	 }
+   footer{
+      @extend %right-align;
+      @extend %clearfix;
+			height: 24px;
+			line-height: 24px;
+			>*{
+				 @extend %right-float;
+				 @include left-space($medium-space/2, margin);
+			}
+			a{
+				 color: #CACACA!important;
+				 font-weight: 300;
+				 &:hover{
+						color: #333!important;
+				 }
+			}
+      a{
+				 background: transparent;
+				 vertical-align: middle;
+				 display: inline-block;
+				 margin: 0;
+				 padding: 0;
+         @extend %no-border;
+         @extend %no-box-shadow;
+         &:hover{
+						@extend %body-color !optional;
+         }
+      }
+      .linked{
+         display: none;
+      }
+      i, b{
+         &:before{
+            margin: 0;
+            @include right-space(2px, margin);
+         }
+      }
+      .like-icon:before{
+         content: '\e882';
+         width: auto;
+      }
+      .icon-eye{
+         margin-right: 4px;
+				 font-size: 120%
+      }
+   }
+   figure{
+      position: relative;
+      overflow: hidden;
+   }
+   > li > .item-i{
+      @extend %full-border-radius !optional;
+      @extend %bordered-box;
+      @extend %content-divider-color !optional;
+      padding: 10px 10px 3px;
+   }
+   .date{
+			@extend %header-color;
+			font-weight: normal;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+   }
+	 b.likes{
+			display: none;
+	 }
+	 .like-count{
+			span{
+				 display: none;
+			}
+			&:before{
+				 display: inline-block;
+				 width: 13px;
+				 height: 13px;
+				 line-height: 13px;
+				 @extend %ac-font-fontello;
+				 content: '\e882';// icon-heart
+				 font-size: 16px;
+				 margin-right: 5px;
+			}
+	 }
+}
+
+%overlaid-portfolio-default-style{
+  // Container
+  .overlaid-portfolio{
+	 max-width: 100%;
+    &:hover{
+      .overlay{
+        @extend %full-opacity;
+      }
+    }
+  }
+  
+  // Image
+  figure{
+    overflow: hidden;
+  }
+  
+  // overlaid
+  .overlay{
+    @extend %overlaid-style;
+    @extend %overlay-bg;
+    @extend %no-opacity;
+    @extend %default-anim;
+    z-index: 2;
+  }
+  // Contents
+  .o-content{
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+  }
+  .ac-f{
+    position: relative;
+    background: transparent;
+  }
+}
+  
+// Portfolio item View - fade in bottom
+.ac-view-overlaid-gradient,
+.ac-view-overlaid-left,
+.ac-view-overlaid-center{
+  @extend %overlaid-portfolio-default-style;
+  // Container
+  .overlaid-portfolio{
+    overflow: hidden;
+    &:hover{
+      .o-content{
+        @extend %full-opacity;
+      }
+    }
+  }
+  .o-content{
+    @extend %overlaid-theme-color !optional;
+    @extend %default-anim;
+    @extend %no-opacity;
+    top: 0;
+    padding: $medium-space;
+    height: 100%;
+    @extend %left-align;
+    .sep{
+      border-color: $white;
+    }
+    a, time, .category, .excerpt{
+      color: $white !important
+    }
+    .excerpt{
+      @extend %x-small-font;
+    }
+  }
+  .meta{
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+  
+  .flag-like{
+    @extend %base-font-style !optional;
+    b{
+      font-size: 150%;
+    }
+  }
+}
+
+
+// Portfolio item View - overlaid-left
+.ac-view-dark-fade,
+.ac-view-overlaid-gradient,
+.ac-view-overlaid-center{
+  .title a:hover{
+    @extend %high-opacity;
+  }
+  .overlaid-portfolio{
+    &:hover{
+      .o-info{
+        @extend %full-opacity;
+        bottom: 0px;
+      }
+      .o-links{
+        @extend %full-opacity;
+        bottom: 0
+      }
+    }
+  }
+  .ac-f{
+    @extend %overlaid-style;
+  }
+  .ac-c.o-links{
+    @extend %no-opacity;
+    @extend %slow-anim;
+    width: 100%;
+    position: relative;
+    bottom: 20px;
+    display: block;
+  }
+  .o-info{
+    @extend %no-opacity;
+    @extend %slow-anim;
+    margin-top: $medium-space;
+    position: relative;
+    bottom: -15px;
+  }
+  &.ac-framed-silver{
+/*    .o-content{
+      width: auto;
+      height: auto;
+      left: 13px;
+      right: 13px;
+      top: 13px;
+      bottom: 13px;
+    }
+    .ac-f{
+      margin: 20px;
+    }*/
+  }
+}
+
+.ac-view-overlaid-left{
+  .flag{
+    @extend %left-float;
+  }
+	b.likes{
+	 display: none;
+	}
+}
+
+// Gradient
+.ac-view-overlaid-gradient{
+  .ac-f{
+    position: relative;
+    height: auto;
+  }
+  .o-content{
+    @extend %dark-gradient-box;
+    height: auto;
+    top: auto;
+    bottom:0;
+    text-align: center;
+		background-color: transparent!important
+  }
+}
+// Portfolio item View - fade in bottom
+.ac-view-fade-in-bottom{
+  @extend %overlaid-portfolio-default-style;
+	 .t-i{
+			overflow: hidden;
+	 }
+  .overlaid-portfolio{
+	 overflow: hidden;
+	 .title a{
+			color: #333
+	 }
+	 .meta a{
+			color: #919191;
+	 }
+    &:hover{
+      figure .ac-media{
+        @extend %flow-top-transform;
+      }
+      .o-info{
+        @extend %full-opacity;
+        @extend %full-height;
+        @include transition(transform 0.4s, opacity 0.1s);
+      }
+      .ac-f{
+        @extend %slow-anim;
+      }
+    }
+		.img-wrap{
+			overflow: visible;
+		}
+  }
+
+  // Image
+  .ac-media{
+    @extend %height-transform;
+  }
+  
+  .ac-f{
+    margin-bottom: $medium-space*2;
+    @extend %default-anim-fast;
+  }
+  
+  .o-content{
+    bottom: 0;
+    text-align: center;
+  }
+  .o-info{
+    @extend %no-opacity;
+    @extend %no-height;
+    @extend %height-transform;
+		@extend %body-bg-color !optional;
+    padding: ($small-space/2) $small-space;
+    text-align: center;
+  }
+  // frames
+  &.ac-framed-bordered .overlaid-portfolio:hover{
+    figure{
+      margin-top: 10px;
+    }
+  }
+}
+
+
+// Portfolio item View - fade in left
+.ac-view-fade-in-left{
+ .ac-f{
+    @extend %no-width;
+    background: rgba($white, .9);
+    right: auto;
+    @include transition(all 0.75s ease);
+  }
+  .overlaid-portfolio{
+    overflow: hidden;
+    &:hover .ac-f{
+      @extend %full-width;
+      right: 0;
+    }
+  }
+  .o-info{
+    margin: $small-space;
+		a:hover{
+			@extend %high-opacity;
+		}
+  }
+  .title{
+    font-weight: bold;
+    @include font-size(15px);
+    margin-bottom: 5px;
+		a{
+			color: $header-color;
+		}
+  }
+  .features{
+    position: relative;
+    display: block;
+    background: transparent;
+    width: 100%;
+		@if $use-less != 'TRUE' {
+			a{
+				background-color: rgba(#000, .2);
+			}
+		}
+  }
+	.meta, .meta a{
+			@extend %meta-color !optional
+	}
+  // media frames
+   &.ac-framed-circled{
+      .ac-f{
+         margin: 0!important;
+         width: 100%;
+         height: 100%;
+       }
+   }
+
+  &.ac-framed-glow_circled{
+    .o-info{
+      margin: $medium-space;
+    }
+  }
+	
+	&.ac-framed-bordered,
+  &.ac-framed-glow_circled_border {
+    .o-info,
+    .overlaid-portfolio .ac-f{
+      margin: $bordered-glow-margin;
+    }
+  }
+  &.ac-framed-bottomshadow{
+    .ac-f{
+      bottom: $medium-space
+    }
+    .media-i{
+      margin-bottom: $medium-space;
+    }
+  }
+}
+
+// Dark fade style
+.p-items.ac-view-dark-fade{
+	 .ac-f{
+			@extend %overlay-bg-hard;
+			width: auto;
+			height: auto;
+	 }
+	 a, *, a:hover{
+			color: $white!important;
+	 }
+	 .sep{
+			@extend %low-opacity;
+			border-color: $white
+	 }
+	 .ac-c.o-links{
+			bottom: 0;
+	 }
+	 &.ac-framed-glow_circled_border,
+	 &.ac-framed-glow_circled{
+			.ac-f{
+				 left: 5px;
+				 right: 5px;
+				 top: 5px;
+				 bottom: 5px;
+				 width: auto;
+				 height: auto;
+			}
+	 }
+	 &.ac-framed-glow_circled_border{
+			.ac-f{
+				 left: 12px;
+				 right: 12px;
+				 top: 12px;
+				 bottom: 12px;
+			}
+	 }
+	 .title{
+			margin-bottom: $small-space/3;
+	 }
+}
+/** Overlaid **/
+.overlaid-portfolio {
+  position: relative;
+  &{
+    display: inline-block;
+  }
+  .shadow{
+    position: relative;
+    clear: both;
+  }
+}
+
+.ac-portfolio{
+  .ac-framed-rounded_borders,
+  .ac-framed-bordered_glow,
+  .ac-framed-silver,
+  .ac-framed-glow_circled_border{
+    .item-i{
+      background: transparent
+    }
+  }
+
+  .ac-framed-dropshadow .ac-media{
+    margin: 0 2px 10px;
+  }
+  .ac-framed-rounded_borders,
+  .ac-framed-bordered_glow{
+    .o-info{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .ac-f{
+      margin: 13px;
+    }
+  }
+
+  .ac-framed-glow_circled_border,
+  .ac-framed-bordered_glow,
+  .ac-framed-silver{
+    .ac-media{
+    }
+  }
+
+}
+
+.ac-framed-bottomshadow{
+	 .title{
+			font-weight: 500
+	 }
+}
+
+// Mini slider
+.ac-min-slider{
+  .overlaid-portfolio &{
+    padding: 0;
+		.rslides_nav{
+			background-color: transparent;
+			@extend %no-box-shadow;
+		}
+    .rslides_tabs{
+      bottom: $large-space;
+      .rslides_here a{
+         border-color: $white;
+      }
+    }
+  }
+}

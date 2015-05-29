@@ -1,0 +1,66 @@
+/*[class*="span"] {
+    float: left;
+    min-height: 1px;
+    margin-left: 15px;
+    margin-right: 15px;
+    max-width: 100%;
+}
+
+// Tablet Devices
+@include at-breakpoint($mobile-portrait) {
+   .span12,.span11,.span10,.span9,.span8,.span7,.span6,.span5,.span4,.span3,.span2,.span1,.span-third,.span-twothirds,.span-bs-quarter,.span-bs-threequarter {
+       width: 100%;
+       margin-left: 0;
+       margin-right: 0;
+   }
+}
+
+// Tablet Screens
+@include at-breakpoint($tab) {
+    [class*="span"] {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    .span1  { width: ($tab-width - (30)) * (1/12)}
+    .span2  { width: ($tab-width - (30 * 5)) * (2/12)}
+    .span3  { width: ($tab-width - (30 * 3)) * (3/12)}
+    .span4  { width: ($tab-width - (30 * 2)) * (4/12)}
+    .span5  { width: ($tab-width - (30 * 1)) * (5/12)}
+    .span6  { width: ($tab-width - (30 * 1)) * (6/12);}
+    .span7  { width: ($tab-width - (30 * 1)) * (7/12);}
+    .span8  { width: ($tab-width - (30 * 1)) * (8/12);}
+    .span9  { width: ($tab-width - (30 * 1)) * (9/12);}
+    .span10 { width: ($tab-width - (30 * 1)) * (10/12);}
+    .span11 { width: ($tab-width - (30)) * (11/12);}
+    .span12{ width: $tab-width;}
+}
+// Big screens
+@include at-breakpoint($big-scr) {
+    .span1  { width: ($big-scr-width - (30)) * (1/12)}
+    .span2  { width: ($big-scr-width - (30 * 5)) * (2/12)}
+    .span3  { width: ($big-scr-width - (30 * 3)) * (3/12)}
+    .span4  { width: ($big-scr-width - (30 * 2)) * (4/12)}
+    .span5  { width: ($big-scr-width - (30 * 1)) * (5/12)}
+    .span6  { width: ($big-scr-width - (30 * 1)) * (6/12);}
+    .span7  { width: ($big-scr-width - (30 * 1)) * (7/12);}
+    .span8  { width: ($big-scr-width - (30 * 1)) * (8/12);}
+    .span9  { width: ($big-scr-width - (30 * 1)) * (9/12);}
+    .span10 { width: ($big-scr-width - (30 * 1)) * (10/12);}
+    .span11 { width: ($big-scr-width - (30)) * (11/12);}
+    .span12{ width: $big-scr-width;}
+}
+// Desktop
+@include at-breakpoint($desk) {
+    .span1  { width: ($desk-width - (30)) * (1/12)}
+    .span2  { width: ($desk-width - (30 * 5)) * (2/12)}
+    .span3  { width: ($desk-width - (30 * 3)) * (3/12)}
+    .span4  { width: ($desk-width - (30 * 2)) * (4/12)}
+    .span5  { width: ($desk-width - (30 * 1)) * (5/12)}
+    .span6  { width: ($desk-width - (30 * 1)) * (6/12);}
+    .span7  { width: ($desk-width - (30 * 1)) * (7/12);}
+    .span8  { width: ($desk-width - (30 * 1)) * (8/12);}
+    .span9  { width: ($desk-width - (30 * 1)) * (9/12);}
+    .span10 { width: ($desk-width - (30 * 1)) * (10/12);}
+    .span11 { width: ($desk-width - (30)) * (11/12);}
+    .span12{ width: $desk-width;}
+}*/

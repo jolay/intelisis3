@@ -1,0 +1,5 @@
+name = Intelisis insert Options
+description = Customizations for the Webform module using hook_form_FORM_ID_alter.
+core = 7.x
+package = Webform
+dependencies[] = webform

@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * Implementation of hook_webform_select_options_info() 
+ */
+
+
+function webform_intelisis_select_webform_select_options_info() {
+  $items = array();
+  
+  $items['cantidad_empleados'] = array(
+    'title' => t('Cantidad de Empleados'),
+    'options callback' => 'webform_intelisis_select_empleados'
+  );
+
+  $items['giro_empresa'] = array(
+    'title' => t('Giro de la Empresa'),
+    'options callback' => 'webform_intelisis_select_empresa'
+  );
+
+  $items['cargo_empresa'] = array(
+    'title' => t('Cargo dentro de la Empresa'),
+    'options callback' => 'webform_intelisis_select_cargo'
+  );
+  
+  $items['razon_evalua'] = array(
+    'title' => t('Razon por la que evalua'),
+    'options callback' => 'webform_intelisis_select_razon'
+  );  
+
+  return $items;
+}
+
+
+function  webform_intelisis_select_empleados() {
+  $empleados = array();
+  $empleados['1-50'] = '1-50';
+  $empleados['50-200'] = '50-200';
+  $empleados['200-500'] = '200-500';
+  $empleados['500+'] = '500+';
+  return $empleados;
+}
+
+function  webform_intelisis_select_empresa() {
+  $giro = array();
+  $giro['Comercio'] = 'Comercio';
+  $giro['Inmobiliaria'] = 'Inmobiliaria';
+  $giro['Manufactura'] = 'Manufactura';
+  $giro['Servicios Profesionales'] = 'Servicios Profesionales';
+  $giro['Salud'] = 'Salud';
+  $giro['Educación'] = 'Educación';
+  return $giro;
+}
+
+function  webform_intelisis_select_cargo() {
+  $cargo = array();
+  $cargo['Director'] = 'Director';
+  $cargo['Gerente Área'] = 'Gerente Área';
+  $cargo['Consultor externo'] = 'Consultor externo';
+  $cargo['Otro'] = 'Otro';  
+  return $cargo;
+}
+
+
+function  webform_intelisis_select_razon() {
+  $razon = array();
+  $razon ['Certificación'] = 'Certificación';
+  $razon ['Control de operaciones'] = 'Control de operaciones';
+  $razon ['Evaluación solicitada por dirección'] = 'Evaluación solicitada por dirección';
+  return $razon;
+}
+
+?>

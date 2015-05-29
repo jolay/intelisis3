@@ -1,0 +1,12 @@
+/** User Profile
+-----------------------------------*/
+.l-page {
+	.profile .user-picture{
+		@extend %left-float;
+	}
+	.user-profile-category{
+		h2{
+			font-size: 20px;
+		}
+	}
+}

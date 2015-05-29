@@ -1,0 +1,70 @@
+/* Topbar
+ -----------------------------------------*/
+.l-topbar{
+	@extend %bordered-box;
+	@extend %content-divider-color !optional;
+	@extend %sub-color !optional;
+	border-width: 0 0 1px;
+	padding: 10px 0;
+	position: relative;
+	z-index: 100;
+	> span{
+		@include position(left, 0);
+	}
+	.container-i{
+		//@extend %table;
+		width: 100%;
+	}
+	
+	.block{
+		display: table-cell;
+		vertical-align: middle;
+		width: 50%;
+	}
+	.acquia-share-links{
+		@extend %full-opacity;
+		li{
+			margin: 0;
+		}
+	}
+	// Topbar menu
+	.ac-menu{
+		.menu{
+			@extend %right-align;
+			ul{
+				@extend %left-align;
+			}
+		}
+	}
+}
+
+.l-region--topbar{
+	@extend %table;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.ac-topbar-contact-info{
+	li{
+		display: inline-block;
+		@include right-space($small-space, 'margin');
+	}
+}
+
+.l-topbar .ac-topbar-socials{
+	@include right-space(20px, margin);
+	ul{
+		@extend %right-float;
+	}
+	li a{
+		@extend %sub-color !optional;
+		border: 0;
+		@extend %high-opacity;
+		&:hover{
+			@extend %full-opacity;
+		  @extend %theme-active-color !optional;
+		  @extend %theme-border-color !optional;
+		}
+	}
+}

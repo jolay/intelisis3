@@ -1,0 +1,43 @@
+/** Acquia Hacks Styles
+--------------------------------------------------*/
+// small screens > X.
+@include at-breakpoint($tab-max) {
+  .l-page .ac-align-left, 
+  .l-page .ac-align-right{
+    float: none;
+    margin-right: 0;
+    margin-left: 0;
+    clear: both;
+  }
+  .ac-col{
+    width: 100%;
+    clear: both;
+  }
+}
+
+/** tablet view < X **/
+@include at-breakpoint($tab) {
+ .vc-row-inner{
+   margin: 0 -15px;
+   z-index: 1;
+   >.vc-column-inner{
+      z-index: 2
+   }
+   &:after{
+     content: "";
+     display: table;
+     clear: both;
+   }
+ }
+}
+
+@include at-breakpoint($tab) {
+ .ac-container-wrap, .ac-page-section-container, .vc-row-inner, .ac-grow{
+   margin: 0 -20px;
+   &:after{
+     content: "";
+     display: table;
+     clear: both;
+   }
+ }
+}

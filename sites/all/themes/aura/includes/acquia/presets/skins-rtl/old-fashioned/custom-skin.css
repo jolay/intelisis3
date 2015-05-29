@@ -1,0 +1,23 @@
+/*%header-box{
+	line-height: 92px;
+	height: 92px;
+}*/
+.l-topbar .block__content > .menu > li > a:hover, .l-topbar a:hover { color: white; text-decoration: underline; }
+
+.l-page .l-hero-light .page-title, .l-page .l-hero-light .subtitle { color: #acacac; }
+
+.ac-section-style-2 .ac-contact-style-compact .ac-font-icon-link { border: 0; background: rgba(0, 0, 0, 0.45); display: inline-block; }
+.ac-section-style-2 .ac-contact-style-compact .font-icon { color: white; }
+
+.ac-view-fade-in-bottom .title { font-weight: 500; }
+
+.ac-view-fade-in-left .features a { background-color: #d950c2; }
+.ac-view-fade-in-left .features a:hover { background-color: #E586D5; }
+
+.node__title, .title, .ac-iconbox.ac-type-boxed-animated .ac-iconbox-title, .ac-iconbox.ac-type-boxed-simple .ac-iconbox-title, .ac-iconbox.ac-type-boxed-fancy .ac-iconbox-title { color: #777777; }
+
+.meta { font-size: 14px; font-size: 1.07692rem; }
+
+.l-footer-wrapper .ac-contact-style-compact .ac-font-icon-link, .l-footer-wrapper .acquia-share-links .ac-font-icon-wrap a, .l-footer-wrapper .ac-twitter.ac-style-compact li:before { border-color: transparent; background: #DEDEDE; }
+
+.l-page .l-topbar .block__content > .menu > .sfHover > a { color: #fff; text-decoration: underline; }

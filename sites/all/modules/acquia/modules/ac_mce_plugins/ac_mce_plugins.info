@@ -1,0 +1,9 @@
+name = Acquia MCE Plugins
+core = 7.x
+description = "A wysiwyg editor extension including shortcode buttons of Acquia Themes."
+
+dependencies[] = ac_shortcode
+dependencies[] = wysiwyg
+
+package = AcquiaThemes
+

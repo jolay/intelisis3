@@ -1,0 +1,32 @@
+/* Sub Footer
+ -----------------------------------------*/
+.l-sub-footer-wrapper{
+  padding: $medium-space 0;
+  border-top: 1px solid;
+	 @if $use-less != 'TRUE' {
+      background-color: $sub-footer-bg-color;
+      color: $sub-footer-color;
+      border-top-color: $sub-footer-border-color;
+      a{
+        color: $sub-footer-a-color;
+        &:hover{
+          @extend %anchor-hover;
+        }
+      }
+	 }
+  p{
+   margin: 0;
+  }
+  section.block{
+    @extend %table-cell;
+    margin-bottom: 0;
+    padding: 0 $medium-space;
+  }
+  .l-region--sub-footer{
+    @extend %table;
+    width: 100%;
+  }
+  .ac-simple-menu-h .menu{
+    @extend %right-align;
+  }
+}

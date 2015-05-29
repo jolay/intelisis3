@@ -1,0 +1,577 @@
+<?php
+/**
+ * @file
+ *
+ * Acquia ubercart customization module
+ */
+@define('AC_PRODUCT_MN', 'product');
+@define('AC_PRODUCT_TAX_MN', 'catalog');
+@define('AC_PRODUCT_FIELD_IMAGES_MN', 'uc_product_image');
+@define('AC_UBERCART_ADMIN_PATH', ACQUIA_MENU_PATH . '/ac-ubercart');
+@define('AC_UBERCART_PRODUCT_TAGS_MN', 'product_tags');
+@define('AC_UBERCART_PRODUCT_TERM_PATH', 'product/tag');
+
+// path to product category
+@define('AC_UBERCART_PRODUCT_CATEGORY_VIEW_MN', 'ac_ubercart_product_by_category');
+
+// AJAX URL for ac_ubercart
+@define('AC_UBERCART_AJAX_URL', 'ac_ubercart/ajax');
+
+/* ***************************************** */
+/* INCLUDES                                  */
+/* ***************************************** */
+
+// theme functions
+require_once (dirname(__FILE__) . '/includes/theme.inc');
+
+// libs functions
+require_once (dirname(__FILE__) . '/includes/libs.inc');
+
+// styles functions
+require_once (dirname(__FILE__) . '/includes/styles.inc');
+ 
+/**
+ * Implements hook_init().
+ */
+function ac_ubercart_init() {
+
+	// Demo Version
+  if(in_array($_GET['q'], array('cart', 'cart/checkout')) && acquia_variable_get('demo_site')) {
+    $items = uc_cart_get_contents();
+    if(empty($items)) {
+      uc_cart_add_item(446, 1, NULL, NULL, FALSE);
+    }
+  }
+}
+
+/**
+ * Implements hook_menu()
+ *
+ */
+function ac_ubercart_menu() {
+	$items = array();
+	$module_path = drupal_get_path('module', 'ac_ubercart');
+
+	$items[AC_UBERCART_ADMIN_PATH] = array(
+		'title' => t('Acquia store'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('ac_store_settings'),
+		'access arguments' => array('administer acquia store'),
+		'file path' => $module_path . '/includes',
+		'file' => 'admin.inc',
+		'description' => t('Manage store'),
+	);
+
+	// if views is not enabled
+  $items[AC_UBERCART_PRODUCT_TERM_PATH .'/%taxonomy_term'] = array(
+    'title' => 'Taxonomy term',
+    'title callback' => 'taxonomy_term_title',
+    'title arguments' => array(2),
+    'page callback' => 'taxonomy_term_page',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'file' => 'taxonomy.pages.inc',
+		'file path' => drupal_get_path('module', 'taxonomy'),
+  );
+	
+	$items[AC_UBERCART_ADMIN_PATH . '/general'] = array(
+		'title' => t('General Settings'),
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('ac_store_settings'),
+		'access arguments' => array('administer acquia store'),
+		'file path' => $module_path . '/includes',
+		'file' => 'admin.inc',
+		'description' => t('Manage store'),
+		'type' => MENU_LOCAL_TASK,
+		'weight' => 2,
+	);
+	
+	// if views is not enabled
+  $items[AC_UBERCART_PRODUCT_TERM_PATH .'/%taxonomy_term'] = array(
+    'title' => 'Taxonomy term',
+    'title callback' => 'ac_ubercart_product_tags_title',
+    'title arguments' => array(2),
+    'page callback' => 'taxonomy_term_page',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'file' => 'taxonomy.pages.inc',
+		'file path' => drupal_get_path('module', 'taxonomy'),
+  );
+	
+  $items[AC_UBERCART_AJAX_URL] = array(
+    'title' => t("AJAX URL for acquia ubercart"),
+    'page callback' => 'ac_ubercart_ajax_callback',
+    'access arguments' => array('access content'),
+		//'page arguments' => array(4),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ac_ubercart_permission() {
+  return array(
+    'administer acquia store' => array(
+      'title' => t('administer acquia store settings'),
+    ),
+  );
+}
+
+/**
+ * @todo
+ */
+function ac_ubercart_ajax_callback() {
+	$output = &drupal_static(__FUNCTION__, null);
+	if (!isset($_POST['action'])) {
+		return;
+	}
+	switch($_POST['action']){
+		case 'ac_ubercart_update_images':
+			if (!isset($_POST['cols']) || !isset($_POST['fids'])) {
+				return;
+			}
+			acquia_include('media');
+			$style = variable_get('ac_ubercart_catalog_products_2_cols_style', '');
+			$images = array();
+			$cols = $_POST['cols'];
+			foreach((array)$_POST['fids'] as $fid) {
+				$images[$cols][] = array('fid' => $fid, 'src' => image_style_url($style, file_load($fid)->uri));
+			}
+			
+			
+			print drupal_json_encode(array(
+				'dimension' => acquia_get_image_style_dimension($style),
+				'images' => $images[$cols]));
+			break;
+	}
+}
+
+/**
+ * Title callback for term pages.
+ *
+ * @param $term
+ *   A term object.
+ *
+ * @return
+ *   The term name to be used as the page title.
+ */
+function ac_ubercart_product_tags_title($term) {
+  return isset($term->name)? $term->name : '';
+}
+
+
+/**
+ * Implementation of hook_entity_info_alter().
+ *
+ * Redirect any links to program taxonomy terms to their corresponding node page.
+ */
+function ac_ubercart_entity_info_alter(&$entity_info) {
+	if (isset($entity_info['taxonomy_term'])) {
+		$entity_info['taxonomy_term']['uri callback'] = 'ac_ubercart_taxonomy_term_uri';
+	}
+}
+
+/**
+ *
+ */
+function ac_ubercart_taxonomy_term_uri($term) {
+	if ($term->vocabulary_machine_name == AC_UBERCART_PRODUCT_TAGS_MN){
+		return array(
+			'path' => 'products/tag/' . $term->tid,
+		);
+	}else{
+		return array(
+			'path' => 'taxonomy/term/' . $term->tid,
+		);
+	}
+
+}
+
+/**
+ *
+ */
+function ac_ubercart_menu_alter(&$callbacks) {
+	$callbacks['catalog']['page callback'] = 'ac_ubercart_catalog_browse';
+}
+
+/**
+ * Shows the catalog page of the given category.
+ */
+function ac_ubercart_catalog_browse($tid = 0) {
+  $build = array();
+  //if ($terms = views_get_view('uc_catalog_terms')) {
+  //  $build['terms'] = array(
+  //    '#markup' => $terms->preview('default', array($tid)),
+  //  );
+  //}
+  
+  if ($tid == 0) {
+    $products = views_get_view('products');
+    $build['terms'] = array(
+      '#markup' => $products->preview('ac_ubercart_shop', array($tid)),
+    );
+  }else if ($products = views_get_view('uc_catalog')) {
+    $display = variable_get('uc_catalog_display', 'catalog_grid');
+    // Force the breadcrumb path to this page.
+    $products->override_path = 'catalog';
+		$products->args['cols'] = 2;
+    $build['products'] = array(
+      '#markup' => $products->execute_display($display, array($tid)),
+    );
+  }
+
+  return $build;
+}
+
+/**
+ * Shows the catalog page of the given category.
+ */
+function ac_product_product_browse($tid = 0) {
+  $build = array();
+  if ($terms = views_get_view(AC_UBERCART_PRODUCT_CATEGORY_VIEW_MN)) {
+    $build['terms'] = array(
+      '#markup' => $terms->preview('default', array($tid)),
+    );
+  }
+  if ($products = views_get_view('uc_catalog')) {
+    $display = variable_get('uc_catalog_display', 'catalog');
+    // Force the breadcrumb path to this page.
+    $products->override_path = 'catalog';
+    $build['products'] = array(
+      '#markup' => $products->execute_display($display, array($tid)),
+    );
+  }
+
+	//ac_ubercart_set_product_category_breadcrumb($tid);
+  //if ($products = views_get_view('uc_catalog')) {
+  //  $display = variable_get('uc_catalog_display', 'catalog');
+  //  // Force the breadcrumb path to this page.
+  //  $products->override_path = 'catalog';
+  //  $build['products'] = array(
+  //    '#markup' => $products->execute_display($display, array($tid)),
+  //  );
+  //}
+
+  return $build;
+}
+//
+///**
+// * Implements hook_node_view().
+// */
+//function ac_ubercart_set_product_category_breadcrumb($tid) {
+//  static $parents = array();
+//		$crumbs = array();
+//		if (variable_get('site_frontpage', 'node') != AC_UBERCART_PRODUCT_CATEGORY_PATH) {
+//			$crumbs[] = l(t('Home'), '');
+//		}
+//
+//		if ($term = taxonomy_get_parents($tid)) {
+//			$crumbs[] = l(t('Product Category'), AC_UBERCART_PRODUCT_CATEGORY_PATH);
+//			$used_tids = array();
+//return;
+//			if (!isset($parents[$term['tid']])) {
+//				$parents[$term['tid']] = taxonomy_get_parents_all($term['tid']);
+//			}
+//
+//			foreach (array_reverse($parents[$term['tid']]) as $parent) {
+//				if (!in_array($parent->tid, $used_tids)) {
+//					$crumbs[] = l($parent->name, uc_catalog_path($parent));
+//					$used_tids[] = $parent->tid;
+//				}
+//			}
+//		}
+//
+//		drupal_set_breadcrumb($crumbs);
+//}
+//
+///**
+// * Implementation of hook_entity_info_alter().
+// *
+// * Redirect any links to program taxonomy terms to their corresponding node page.
+// */
+//function ac_ubercart_entity_info_alter(&$entity_info) {
+//	if (isset($entity_info['taxonomy_term'])) {
+//		$entity_info['taxonomy_term']['uri callback'] = 'ac_ubercart_taxonomy_term_uri';
+//	}
+//}
+//
+//function ac_ubercart_taxonomy_term_uri($term) {
+//	if ($term->vocabulary_machine_name == 'product_tags'){
+//		return array(
+//			'path' => 'products/tag/' . $term->tid,
+//		);
+//	}else{
+//		return array(
+//			'path' => 'taxonomy/term/' . $term->tid,
+//		);
+//	}
+//
+//}
+
+/**
+ * Implementing hook_css_alter()
+ */
+function ac_ubercart_css_alter(&$css){
+ $override_path = drupal_get_path('module', 'ac_ubercart') . '/css';
+ 
+ // override fivestar css defenitions
+ $path = drupal_get_path('module', 'fivestar') .'/css/fivestar.css';
+ if (isset($css[$path])) {
+	 unset($css[$path]);
+ }
+ 
+ 	$path = drupal_get_path('module', 'uc_cart');
+	if (isset($css[$path . '/uc_cart.css'])) {
+		unset($css[$path . '/uc_cart.css']);
+	}
+	
+	if (isset($css[$path . '/uc_cart_block.css'])) {
+		unset($css[$path . '/uc_cart_block.css']);
+	}
+	
+	$path = drupal_get_path('module', 'uc_catalog');
+	if (isset($css[$path . '/uc_catalog.css'])) {
+		unset($css[$path . '/uc_catalog.css']);
+	}
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function ac_ubercart_block_info() {
+  $blocks = array();
+
+  $blocks['ac_cart'] = array(
+    'info' => t('Mini Shopping cart'),
+    'cache' => DRUPAL_NO_CACHE,
+    'pages' => 'admin*',
+  );
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function ac_ubercart_block_view($delta = '') {
+  global $user;
+
+  if ($delta == 'ac_cart') {
+		$module_path = drupal_get_path('module', 'ac_ubercart');
+		drupal_add_js($module_path . '/js/ac_ubercart.js');
+		
+    $product_count = count(uc_cart_get_contents());
+
+    // Display nothing if the block is set to hide on empty and there are no
+    // items in the cart.
+			$items = array();
+      $item_count = 0;
+      $total = 0;
+
+      if ($product_count) {
+        $display_items = entity_view('uc_cart_item', uc_cart_get_contents(), 'cart');
+        foreach (element_children($display_items['uc_cart_item']) as $key) {
+          $display_item = $display_items['uc_cart_item'][$key];
+
+          if (count(element_children($display_item))) {
+            $items[] = array(
+              'nid' => $display_item['nid']['#value'],
+              'qty' => theme('uc_qty', array('qty' => $display_item['qty']['#default_value'])),
+              'title' => $display_item['title']['#markup'],
+              'price' => $display_item['#total'],
+              'desc' => isset($display_item['description']['#markup']) ? $display_item['description']['#markup'] : FALSE,
+            );
+            $total += $display_item['#total'];
+            $item_count += $display_item['qty']['#default_value'];
+          }
+
+        }
+      }
+
+      // Build the item count text and cart links.
+      $item_text = format_plural($item_count, '<span class="num-items">1</span> Item', '<span class="num-items">@count</span> Items');
+
+      $summary_links = array(
+        'cart-block-view-cart' => array(
+          'title' => t('View cart'),
+          'href' => 'cart',
+          'attributes' => array('rel' => 'nofollow'),
+        ),
+      );
+
+      // Only add the checkout link if checkout is enabled.
+      if (variable_get('uc_checkout_enabled', TRUE)) {
+        $summary_links['cart-block-checkout'] = array(
+          'title' => t('Checkout'),
+          'href' => 'cart/checkout',
+          'attributes' => array('rel' => 'nofollow'),
+        );
+      }
+
+      $block['subject'] = '';
+      $block['content'] = '<div class="ac-mini-cart">';
+      $block['content'] .= l('<strong class="items paint-accent-bg ac-animate" data-anim-type="ac_appear">'.$product_count.'</strong><span class="font-icon icon-cart"></span>', 'cart', array(
+				'attributes' => array('class' => array('cart-toggle-btn')),
+				'html' => TRUE,
+				'absolute' => TRUE,
+			));
+			
+      $block['content'] .= '<div class="cart-i"><div class="cart-i-frame">';
+			if ($product_count) {
+				$block['content'] .= theme('uc_cart_block_content', array(
+					'items' => $items,
+					'item_count' => $item_count,
+					'item_text' => $item_text,
+					'total' => $total,
+					'summary_links' => $summary_links,
+					'collapsed' => FALSE
+				));
+			}else{
+				$block['content'] .= ac_ubercart_theme_uc_empty_cart();
+			}
+			$block['content'] .= '</div></div>';
+			$block['content'] .= '</div>';
+			return $block;
+  }
+}
+
+/*
+ * Implementation of hook_node_view().
+ */
+function ac_ubercart_node_view($node, $view_mode) {
+
+	if (arg(0) == 'catalog') {
+		$args = arg();
+		$context_mn = variable_get('ac_styles_node_' . AC_PRODUCT_MN .'_default_context', acquia_theme_get_settings("node_layout", "second-sidebar"));
+		$context = context_load($context_mn);
+		context_set('context', "context_node", $context);
+	}
+}
+
+
+function _ac_ubercart_count_cart_items($val) {
+  return is_array($val) && isset($val['nid']);
+}
+/**
+ * Implements hook_form_alter().
+ */
+function ac_ubercart_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id == 'uc_cart_view_form') {
+		
+    $items_count = count(array_filter($form['items'], '_ac_ubercart_count_cart_items'));
+    $form['items']['#weight'] = -10;
+    $form['items']['#prefix'] = '<h3 class="ac-margin-small">' . t('You have @num item' . ($items_count == 1 ? '' : 's') . ' in your cart', array('@num' => $items_count)) . '</h3>';
+    $form['items']['#columns']['remove']['weight'] = 6;
+    $form['items']['#columns']['remove']['cell'] = '';
+    $form['items']['#columns']['total']['weight'] = 5;
+    $form['items']['#columns']['qty']['weight'] = 4;
+    $form['items']['#columns']['qty']['cell'] = t('Quantity');
+    $form['items']['#columns']['desc']['cell'] = t('Product');
+    $form['items']['#columns']['price'] = array(
+      'cell' => t('Price'),
+			'class' => 'price',
+      'weight' => 3,
+    );
+    $form['items']['#columns']['image'] = array(
+      'cell' => '',
+      'class' => 'thumb',
+      'weight' => -1,
+    );
+
+    $form['actions']['checkout']['checkout']['#value'] = t('Proceed to Checkout') . ' →';
+    unset($form['actions']['continue_shopping']);
+		foreach($form['items']['#columns'] as $field=>&$data) {
+				$data['cell'] = array('data' => $data['cell'], 'class' => $field);
+		}
+  }
+	else if($form_id == 'uc_cart_checkout_form') {
+    foreach ($form['panes'] as $key => $pane) {
+      if (is_array($pane) && isset($pane['next'])) {
+        $form['panes'][$key]['next']['#attributes']['class'] = array('btn-primary');
+      }
+    }
+    //$form['actions']['continue']['#attributes']['class'] = array('btn-primary', 'btn-lg');
+  }	else if(strstr($form_id, 'uc_catalog_buy_it_now_form')) {
+		$form['actions']['submit']['#attributes']['class'][] = 'ac-simple-button';
+  }
+	
+}
+
+/**
+ * Implements hook_tapir_table_alter().
+ */
+function ac_ubercart_tapir_table_alter(&$table, $table_id) {
+  if ($table_id == 'uc_cart_view_table') {
+		acquia_include('utility', 'ac_ubercart');
+		$module_path = drupal_get_path('module', 'ac_ubercart');
+		drupal_add_js($module_path . '/js/ac_ubercart.js');
+		
+    foreach (element_children($table) as $key) {
+      if (!empty($table['#parameters'][1][$key]['nid'])) {
+        $node = node_load($table['#parameters'][1][$key]['nid']['#value']);
+        $table[$key]['price'] = array(
+          '#markup' => theme('uc_product_price',array('element' => array('#value' => $node->sell_price))),
+        );
+        $table[$key]['image'] = array(
+          '#markup' => ac_ubercart_get_cart_item_thumb($node),
+          '#attributes' => array('class' => array('thumb', 'product-thumb')),
+        );
+
+        $table[$key]['remove']['#value'] = decode_entities('&#xe88f;');
+        $table[$key]['qty']['#attributes']['class'] = array('qty', 'text', 'input-text');
+        $table[$key]['qty']['#prefix'] = '<div class="quantity"><a href="#" title="remove from cart" class="ac-button minus">-</a>';
+        $table[$key]['qty']['#suffix'] = '<a href="#" title="add to cart" class="ac-button plus">+</a>';
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_ac_shortcode_include_directory()
+ */
+function ac_ubercart_ac_shortcode_include_directory($plugin) {
+  if ($plugin == 'shortcodes') {
+    return 'shortcodes';
+  }
+}
+
+/**
+ * Implements hook_ac_shortcode_include_directory()
+ */
+function ac_ubercart_ac_composer_include_directory($plugin) {
+  if ($plugin == 'composer') {
+    return 'composer';
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ac_ubercart_views_pre_render(&$view) {
+	// load assets
+	if (in_array($view->name, array('products_taxonomy_term', 'products', 'uc_catalog'))) {
+		acquia_include('utility', 'ac_ubercart');
+		ac_ubercart_load_resources(array('products'));
+	}
+	
+	// load assets
+	if ($view->name == 'uc_catalog') {
+		$settings = array('ac_ubercart' => array('ajax_url' => url(AC_UBERCART_AJAX_URL)));
+		drupal_add_js($settings, 'setting');
+	}
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function ac_ubercart_form_comment_form_alter(&$form) {
+	// load assets
+	if (isset($form['field_rating'])) {
+		 $form['field_rating']['#weight'] = -100;
+	}
+}

@@ -1,0 +1,79 @@
+/** Fivestar module styles
+-----------------------------------*/
+/* Plain HTML Version */
+form.fivestar-widget {
+  clear: both;
+  display: block;
+}
+form.fivestar-widget select,
+form.fivestar-widget input {
+  margin: 0;
+}
+
+/* Combo Static and Rate Widget */
+.fivestar-combo-stars .fivestar-static-form-item {
+  float: left; /* RTL */
+  margin-right: 40px; /* RTL */
+  margin-left: 40px; /* RTL */
+}
+.fivestar-combo-stars .fivestar-static-item {
+  float: left; /* RTL */
+  margin-right: 40px; /* RTL */
+}
+
+.fivestar-combo-stars .fivestar-form-item {
+  float: left; /* RTL */
+}
+
+/* Fivestar form items */
+.fivestar-static-form-item .form-item,
+.fivestar-form-item .form-item {
+  margin: 0;
+}
+
+/* Javascript Star Version */
+.fivestar-widget-static,
+.fivestar-widget{
+  .by-js & input{
+    display: none;
+  }
+  .star{
+    display: inline-block;
+    margin-right: 1px;
+    position: relative;
+    width: 15px;
+    height: 24px;
+    color: rgba(#8A8D92, 0.4);
+    &:before{
+      @extend %ac-font-fontello;
+      content: '\e884';
+      display: block;
+      @include font-size(15px);
+    }
+    &.on,
+    &.hover{
+      &:before{
+        content: '\e885';
+      } 
+    }
+  }
+  a{
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-indent: -999em;
+  }
+}
+
+.form-type-fivestar{
+  .by-js &{
+    select,
+    .customSelect{
+      display: none;
+      visibility: hidden;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/** Acquia Position Styles
+--------------------------------------------------*/
+/** Align Elements **/
+
+
+
+.l-page{
+  .ac-align-left{
+    @extend %left-align;
+  }
+  .ac-align-center{
+    text-align: center;
+  }
+  .ac-align-right{
+    @extend %right-align;
+  }
+  .ac-float-right{
+    @extend %right-float;
+  }
+  .ac-float-left{
+    @extend %left-float;
+  } 
+}
+
+.no-padding{
+  @extend %no-padding;
+}
+
+.ac-linked{
+  cursor: pointer;
+}
+
+/** Position **/
+.ac-position-center{
+  @extend %no-float-block;
+  margin: 0 auto!important;
+  display: block;
+}
+
+.ac-position-right{
+   @extend %right-float;
+}
+
+.ac-position-left{
+   @extend %left-float;
+}
+
+.ac-full-container-width{
+  > .col-inner{
+    padding-left: 0;
+    padding-right: 0;
+  }
+/*  .caroufredsel_nav .prev{
+    left: 47px;
+  }*/
+  .ac-page-section-container{
+    margin: 0;
+    .ac-page-section-container{
+      margin: 0 -20px;
+    }
+  }
+}

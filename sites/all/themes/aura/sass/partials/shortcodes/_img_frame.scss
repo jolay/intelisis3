@@ -1,0 +1,353 @@
+/** Image Frame Shortcode
+-----------------------------------*/
+$glow-frame-margin: 3px;
+
+.ac-media{
+  @extend %relative-position;
+  @extend %inline-block-display;
+  vertical-align: top;
+  max-width: 100%;
+  &.ac-title-enabled{
+    b{
+      margin-top: -40px;
+    }
+    .i-t{
+      position: absolute;
+      top: 50%;
+      padding: 0 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: $white;
+      margin-top: $large-space
+    }
+  }
+  &.m-img{
+    .i-t span{
+      font-size: 90%;
+    }
+  }
+  &.ac-fluid-video{
+    @extend %no-float-block;
+    .media-i{
+      @extend %no-float-block;
+    }
+  }
+  p{
+    @extend %no-margin-padding;
+  }
+  &.ac-align-left{
+    @extend %left-float;
+    margin: 0 0 7px;
+    @include right-space($medium-space, 'padding');
+  }
+  &.ac-align-center{
+    clear: both;
+    display: block;
+    margin: 0 0 $medium-space/2;
+    .media-i{
+      display: inline-block;
+    }
+  }
+  &.ac-align-right{
+  @extend %right-float;
+    margin: 0 0 7px;
+    @include left-space($medium-space, 'padding');
+  }
+  .caption {
+    @extend %left-align;
+    clear: both;
+    padding: $medium-space;
+    color: $mid-grey;
+    p:last-child{
+      @extend %no-margin;
+    }
+  }
+  .media-vimeo-outer-wrapper{
+    max-width: 100%;
+  }
+}
+
+.media-i{
+  @extend %relative-position;
+  max-width: 100%;
+  .img-wrap{
+    display: block;
+  }
+  iframe{
+    @extend %left-float;
+    max-width: 100%
+  }
+}
+.img-wrap{
+  @extend %relative-position;
+}
+
+.ac-ng{
+  &.caption-enabled{
+    @extend %content-divider-color !optional;
+    @extend %bordered-box;
+  }
+}
+
+
+/** Simple frame image **/
+.ac-frame-simple-wrap{
+  .overlaid-portfolio{
+    overflow: visible;
+  }
+  .ac-effect-zoom{
+    overflow: hidden;
+  }
+  .ac-f{
+    @extend %theme-bg-color !optional;
+    @extend %overlaid-theme-color !optional;
+    background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%224px%22%20height%3D%224px%22%20viewBox%3D%220%200%204%204%22%20enable-background%3D%22new%200%200%204%204%22%20xml%3Aspace%3D%22preserve%22%20preserveAspectRatio%3D%22none%22%3E%0A%3Crect%20fill%3D%22transparent%22%20width%3D%224%22%20height%3D%224%22%2F%3E%0A%3Cpolygon%20opacity%3D%220.19%22%20fill%3D%22%23FFFFFF%22%20points%3D%220%2C0%204%2C0%200%2C4%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+    background-position: center center;
+    background-size: cover;
+    @include transition(transform 0.3s, opacity 0.3s);
+    .features a{
+      background-color: #000!important;
+    }
+  }
+}
+
+.ac-frame-simple-wrap:hover{
+  .ac-f{
+    @include transform(translate(10px, 10px)) 
+  }
+}
+
+/** Simple bordered frame image **/
+.ac-frame-simple-bordered-wrap .ac-frame-on{
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @include transition(box-shadow 0.25s ease);
+  @extend %full-border-radius !optional;
+  padding: $medium-space/2;
+}
+
+.ac-framed-simple{
+  .features a{
+    background: $black;
+  }
+}
+.l-page .ac-framed-simple-bordered{
+    .media-i{
+       @extend %no-box-shadow;
+   }
+   .o-info{
+       padding: $medium-space;
+       @extend %left-align;
+   }
+}
+/** Bordered frame image **/
+.ac-frame-bordered-wrap{
+  .media-i{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    padding: $medium-space/2;
+    background: rgba(55,58,65,0.04);
+    margin: 2px;
+  }
+}
+.ac-frame-bordered{
+  @extend %border-box-sizing;
+  &.caption-enabled{
+    border-width: $medium-space;
+    .caption{
+      padding: 15px 0
+    }
+  }
+}
+
+.ac-frame-rounded_borders-wrap{
+  @extend .ac-frame-bordered-wrap;
+  .media-i{
+    background: transparent;
+    @extend %full-border-radius !optional;
+  }
+  .caption{
+    @extend %content-divider-color !optional;
+    @extend %bordered-box;
+    border-width: 1px 0 0;
+    position: relative;
+    margin: 10px -10px 0;
+  }
+}
+
+.ac-frame-silver,
+.ac-frame-bordered_glow{
+  margin: $glow-frame-margin;
+}
+
+.ac-frame-bordered_glow{
+  border-color: $white;
+  padding: $medium-space/2;
+  @include box-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+  &.caption-enabled{
+    @extend %body-bg-color !optional;
+  }
+}
+
+.ac-frame-dropshadow{
+  @include box-shadow(1px 7px 10px rgba(0, 0, 0, 0.15));
+}
+
+ // .ac-frame-dropshadow
+.ac-frame-bottomshadow{
+  .img-wrap{
+    overflow: visible
+  }
+  .shadow-left, .shadow-right{
+    @extend %inline-block-display;
+   background: url(../images/shortcodes/imageframe_shadow.png) no-repeat top left;
+   height: 22px;
+   width: 230px;
+   position: absolute;
+   bottom: -22px;
+   left: 0;
+  }
+  .shadow-right{
+    background-position: top right;
+    right: 0;
+    left: auto;
+  }
+  .caption{
+    padding: 20px 0
+  }
+}
+
+// .ac-frame-circled
+.l-page .ac-frame-circled-wrap{
+  .media-i{
+    @extend %circled-border;
+    border: 0;
+  }
+}
+
+.ac-frame-circled_simple-wrap,
+.ac-frame-circled-wrap,{
+  .media-i{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    overflow: hidden;
+    padding: $small-space/3;
+  }
+  img, .img-wrap{
+    @extend %circled-border;
+  }
+  .caption{
+    text-align: center
+  }
+  i{
+    @extend %circled-border;
+  }
+  .blur-effect{
+    @extend %circled-border;
+  }
+}
+
+.ac-frame-circled_simple-wrap{
+  .media-i{
+    padding: 0;
+    border: 0;
+  }
+  .ac-frame-on{
+    background: transparent!important;
+  }
+}
+
+// Glow circled frame
+.ac-frame-glow_circled-wrap{
+  @extend .ac-frame-circled-wrap;
+  //
+  .media-i{
+    @include box-shadow(0 0 7px rgba(0, 0, 0, 0.15));
+    @extend %body-bg-color !optional;
+    margin: 3px;
+  }
+
+  .img-wrap:hover .shadow{
+    @extend %no-box-shadow;
+  }
+  .shadow{
+    @extend %absolute-position;
+    @extend %circled-border;
+    @extend %default-anim;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    @include box-shadow(inset 0px 0px 30px 4px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.blog-view-circled,
+.ac-frame-circled,
+.ac-frame-circled_simple,
+.ac-frame-glow_circled,
+.ac-frame-glow_circled_border{
+    .img-wrap, img{
+      -webkit-perspective: none;
+      -webkit-backface-visibility: visible;
+      -moz-backface-visibility: visible;
+      -ms-backface-visibility: visible;
+    }
+}
+
+// .ac-frame-circled_glow
+.ac-frame-glow_circled_border{
+  @extend .ac-frame-bordered_glow;
+  @extend %full-border-radius !optional;
+  @extend %light-gradient-box !optional;
+  //@extend .ac-frame-circled;
+  padding: 10px;
+  border-color: $white;
+  .img-wrap{
+    @extend %content-divider-color !optional;
+    @extend %bordered-box;
+    overflow: hidden;
+  }
+  img, .img-wrap a{
+    @extend %circled-border;
+    display: inline-block;
+  }
+  .img-wrap, i{
+    padding: 0;
+    @extend %circled-border;
+  }
+  &.caption-enabled .img-wrap{
+    margin: 20px 20px 0;
+  }
+}
+
+// .ac-frame-silver
+.ac-frame-silver{
+  @extend %full-border-radius !optional;
+  padding: ($medium-space/2) -(1)/** Border Width**/;
+  border:1px solid #ccc;
+  border:1px solid $white;
+  background:$white-smoke;
+  @include box-shadow(0 0 5px #999);
+  @include background-image(linear-gradient(top, #f5f5f5, #f0f0f0));
+  .caption{
+    @extend %no-side-padding;
+  }
+}
+
+// Overlay effect on images
+.ac-effect-overlay{
+  overflow: hidden;
+}
+
+.ac-frame-on .ac-frame-on{
+	 border: 0!important;
+	 padding: 0!important
+}
+
+.l-page div .ac-frame-none{
+  background: transparent
+}

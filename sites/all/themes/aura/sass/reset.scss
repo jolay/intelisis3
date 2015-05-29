@@ -1,0 +1,14 @@
+// Include the variables.
+@import "partials/utility";
+
+// Generate normalize.css.
+@import "normalize";
+
+:focus {
+	outline: 0;
+}
+
+menu, ol, ul{
+	padding: 0;
+	@include left-space($medium-space,'padding');
+}

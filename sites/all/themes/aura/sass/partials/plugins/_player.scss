@@ -1,0 +1,81 @@
+/** Superfish
+--------------------------------------------------*/
+.l-page .mejs-container {
+	background: transparent;
+	&.mejs-video{
+		.mejs-controls{
+			width: auto;
+			left: $medium-space;
+			right: $medium-space;
+			bottom: $medium-space;
+			left: $medium-space;
+			background: rgba(255, 255, 255, 0.3);
+			border-color: rgba(0, 0, 0, 0.06);
+			.mejs-currenttime, .mejs-duration{
+				color: $black;
+			}
+		}
+	}
+	.mejs-overlay-loading{
+		@extend %circled-border;
+	}
+	button{
+		@extend %square-border;
+		@extend %no-box-shadow;
+		font-weight: lighter;
+	}
+	.mejs-time{
+	  @extend %base-font-style !optional;
+		span{
+			color: #707070
+		}
+	}
+	.mejs-controls{
+		@extend %bordered-box;
+		@extend %content-divider-color !optional;
+		background: rgba(0, 0, 0, 0.065);
+		// Player Button
+		.mejs-button button{
+			background: transparent;
+			@extend %ac-font-fontello;
+			&:before{
+				@extend %theme-active-color !optional;
+				content: '\e913';// play icon
+			}
+		}
+		.mejs-mute button:before,
+		.mejs-unmute button:before{
+			content: '\e8db';// Mute icon
+			font-size: 15px;
+			position: relative;
+			top: -2px
+		}
+		.mejs-pause button:before{
+			content: '\e915';
+		}
+		.mejs-fullscreen-button button:before{
+			content: '\e8e7';
+		}
+		.mejs-unmute button:before{
+			content: '\e8dc';
+		}
+		.mejs-currenttime, .mejs-duration{
+			@extend %body-color !optional;
+		}
+		.mejs-horizontal-volume-total{
+			background: $grey-border-drk!important
+		}
+		.mejs-horizontal-volume-current{
+			background: #B9B9B9!important
+		}
+		.mejs-time-rail .mejs-time-float-corner{
+			@extend %theme-border-color !optional;
+			border-right-color: transparent;
+			border-bottom-color: transparent;
+			border-left-color: transparent;
+		}
+	}
+	.mejs-time-rail .mejs-time-loaded{
+		background: #B9B9B9;
+	}
+}

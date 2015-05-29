@@ -1,0 +1,34 @@
+/** Tooltip - Popover Shortcode
+-----------------------------------*/
+.ac-tooltip{
+   border-bottom: 1px dashed;
+   padding-bottom: 2px;
+}
+body .tooltip{
+   @include font-size(13px);
+}
+.popover{
+  @extend %left-align;
+  @extend %content-divider-color !optional;
+  @extend %bordered-box;
+  color: #777;
+  .popover-title{
+     @include font-size(15px);
+		 @extend %body-bg-color-drk !optional;
+  }
+  .popover-content{
+     @include font-size(13px);
+  }
+}
+
+.l-page .tooltip-inner {
+  max-width: 200px;
+  padding: 4px 8px;
+  color: $white;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 3px;
+}
+
+

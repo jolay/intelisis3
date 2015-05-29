@@ -1,0 +1,38 @@
+/** product_blocks views
+-----------------------------------*/
+.l-page .ac-product-blocks{
+	li{
+		padding: 0 0 15px;
+		margin-bottom: 20px;
+		display: table;
+		width: 100%;
+		.meta, .form-item{
+			margin: 0;
+		}
+	}
+	.product-img{
+		padding: 4px 0 5px;
+		a{
+			width: 60px;
+			display: block;
+		}
+	}
+	.product-img,
+	.o-info{
+		display: table-cell;
+		vertical-align: top;
+	}
+	.o-info{
+		@include left-space($medium-space, padding);
+		.s-title{
+			margin: 0
+		}
+		ins{
+			text-decoration: none;
+			@include left-space(3px, margin);
+		}
+		.meta{
+			font-size: 105%;
+		}
+	}
+}

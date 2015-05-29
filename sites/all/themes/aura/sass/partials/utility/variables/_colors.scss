@@ -1,0 +1,102 @@
+// Colors by name
+$pale-blue  : #d9e9ef;
+$light-blue : #52b1ea;
+$mid-blue   : #077dc3;
+$dark-blue  : #064771;
+$pale-orange: #efa47b;
+$green      : #A5CA68;
+$yellow     : #d6c460;
+$lighter-grey : #FAFAFA;
+$light-grey : #c5c5c5;
+$mid-grey   : #797979;
+$dark-grey  : #222222;
+$white: #fff;
+$white-smoke: #F5F5F5;
+$blue: #0370EA;
+$red: #FE4743;
+$orange: #ffd56c;
+$aqua: #00E2D3;
+$teal: #6DBEC2;
+$purple: #852b99;
+$pink: #FF3D8A;
+$silver: #B1C5D1;
+$grey: #A5A5A5;
+$black: #333;
+
+//------------------------------------------------
+// Elements
+//------------------------------------------------
+
+// Base Colors
+$body-color:#747474; // Body Color
+$body-sub-color:#747C83; // Sub Body Color
+$body-bg-color:$white; // Body Background Color
+$body-bg-color-drk: darken($white, 10%); // Body Background Color
+$header-color: #333; // Header Color: h1, h2, ...
+$header-color-light: #333; // Header Color: h1, h2, ...
+$header-bg-color: $white; // Header Background Color
+$mini-header-bg-color: #323b44; // Mini Header Background Color
+$hero-bg-color: #F2F2F2; // hero Background Color
+
+
+// Theme Colors
+$theme-default-color: #0370EA;
+$theme-default-bg-color: #0370EA;
+
+// Link Colors
+$link-color : #666666;
+$link-hover-color : $theme-default-color;
+$link-hover-color-sub : $theme-default-color;
+
+// Menu Colors
+$menu-main-bg: $white;
+$menu-main-color: #444;
+$menu-main-hover-bg: rgba(0, 0, 0, 0.2);
+
+// SubMenus
+$menu-sub-bg: $white;
+$menu-sub-color: #666;
+$menu-sub-hover-bg: $white-smoke;
+$menu-sub-hover-color: $theme-default-color;
+
+// ADMIN Colors
+$grey-border: #EBEBEB;
+$grey-border-drk: darken($grey-border, 5%);
+$admin-olive: #26ae90;
+
+// Border Colors
+$default-border-color: #e5e5e5;
+$active-hlist-menu-bg: rgba(0,0,0,0.03);
+
+// Buttons Colors
+$btn-bg-color: #26ae90;
+$btn-font-color: $white;
+$inv-btn-font-color: #333;
+
+// header
+$header-bg-color : $white;
+
+// Footer
+$footer-bg-color: #1A1A1A; 
+$footer-color: #B2B2B2 ; 
+$footer-a-color: #DFDFDF  ; 
+$footer-block-border-color: #202020;
+$footer-header-color: $white;
+
+// sub-footer Color
+$sub-footer-bg-color: #202020;
+$sub-footer-color: #808080;
+$sub-footer-a-color: #ACACAC; // hero Background Color
+$sub-footer-border-color: #202020  ; // hero Background Color
+
+//------------------------------------------------
+// Shortcodes
+//------------------------------------------------
+// Toggle
+$toggle-color: #888888;
+$toggle-ico-color: #888888;
+$toggle-ico-color-hover: #888888;
+$toggle-active-ico-color: #222;
+$toggle-border-color: #e8e8e8;
+$toggle-fancy-bg: #FCFCFC;
+$toggle-fancy-border-color: lighten($toggle-border-color, 5%);

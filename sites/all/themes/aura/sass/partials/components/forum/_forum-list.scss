@@ -1,0 +1,71 @@
+/** Forum List **/
+.forum-topic-list{
+  td a{
+    font-weight: 500;
+  }
+  span a, .forum-topic-list__replies a{
+    font-weight: normal;
+  }
+  span,
+  .forum-topic-list__last-reply,
+  .forum-topic-list__replies{
+    @extend %sub-color !optional;
+  }
+  .forum-topic-list__replies, .submitted{
+    @extend %x-small-font;
+  }
+  
+  .forum-icon{
+    @extend %boxed-icon;
+    @extend %circled-border;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    background: transparent;
+    float: none;
+    padding: 5px;
+    display: inline-block;
+  }
+  .font-icon{
+    @extend %small-boxed;
+    @extend %ac-font-fontello;
+    display: block;
+    &:before{
+      content: '\e88e'
+    }
+  }
+  .label{
+    text-indent: -999em;
+    display: none;
+  }
+}
+
+.forum-icon--status-new {
+  .font-icon:before{
+    content: '\e885'
+  }
+}
+
+.forum-icon--status-hot {
+
+}
+
+.forum-icon--status-hot-new {
+  .font-icon:before{
+    content: '\e884'
+  }
+}
+
+.forum-icon--status-sticky {
+  .font-icon:before{
+    content: '\e871'
+  }
+}
+
+.forum-icon--status-closed {
+  .font-icon:before{
+    content: '\e8a0'
+  }
+}
+
+.forum-topic-list__last-reply{
+}

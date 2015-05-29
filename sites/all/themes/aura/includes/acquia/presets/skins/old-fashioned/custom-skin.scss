@@ -1,0 +1,63 @@
+// Load utility, base and components
+@import "partials/utility";
+$accent-color: #D950C2;
+
+.ac-view-fade-in-left .features a{
+	background-color: $accent-color;
+	&:hover{
+		background-color: #E586D5;
+	}
+}
+
+// Hero Section
+.l-page .l-hero-light .page-title,
+.l-page .l-hero-light .subtitle{
+	color: #ACACAC
+}
+
+// Section style
+.ac-contact-style-compact{
+	.ac-section-style-2 &{
+		.ac-font-icon-link{
+      border: 0;
+			background: rgba(#000, .45);
+			display: inline-block
+		}
+		.font-icon{
+		 color: $white;
+		}
+	}
+}
+
+// Portfolio
+.ac-view-fade-in-bottom .title{
+	font-weight: 500
+}
+
+// 2nd Level Titles
+.node__title,
+.title,
+.ac-iconbox.ac-type-boxed-animated .ac-iconbox-title,
+.ac-iconbox.ac-type-boxed-simple .ac-iconbox-title,
+.ac-iconbox.ac-type-boxed-fancy .ac-iconbox-title{
+	color: #777
+}
+
+.meta{
+	@include font-size(14px);
+}
+
+// Footer
+.l-footer-wrapper{
+	.ac-contact-style-compact .ac-font-icon-link,
+	.acquia-share-links .ac-font-icon-wrap a,
+	.ac-twitter.ac-style-compact li:before{
+		border-color: transparent;
+		background: #DEDEDE;
+	}
+}
+
+.l-page .l-topbar .block__content >.menu >.sfHover >a{
+	color: #fff;
+	text-decoration: underline;
+}

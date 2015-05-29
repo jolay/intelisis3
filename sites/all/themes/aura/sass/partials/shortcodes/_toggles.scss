@@ -1,0 +1,305 @@
+/** Toggles Shortcode
+-----------------------------------*/
+.ac-toggle-container{
+  ul.tags-list{
+    @extend %center-align;
+    @extend %header-font !optional;
+    @extend %hlist;
+    @extend %hlist-menu;
+    margin-bottom: $medium-space;
+     li{
+      @extend %full-border-radius !optional;
+      @extend %light-gradient-box !optional;
+      @extend %bordered-box;
+      @extend %content-divider-color !optional;
+      @extend %medium-type;
+      font-weight: 500;
+      text-transform: capitalize;
+      @include font-size(14px);
+      margin-bottom: $medium-space/2;
+      a{
+        @extend %small-box;
+        @extend %full-border-radius !optional;
+        display: block;
+      }
+    }
+    li.active a{
+      @include box-shadow(inset 0 0 7px rgba(0,0,0,.1));
+      @extend %body-bg-color !optional;
+    }
+  }
+  .ac-toggle-title{
+    &:before{
+      @extend %x-large-circled
+    }
+  }
+}
+
+.ac-toggle-container .ac-toggle-active{
+  .ac-toggle-tab{
+    a{
+      @extend %light-bg !optional;
+    }
+    .ac-toggle-title:before{
+      content: '\e895';
+    }
+    a, a:before, .font-icon{
+      @extend %theme-active-color !optional;
+    }
+  }
+  .ac-toggle-pane{
+   //display: block;
+  }
+}
+
+/**
+ * Toggle tab style
+ */
+.ac-toggle-container .ac-toggle-tab{
+  @extend %relative-position;
+  @extend %tabs-typo;
+ // @extend %base-l-font-style;
+  z-index: 2;
+  position: relative;
+  cursor: pointer;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  text-transform: capitalize;
+  a{
+    @extend %no-anim;
+    @extend %large-box;
+     display: block;
+     &:hover{
+        @extend %theme-active-color !optional;
+        &:before{
+          @extend %theme-border-color !optional;
+          @extend %theme-active-color !optional;
+        }
+        .font-icon{
+          @extend %theme-active-color !optional;
+        }
+     }
+     &:before{
+      @extend %ac-font-fontello;
+      @extend %inline-block-display;
+      //@extend %full-border-radius !optional;
+      font-size: 12px;
+      content: '\ea12';
+      position: absolute;
+      top: 50%;
+      margin-top: -8px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      @include position('right', 15px);
+      border: 1px solid $toggle-color;
+    }
+  }
+  .inner{
+    display: block;
+    padding: 0;
+    @include left-space(15px, 'padding');
+    @include right-space(30px, 'padding');
+  }
+  .font-icon{
+    @extend %middle-valign-icon;
+    font-size: 20px;
+    color: $toggle-ico-color;
+  }
+}
+
+.ac-toggle-pane{
+  @extend %relative-position;
+  padding: $medium-space;
+  .inner:last-child{
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Simple style toggle
+ */
+.ac-toggle-container.simple-style{
+  .ac-toggle{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-width: 0 0 1px;
+  }
+  .ac-toggle-title{
+    @extend %default-anim-fast;
+    @extend %light-bg !optional;
+    background: rgba(0, 0, 0, 0.02);
+    &:hover{
+      background: $white-smoke
+    }
+    .font-icon{
+      color:$grey;
+      font-weight: normal
+    }
+    &:before{
+      @extend %small-boxed;
+      @extend %theme-bg-color !optional;
+      color: $white!important;
+      border: 0;
+      @include font-size(13px);
+    }
+  }
+  .ac-toggle-active{
+    .ac-toggle-title, .ac-toggle-title .font-icon{
+      @extend %theme-active-color !optional;
+    }
+  }
+  .ac-toggle-pane{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-width: 1px 0 0;
+  }
+}
+
+/**
+ * Simple Circled style toggle
+ */
+.ac-toggle-container.simple-circled-style{
+  .ac-toggle-tab {
+    @extend %medium-type;
+    //margin: 10px 0;
+    .inner{
+      @include left-space(35px, 'padding');
+      font-size: 80%;
+      line-height: 1.3
+    }
+    a:hover {
+      &:before{
+        @extend %theme-bg-color !optional;
+        color: $white;
+      }
+    }
+    a{
+      @extend %block-header-style;
+      color: $header-color;
+      height: auto;
+    }
+    a:before{
+      //@extend %full-border-radius !optional;
+      @extend %medium-boxed;
+      @extend %theme-active-color !optional;
+      @extend %theme-border-color !optional;
+      border-width: 1px;
+      border-style: solid;
+      @include position('left', 0);
+      font-weight: 100;
+      @include font-size(15px);
+      top: 50%;
+      margin-top: -$medium-unit/2
+    }
+  }
+  .ac-toggle-active {
+    a{
+      background: transparent!important;
+    }
+    a:before{
+      @extend %theme-bg-color !optional;
+      color: $white!important;
+    }
+  }
+  .ac-toggle-pane{
+    padding-top: 0;
+    @include left-space(35px, 'padding');
+  }
+}
+
+/**
+ * Minimal style toggle
+ */
+.ac-toggle-container.minimal-style{
+  .ac-toggle{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-width: 0 0 1px
+  }
+  .ac-toggle-tab{
+    .font-icon{
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .ac-toggle-title:before{
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+      font-size: 11px;
+    }
+  }
+  .ac-toggle-active .ac-toggle-title{
+    background: transparent;
+    &:before{
+      @extend %theme-border-color !optional;
+      @extend %theme-active-color !optional;
+    }
+  }
+  .ac-toggle-title .inner{
+    padding: 0;
+  }
+  .ac-toggle-pane{
+    padding: 10px 0;
+  }
+}
+ /**
+ * Fancy style toggle
+ */
+.ac-toggle-container.fancy-style{
+  &.hard-style{
+    .ac-toggle-active{
+      .ac-toggle-title{
+        @extend %body-bg-color !optional;
+        @extend %inner-box-shadow;
+      }
+    }
+    .ac-toggle-tab{
+      @extend %hard-gradient-box !optional;
+    }
+  }
+  .ac-toggle{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    margin-bottom: 10px;
+    @include border-radius(4px);
+  }
+  .ac-toggle-tab{
+    @extend %light-gradient-box !optional;
+    @include border-radius(4px 4px 0 0);
+    font-weight: bold;
+    font-weight: 500;
+    a:before{
+      font-size: 12px;
+    }
+    a:before, .font-icon{
+      font-weight: lighter;
+    }
+    &:hover{
+      @extend %light-gradient-box !optional;
+    }
+    .font-icon{
+    }
+  }
+  .ac-toggle-active {
+    .ac-toggle-tab{
+      margin: 0;
+      @extend %hard-gradient-box !optional;
+    }
+    a.ac-toggle-title:before{
+      @extend %theme-active-color !optional;
+      @extend %theme-border-color !optional;
+      background: transparent;
+    }
+    .ac-toggle-title .font-icon{
+      @extend %theme-active-color !optional;
+    }
+    .ac-toggle-pane{
+      @extend %bordered-box;
+      @extend %content-divider-color !optional;
+      border-width: 1px 0 0;
+      @include border-radius(0 0 4px 4px);
+    }
+  }
+
+}

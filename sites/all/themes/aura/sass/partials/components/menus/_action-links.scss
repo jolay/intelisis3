@@ -1,0 +1,18 @@
+/**
+ * $ACTION-LINKS
+ */
+.action-links {
+  @extend %hlist;
+  margin-bottom: $medium-space;
+
+  li {
+    @include right-space($medium-space/2, 'margin');
+    a {
+      @extend %button-default;
+      @extend %button-2d-style;
+      &:hover {
+        @extend %button-2d-style-hover !optional;
+      }
+    }
+  }
+}

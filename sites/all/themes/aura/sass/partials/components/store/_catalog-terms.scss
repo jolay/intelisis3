@@ -1,0 +1,29 @@
+/** Catalog Terms
+-----------------------------------*/
+.ac-catalog-terms{
+	article{
+		position: relative;
+		&:hover{
+			.info{
+				@extend %high-opacity;
+			}
+		}
+	}
+	.info{
+		@extend %default-anim;
+		position: absolute;
+		bottom: $medium-space/2;
+		right: $medium-space/2;
+		left: $medium-space/2;
+		padding: $medium-space;
+		text-align: center;
+		background: #fff;
+		background: rgba($white, .9);
+		h3{
+			margin-top: 0
+		}
+		h5{
+			margin-bottom: 0
+		}
+	}
+}

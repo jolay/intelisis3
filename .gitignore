@@ -1,0 +1,11 @@
+# Archivo de configuración
+.htaccess
+robots.txt
+sites/default/settings.php
+robots.txt
+sites/default/files/advagg_css/*
+sites/default/files/advagg_js/*
+tmp/*
+sites/default/files/css/*
+sites/default/files/js/*
+sites/default/files/intelisis30/*

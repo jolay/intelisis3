@@ -1,0 +1,19 @@
+/**
+ * $PAGER
+ */
+.l-page .pager-o {
+  @extend %center-align;
+  clear: both;
+  .pager {
+    @extend %clearfix;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.pager-item {
+  min-width: 44px;
+  text-align: center;
+}
+.pager a{
+  min-width: 38px
+}

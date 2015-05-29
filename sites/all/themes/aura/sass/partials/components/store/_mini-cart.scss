@@ -1,0 +1,81 @@
+/** Mini Shopping cart
+-----------------------------------*/
+$min-cart-total-width: $medium-space;
+
+.ac-mini-cart{
+	position: relative;
+	&.on,
+	&:hover,{
+		.cart-i{
+			display: block;
+			@extend %full-opacity;
+		}
+	}
+	.cart-i{
+		@extend %no-opacity;
+		@extend %left-align;
+		display: none;
+		width: 285px;
+		top: 100%;
+		z-index: 100;
+		position: absolute;
+		line-height: 1;
+		@include position(right, 0);
+		@extend %slow-anim;
+	}
+		// footer
+	.footer{
+		margin-top: 10px;
+	}
+	.vc-message{
+		margin: 0
+	}
+}
+
+.cart-i-frame{
+	padding: $medium-space;
+	border-width: 1px;
+	border-style: solid;
+}
+.block--ac-ubercart-ac-cart{
+	width: 100px;
+	>.s-i{
+		margin: 0 $medium-space;
+	}
+}
+.cart-toggle-btn{
+	text-align: center;
+	display: block;
+	.l-header-main &{
+		//@extend %header-box;
+	}
+	.fixed_header_clone &{
+		//@extend %fixed-header-box;
+	}
+	position: relative;
+	display: block;
+	&:hover{
+		strong{
+			@extend %full-opacity;
+		}
+	}
+	strong{
+		@extend %high-opacity;
+		@extend %x-large-circled;
+		width: $min-cart-total-width;
+		height: $min-cart-total-width;
+		line-height: $min-cart-total-width;
+		display: inline-block;
+		color: $white;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -($min-cart-total-width + 10px);
+		margin-top: -$min-cart-total-width;
+		@include font-size($min-cart-total-width/2 + 2px);
+	}
+	.font-icon{
+		font-size: 150%;
+		display: block;
+	}
+}

@@ -1,0 +1,6 @@
+name = Acquia - LayerSlider
+core = 7.x
+description = Implements slide builder tool.
+dependencies[] = ac_slider
+package = AcquiaThemes
+

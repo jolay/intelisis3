@@ -1,0 +1,14 @@
+/**
+ * $BUTTONS
+ */
+
+/* Base Button */
+
+/** Button like elements **/
+button, .button, input[type="submit"], input[type="button"], input.form-submit, .ac-button{
+  @extend %button-default;
+}
+
+button:hover, .button:hover, input[type="submit"]:hover, input[type="button"]:hover, input.form-submit:hover, .ac-button:hover {
+  @extend %button-default-hover;
+}

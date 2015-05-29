@@ -1,0 +1,112 @@
+/** Font Icon Shortcode
+-----------------------------------*/
+.ac-font-icon.ac-bg-enabled{
+  text-align: center;
+  @include transition(all 0.1s linear);
+  .ac-font-icon-link:hover &{
+    @extend %high-opacity;
+  }
+}
+
+.ac-font-icon{
+  margin: 0 10px 10px 0;
+  display: inline-block;
+  &, span{
+    @extend %inline-block-display;
+  }
+  span{
+    display: block;
+    //@extend %left-float;
+    vertical-align: middle;
+    &:before{
+      margin: 0
+    }
+  }
+  
+  .font-icon{
+    @extend %boxed-icon;
+  }
+}
+
+// Different Types
+.ac-font-icon{
+  // Square 
+  &.ac-type-square {
+    @extend %square-border;
+  }
+  &.ac-type-rounded {
+    @extend %full-border-radius !optional;
+  }
+  &.ac-type-circled {
+    @extend %circled-border;
+  }
+  &.ac-subtle-style{
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+
+.ac-font-icon-link{
+  @extend %inline-block-display;
+}
+
+@mixin alt-color-hover-style($color) {
+    background: $color;
+    border-color: $color;
+}
+.ac-alt-color{
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.l-page .ac-alt-color:hover{
+  color: $white;
+  &.ac-color-blue{
+    @include alt-color-hover-style($blue);
+  }
+  &.ac-color-red{
+    @include alt-color-hover-style($red);
+  }
+  &.ac-color-orange {
+    @include alt-color-hover-style($orange);
+  }
+  &.ac-color-aqua {
+    @include alt-color-hover-style($aqua);
+  }
+  &.ac-color-green {
+    @include alt-color-hover-style($green);
+  }
+  &.ac-color-teal {
+    @include alt-color-hover-style($teal);
+  }
+  &.ac-color-purple {
+    @include alt-color-hover-style($purple);
+  }
+  &.ac-color-pink {
+    @include alt-color-hover-style($pink);
+  }
+  &.ac-color-silver {
+    @include alt-color-hover-style($silver);
+  }
+  &.ac-color-grey {
+    @include alt-color-hover-style($grey);
+  }
+  &.ac-color-black {
+    @include alt-color-hover-style($black);
+  }
+  &.ac-color-white {
+    @include alt-color-hover-style($white);
+    color: $black;
+  }
+}
+
+.ac-font-icon-wrap{
+  display: inline-block;
+  &.ac-position-center{
+   @extend %center-align;
+   display: block;
+   .ac-font-icon{
+     @extend %inline-block-display;
+   }
+  }
+}
+

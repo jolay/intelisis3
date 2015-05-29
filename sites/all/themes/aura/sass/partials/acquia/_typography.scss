@@ -1,0 +1,53 @@
+/** Acquia Typography Styles
+--------------------------------------------------*/
+.ac-font-fontello{
+  @extend %ac-font-fontello;
+}
+
+.l-page .ac-font-small{
+  @extend %x-small-font;
+  line-height: 20px;
+}
+
+.l-page .ac-font-big{
+  @extend %header-font !optional;
+  @include font-size(16px);
+  line-height: 1.4;
+}
+
+// Sizes
+.ac-boxed-tiny{
+ @extend %tiny-boxed;
+}
+.ac-boxed-x-small{
+ @extend %x-small-boxed;
+}
+.ac-boxed-small{
+ @extend %small-boxed;
+}
+.ac-boxed-medium{
+ @extend %medium-boxed;
+}
+.ac-boxed-large{
+ @extend %large-boxed;
+}
+.ac-boxed-x-large{
+ @extend %x-large-boxed;
+}
+.ac-boxed-xx-large{
+ @extend %xx-large-boxed;
+}
+.ac-boxed-xxx-large{
+ @extend %xxx-large-boxed;
+}
+
+.l-page div.container{
+	 .ac-typo-hard{
+		 text-transform: capitalize;
+		 font-weight: bold;
+	 }
+	 .ac-typo-soft{
+		 text-transform: uppercase;
+		 font-weight: lighter;
+	 }
+}

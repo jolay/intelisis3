@@ -1,0 +1,256 @@
+/** Blog Preview Styles
+-----------------------------------*/
+.ac-related-news{
+  .l-page &{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .ac-min-slider{
+    padding: 0;
+    .rslides_nav{
+        top: 50%;
+    }
+  }
+}
+
+.blog-view-thumb{
+  .meta{
+    margin-bottom: 2px;
+  }
+}
+
+// Teaser View
+.blog-view-teaser{
+  .title{
+    margin-bottom: 5px;
+  }
+}
+
+.l-page .blog-view-circled{
+  .img-wrap{
+    @extend %circled-avatar;
+  }
+  .o-info{
+    padding: 0;
+    @include left-space($large-space/2, padding);
+  }
+  .no-media{
+    padding: 0;
+  }
+  .rslides_nav{
+    display: none;
+  }
+}
+
+.ac-excerpt{
+  margin-top: 10px;
+}
+
+// appearance
+.blog-items{
+  padding: 0;
+  .o-info{
+    padding: $small-space 0;
+  }
+  .ac-min-slider{
+    padding: 0
+  }
+}
+
+.blog-view-teaser,
+.blog-items.ac-appearance-circled{
+  .ac-col:last-child{
+    margin-bottom: 0
+  }
+  .ac-min-slider{
+    padding: 0;
+  }
+}
+
+.blog-items.ac-appearance-circled{
+  margin: 0;
+  .s-title{
+    margin-bottom: 0
+  }
+  &.ac-cols-1{
+    margin: 0;
+    .col-inner{
+      padding: 0
+    }
+  }
+}
+
+// Timeline
+.ac-appearance-timeline{
+  margin: 0 auto;
+  .node-blog{
+    position: relative;
+    &:hover{
+      z-index: 3;
+    }
+    &.odd{
+      @extend %left-float;
+      @extend %left-clear;
+    }
+    &.even{
+      @extend %right-float;
+      @extend %right-clear;
+    }
+    &.last{
+      margin: 0;
+      .item-i{
+        margin-bottom: 0;
+      }
+    }
+  }
+  .item-i{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %full-edge-hard-bottom-circled-border;
+    margin: 0;
+    padding: $medium-space;
+    &:hover{
+      &, .ac-timeline-arrow, .user-picture{
+        @extend %theme-border-color !optional;
+      }
+    }
+  }
+  figure{
+    @extend %center-align;
+    margin: (-$medium-space) (-$medium-space) 0;
+  }
+  .title{
+    @extend %title-cap-style !optional;
+    margin: $medium-space 0 5px;
+  }
+  .blog-excerpt{
+    margin-top: $medium-space/2;
+  }
+  .meta.details{
+    @extend %table;
+    width: 100%;
+    margin: $large-space 0 0;
+    a{
+     @extend %table-cell;
+     @extend %theme-active-color !optional;
+     width: 50%;
+    }
+    .read-more{
+      @extend %right-align;
+    }
+  }
+  
+  // User picture
+  .user-picture{
+    position: absolute;
+    margin-top: -30px;
+    width: 70px;
+    height: 70px;
+    @include position('left', 365px);
+  }
+  .even .user-picture{
+    margin-top: 80px;
+    @include position('left', -85px);
+  }
+}
+
+.ac-timeline-date{
+  @extend %center-align;
+  clear: both;
+  margin-bottom: $medium-space;
+  .ac-timeline-title{
+    @extend %bordered-box;
+    @extend %medium-type;
+    @extend %content-divider-color !optional;
+    @extend %full-border-radius !optional;
+    @extend %light-gradient-box !optional;
+    display: inline-block;
+    padding: 0 10px;
+    text-align: center;
+    margin: -$large-space auto $medium-space/2 auto;
+    clear: both;
+    text-transform: uppercase;
+    font-weight: 500;
+    @include font-size($base-l-font-size);
+  }
+}
+
+.ac-timeline-circle {
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @extend %circled-border;
+  @extend %body-bg-color !optional;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  margin-top: -3px;
+  border-width: 2px;
+  @include position('left', 394px);
+  .even &{
+    margin-top: 110px;
+    @include position('left', -56px);
+  }
+}
+
+.ac-timeline-arrow{
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  width: 54px;
+  position: absolute;
+  border-width: 0 0 1px;
+  height: 4px;
+  @include position('left', 349px);
+  .even &{
+    margin-top: 112px;
+    @include position('left', -54px);
+  }
+  .flex-direction-nav a{
+    margin: $medium-space*2;
+  }
+  
+}
+
+// Scroller view
+.blog-view-scroller{
+  margin-bottom: 50px;
+   &.ac-mini-nav{
+      .col-inner{
+        padding: 0
+      }
+   }
+  .o-info{
+    padding-bottom: 0
+  }
+}
+
+@include at-breakpoint($tab-max) {
+  // Timeline
+  .ac-appearance-timeline{
+    width: 300px;
+    .node-blog{
+      width: 100%;
+    }
+  }
+  .ac-timeline-circle,
+  .ac-timeline-arrow{
+    display: none;
+  }
+}
+
+@include at-breakpoint($tab) {
+  // Timeline
+  .ac-appearance-timeline{
+    width: 760px;
+    background: url('../images/timeline_line.png') center center repeat-y;
+    .node-blog{
+      width: 350px;
+    }
+  }
+}
+
+@include at-breakpoint($big-scr) {
+  // Timeline
+  .ac-appearance-timeline{
+    width: 800px;
+  }
+}

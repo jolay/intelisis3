@@ -1,0 +1,86 @@
+/** Callout Shortcode
+-----------------------------------*/
+.ac-callout {
+  width: 100%;
+	 &.ac-background-fancy_bg{
+			@extend %full-border-radius !optional;
+			padding: $medium-space;
+	 }
+ // Plain Background
+ &.ac-background-plain{
+  @extend .ac-background-fancy_bg;
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  border-width: 5px;
+ }
+ // Border & default background enabled
+ &.ac-background-plain_bg {
+    @extend .ac-background-fancy_bg;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    @extend %light-bg !optional;
+ }
+ 
+ // Fancy
+ &.ac-background-fancy{
+  @extend .ac-background-plain_bg;
+  @extend %hard-gradient-box !optional;
+ }
+ // ac-background-fancy_bg
+ &.ac-background-fancy_bg{
+ }
+ 
+ // Text Align
+ &.ac-text_align-left .ac-callout-content{
+  @extend %left-align;
+ }
+ &.ac-text_align-right .ac-callout-content{
+  @extend %right-align;
+ }
+ &.ac-text_align-center .ac-callout-content{
+  @extend %center-align;
+ }
+ // Button Align
+ &.ac-btn_align-after .ac-callout-button{
+  @extend %center-align;
+ }
+ 
+ // border style
+ &.ac-border-rounded-dashed,
+ &.ac-border-square-dashed{
+   border-width: 2px;
+ }
+  .ac-callout-content{
+    >*{
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.ac-callout-button{
+  @extend %right-align;
+  .ac-button{
+    @include right-space(0, 'margin');
+		margin-bottom: 0
+  }
+}
+/** tablet view **/
+@include at-breakpoint($tab) {
+ // Corner Aligned Button
+ .ac-callout.ac-btn_align-corner{
+    display: table;
+    width: 100%;
+   .ac-callout-content,
+   .ac-callout-button{
+      display: table-cell;
+      vertical-align: middle;
+   }
+   .ac-callout-button .ac-button-wrap{
+     @include left-margin($small-space*3);
+   }
+	 p{
+			margin: 0
+	 }
+ }
+}

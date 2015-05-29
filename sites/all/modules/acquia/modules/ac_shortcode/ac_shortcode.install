@@ -1,0 +1,31 @@
+ <?php
+/**
+ * @file - Install file
+ */
+
+/**
+ * Implements hook_install()
+ */
+function ac_shortcode_install() {
+ set_acquia_media_types();
+}
+
+///**
+// * Implements hook_update_N()
+// */
+//function ac_shortcode_update_7200() {
+//
+//}
+
+function set_acquia_media_types() {
+  if (module_exists('media')) {
+   $default_types = media_variable_get('file_extensions');
+   $types = array('webm', 'ogg', 'mp4');
+   foreach($types as $type) {
+    if (!strstr($default_types, $type)) {
+      $default_types .= ' ' .$type;
+    }
+   }
+   media_variable_set('file_extensions', $default_types);
+  }
+}

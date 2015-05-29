@@ -1,0 +1,76 @@
+/** Twitter Shortcode
+-----------------------------------*/
+.ac-twitter.ac-style-compact {
+	li{
+		@extend %bordered-box;
+		position: relative;
+		border-width: 0 0 1px;
+		padding-bottom: $medium-space/2;
+		margin-bottom: $medium-space/2;
+		@include left-space(35px, padding);
+		min-height: 40px;
+		&.last{
+		  border-width: 0
+		}
+		&:before{
+			@extend %x-large-circled;
+			@extend %ac-font-fontello;
+			content: '\e802';
+			position: absolute;
+			top: 3px;
+			border: 1px solid;
+			padding: 3px;
+			width: 27px;
+			height: 27px;
+			line-height: 21px;
+			font-size: 14px;
+			@include position(left, 0);
+		}
+	}
+	span{
+	 display: block;
+	}
+	.tweet-time{
+		font-size: 90%;
+		margin-top: 5px;
+	}
+}
+
+.l-page .tweets-pulled-listing{
+	 @extend %no-margin-padding;
+	 li{
+		 margin-bottom: 20px;
+	 }
+	.tweet-author-wrapper{
+		@extend %left-float;
+		max-width: 50px;
+		text-align: center;
+	}
+	
+	.tweet-author-wrapper, .tweet-text{
+		margin-bottom: 10px
+	}
+	
+	.tweet-text{
+		@include left-space(75px, margin);
+	}
+	.tweet-footer{
+	 clear: both;
+	 margin-top: 10px;
+	}
+	.tweet-author, .tweet-screenname{
+		clear: both;
+	}
+	.tweet-author-info{
+		width: 100%;
+		min-width: 100%;
+	}
+	.twitter-follow-button{
+		float: none
+	}
+	div.tweet-divider{
+		margin-bottom: 10px;
+	}
+}
+
+

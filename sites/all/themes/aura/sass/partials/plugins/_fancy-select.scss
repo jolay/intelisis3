@@ -1,0 +1,66 @@
+/** Acquia Fancy Select
+--------------------------------------------------*/
+.customSelect.customSelectHover {
+/* Styles for when the select box is hovered */
+}
+
+.customSelect.customSelectOpen {
+/* Styles for when the select box is open */
+  .customSelectBtn{
+    &:before{
+      content: '\e8f2';
+    }
+  }
+}
+
+.customSelect.customSelectFocus {
+/* Styles for when the select box is in focus */
+}
+
+.customSelect.customSelectDisabledOption {
+/* Styles for when the selected item is a disabled one */
+}
+
+.customSelect.customSelectDisabled {
+/* Styles for when the select box itself is disabled */
+}
+
+.hasCustomSelect{
+  cursor: pointer;
+  -webkit-appearance: menulist-button;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  @include opacity(0);
+}
+
+.customSelect{
+  position: relative;
+  overflow: hidden;
+  padding: 0!important;
+  border-width: 1px;
+  border-style: solid;
+  display: block;
+  span{
+    display: block;
+  }
+  .customSelectInner{
+    padding: 0 6px;
+    position: absolute;
+    width: 300%;
+  }
+  .customSelectBtn{
+    @extend %ac-font-fontello;
+    position: absolute;
+    height:100%;
+    z-index:2;
+    width:30px;
+    right:0;
+    top:0;
+    font-size: 15px;
+    color: #797979;// same as select html element
+    &:before{
+      content: '\e8ef';
+    }
+  }
+}

@@ -1,0 +1,57 @@
+/** Swipe Slider Styles
+-----------------------------------*/
+// Nav Control
+.l-page .tparrows{
+  @extend %nav-prevnext;
+  @extend %no-opacity;
+  display: none;
+  width: 45px;
+  height: 45px;
+  z-index: 100;
+  display: block;
+  background: transparent;
+  &.tp-rightarrow{
+    @extend %light-nav-next;
+  }
+  &.tp-leftarrow{
+    @extend %light-nav-prev;
+  }
+}
+.l-page .tp-bullets.simplebullets.round{
+  @extend %slider-pager-wrap;
+  .bullet{
+    top: auto;
+    @extend %slider-pager;
+    background: $black;
+    &.selected{
+      @extend %slider-pager-active;
+    }
+  }
+}
+
+.l-page .rev_slider_wrapper:hover {
+  .tparrows {
+    @extend %full-opacity;
+  }
+}
+.l-page .rev_slider{
+  max-height: 100%;
+  .ac-button{
+    height: auto;
+  }
+  .tparrows{
+    @extend %default-anim;
+    @extend %no-opacity;
+  }
+}
+
+// Custom overlays
+.tp-dottedoverlay{
+  &.darkoverlay{
+    background: url(../images/dark-ovelay.png) repeat;
+  }
+}
+
+.l-page .tp-bannertimer{
+  z-index: 50;
+}

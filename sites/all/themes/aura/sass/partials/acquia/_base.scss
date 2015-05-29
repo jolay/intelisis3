@@ -1,0 +1,38 @@
+/** Base acquia styles
+-----------------------------------*/
+.font-icon{
+  /** Font Icons **/
+  .ac-size-x-tiny &{
+    @extend %x-tiny-boxed;
+    margin: $x-tiny-margin;
+  }
+  /** Font Icons **/
+  .ac-size-tiny &{
+    @extend %tiny-boxed;
+    margin: $tiny-margin;
+  }
+  .ac-size-small &{
+    @extend %small-boxed;
+    margin: $small-margin;
+  }
+  .ac-size-medium &{
+    @extend %medium-boxed;
+    margin: $medium-margin;
+  }
+  .ac-size-large &{
+    @extend %large-boxed;
+    margin: $large-margin;
+  }
+  .ac-size-x-large &{
+    @extend %x-large-boxed;
+    margin: $x-large-margin;
+  }
+  .ac-size-xx-large &{
+    @extend %xx-large-boxed;
+    margin: $xx-large-margin;
+  }
+  .ac-size-xxx-large &{
+    @extend %xxx-large-boxed;
+    margin: $xxx-large-margin;
+  }
+}

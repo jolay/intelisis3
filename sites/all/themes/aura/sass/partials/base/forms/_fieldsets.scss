@@ -1,0 +1,35 @@
+/**
+ * $FIELDSETS
+ */
+.form-wrapper {
+  margin-bottom: $medium-space;
+}
+
+body fieldset {
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  //@extend %full-border-radius !optional;
+  margin-left: 0;
+  margin-right: 0;
+  padding: ($medium-space / 2) $horz-spacing-unit $medium-space $horz-spacing-unit;
+}
+
+legend {
+  @include font-size(18px);
+  padding: 0 0.8em;
+  color: $mid-grey;
+}
+
+.fieldset-description {
+  margin-bottom: $medium-space / 2;
+  color: $mid-grey;
+  font-style: italic;
+}
+
+.vertical-tabs fieldset.vertical-tabs-pane {
+  padding: $medium-space $horz-spacing-unit;
+}
+
+.tabs a.active{
+  background: transparent;
+}

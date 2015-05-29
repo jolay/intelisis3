@@ -1,0 +1,49 @@
+/** Fancy Quote Shortcode
+-----------------------------------*/
+.ac-quote{
+  .icon-quote{
+    font-size: 2em;
+  }
+  .quote-left:before{
+    @include rotate(-180deg);
+  }
+  .quote-box{
+    @extend %full-border-radius !optional;
+    @extend %content-divider-color !optional;
+    @extend %bordered-box;
+    padding: $small-space;
+  }
+}
+
+// PullQuote Type
+.ac-type-pullquote {
+  //@extend %full-border-radius !optional;
+  &.ac-quote_position-right{
+    border-right-width: 5px;
+    border-right-style: solid;
+  }
+  &.ac-quote_position-left{
+    border-left-width: 5px;
+    border-left-style: solid;
+  }
+  p:last-child{
+    @extend %no-margin;
+  }
+}
+
+// BlockQuote Type
+.ac-type-blockquote{
+  &.ac-background-simple{
+      margin: 0;
+     .quote-box{
+        border: 0;
+        padding: 0
+     }
+  }
+  &.ac-background-fancy{
+    @extend %light-bg !optional;
+    .icon-quote{
+      color: $grey;
+    }
+  }
+}

@@ -1,0 +1,169 @@
+.ac-node-portfolio{
+  .ac-hr-sep{
+    margin-bottom: $large-space;
+  }
+  &.ac-spaced{
+    >.media .col-inner{
+      margin: -$medium-space!important;
+      .item-i{
+        margin: $medium-space;
+      }
+    }
+  }
+  &.ac-full-view{
+    margin-bottom: 40px;
+    .meta {
+      &.links{
+        margin-top: $medium-space;
+      }
+    }
+    .flagged{
+      @extend %theme-active-color !optional;
+    }
+    span.flag-like a{
+      &:hover{
+        @extend %theme-bg !optional;
+      }
+    }
+  }
+  &.ac-layout-after{
+    .media{
+      margin-top: $large-space;
+    }
+  }
+  &.ac-layout-before{
+    .project-description{
+      margin-top: $large-space
+    }
+  }
+  
+  &.ac-layout-after,
+  &.ac-layout-before{
+    .ac-col-container{
+      >.ac-cell{
+        vertical-align: top;
+        &.first{
+          @include right-space($medium-space, padding);
+        }
+      }
+    }
+  }
+  &.ac-full-view .media {
+    margin-bottom: $large-space;
+  }
+  .media{
+    position: relative;
+    .item{
+       @extend %center-align;
+    }
+  }
+
+  // caption
+  .caption-enabled{
+    position: relative;
+  }
+  .media .ac-caption{
+    @extend %dark-gradient-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    .c-i{
+      @extend %block-header-style;
+      @extend %default-inv-text-shadow;
+      color: $white;
+      padding: $small-space*2 $small-space $medium-space*2;
+    }
+  } 
+ &.ac-spaced .media .col-inner{
+    margin: 0 -7px;
+ }
+ &.ac-cols .media .item{
+   @extend %left-float;
+   display: block;
+   margin: 0;
+ }
+ &.ac-6-cols .media{
+   .item{
+    width: 16.66666666666667%;
+   }
+ }
+ &.ac-5-cols .media{
+   .item{
+    width: 20%;
+   }
+ }
+ &.ac-4-cols .media{
+   .item{
+    width: 25%;
+   }
+ }
+ &.ac-3-cols .media{
+   .item{
+    width: 33.33333333333333%;
+   }
+ }
+ &.ac-2-cols .media{
+   .item{
+    margin: 0;
+    width: 50%;
+   }
+ }
+}
+/** Like Button **/
+.flag-like{
+  .flag-message .inner{
+    display: inline-block;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    background: #E9E9E9;
+    padding: 3px 7px;
+  }
+}
+// Gallery mode
+.ac-mode-gallery{
+  .media canvas{
+    width: 100%;
+  }
+}
+// Full width media
+.ac-display-fullwidth{
+  .media{overflow: hidden}
+  .media .col-inner{
+    @extend %no-margin-padding;
+  }
+
+  .ac-mode-slideshow .media .ac-media{
+    width: 100%;
+  }
+  .ac-mode-slideshow, .ac-list-mode{
+    .media img {
+      width: 100%;
+    }
+  }
+}
+.ac-full-media{
+  .ac-media, img{
+    width: 100%;
+  }
+}
+
+.ac-node-portfolio.ac-mode-list{
+    .media .item{
+      margin-bottom: $medium-space;
+    }
+}
+
+.project-meta{
+  @extend %header-font !optional;
+  .links{
+    margin-top: $medium-space;
+  }
+  .flag-like a{
+    @extend %button-default;
+    &:hover{
+      @extend %button-default-hover;
+    }
+  }
+}
+

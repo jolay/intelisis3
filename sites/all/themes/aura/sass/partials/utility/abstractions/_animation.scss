@@ -1,0 +1,47 @@
+// Aniamtions
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation:    $animation;
+  -o-animation:      $animation;
+  animation:         $animation;
+}
+
+%default-anim-fast{
+  @include transition(all 0.06s linear);
+}
+
+%default-anim{
+  @include transition(all .25s ease-in-out);
+}
+
+%slow-anim{
+  @include transition(all .7s ease-in-out);
+}
+
+%no-anim{
+  @include transition(none)
+}
+
+%no-height{
+  @include transform(translateY(100%));
+}
+
+%full-height{
+  @include transform(translateY(0));
+}
+
+%no-width{
+  @include transform(translate(-100%, 0));
+}
+
+%full-width{
+  @include transform(translate(0, 0));
+}
+
+%height-transform{
+  @include transition(transform 0.4s, opacity 0.1s 0.3s);
+}
+
+%flow-top-transform{
+  @include transform(translateY(-45px));
+}

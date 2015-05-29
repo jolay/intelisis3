@@ -1,0 +1,50 @@
+%circled-border{
+  @include border-radius(1000px);
+}
+
+
+%square-border{
+  @include border-radius(0);
+}
+
+%small-circled{
+  @include border-radius($light-border-radius);
+}
+
+%medium-circled{
+  @include border-radius($border-radius);
+}
+
+%large-circled{
+  @include border-radius($hard-border-radius);
+}
+
+%x-large-circled{
+  @include border-radius(500%);
+}
+
+%full-edge-hard-bottom-circled-border{
+  @include border-radius( 0 0 $hard-border-radius $hard-border-radius);
+}
+
+%large-circled-border{
+  @include border-radius($large-border-radius);
+}
+
+%top-edge-circled-border{
+	@if $use-less != 'TRUE' {
+    @include border-radius($border-radius $border-radius 0 0);
+  }
+}
+
+%bottom-edge-circled-border{
+	@if $use-less != 'TRUE' {
+    @include border-radius(0 0 $border-radius $border-radius);
+  }
+}
+
+%full-border-radius{
+	@if $use-less != 'TRUE' {
+    @include border-radius($border-radius);
+  }
+}

@@ -1,0 +1,172 @@
+/** Divider Shortcode
+-----------------------------------*/
+div.ac-divider{
+  @extend .ac-position-center;
+  padding: $medium-space 0;
+  clear: both;
+  &.ac-type-invisible{
+    padding: 0;
+    height: 50px;
+  }
+  &.ac-type-line{
+    padding: 0;
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-width: 1px 0 0 ;
+    height: auto;
+    margin: $medium-space/2 0!important;
+  }
+}
+
+.ac-type-shadow span{
+  @extend %inline-block-display;
+  background-image: url(../images/shortcodes/shadow-divider.png);
+  background-repeat: no-repeat;
+  height: 7px;
+  width: 50%;
+  &.divider-shadow-left{
+    @if $direction != 'LTR' {
+      @extend %right-float;
+    }
+    background-position: left center;
+  }
+  &.divider-shadow-right{
+    @if $direction != 'LTR' {
+      @extend %left-float;
+    }
+    background-position: right center;
+  }
+}
+
+.divider-inner{
+  .ac-type-thick_solid &{
+    border-top: 3px solid rgba($body-sub-color, .12);
+  }
+  .ac-type-thin_solid &{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    border-width: 1px 0 0 ;
+  }
+  .ac-type-single_dotted &{
+    @extend %default-border-drk-color !optional;
+    border-width: 1px 0 0;
+    border-style: dotted;
+  }
+  .ac-type-double_solid &{
+    @extend %content-divider-color !optional;
+    border-width: 1px 0;
+    border-style: solid;
+    height: 8px;
+  }
+  .ac-type-double_dot &{
+    @extend %default-border-drk-color !optional;
+    border-width: 1px 0;
+    border-style: dashed;
+    height: 6px;
+  } 
+  .ac-type-go_top &{
+    @extend %content-divider-color !optional;
+    @extend %left-align;
+    border-width: 1px 0 0;
+    border-style: solid;
+    position: relative;
+    a{
+      @extend %inline-block-display;
+      @extend %body-bg-color !optional;
+      z-index: 4;
+      line-height: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      padding-left: 6px;
+      color: #585858;
+      position: relative;
+      top: -15px;
+      .font-icon{
+         width: 8px;
+         display: inline;
+         margin: 0
+      }
+    }
+  }
+}
+
+%divider-h{
+  @extend %content-divider-color !optional;
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 50%;
+  vertical-align: top;
+  display: inline-block;
+  border-style: solid;
+  border-width: 0 0 1px
+}
+
+// Icon Divider
+.ac-divider.ac-type-icon{
+  clear: both;
+  border: 0;
+  width: 100%;
+  margin: 5px auto 25px;
+  text-align: center;
+  overflow: hidden;
+  &.ac-size-small{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $small-unit/2;
+    }
+  }
+  &.ac-size-medium{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $medium-unit/2;
+    }
+  }
+  &.ac-size-large{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $large-unit/2;
+    }
+  }
+  &.ac-size-x-large{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $x-large-unit/2;
+    }
+  }
+  &.ac-size-xx-large{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $xx-large-unit/2;
+    }
+  }
+  &.ac-size-xxx-large{
+    .divider-inner:before,
+    .divider-inner:after{
+      top: $xxx-large-unit/2;
+    }
+  }
+  .divider-inner{
+    width: 100%;
+    position: relative;
+    &:before{
+      @extend %divider-h;
+      margin-left: -15px;
+      left: -13px;
+    }
+    &:after{
+      @extend %divider-h;
+      margin-right: -15px;
+      right: -13px;
+    }
+  }
+  .font-icon{
+    @extend %body-bg-color !optional;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    &:before{
+      margin: 0 auto;
+    }
+  }
+}

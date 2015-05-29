@@ -1,0 +1,81 @@
+/** counter Shortcode
+-----------------------------------*/
+.ac-contact-info{
+  @extend %left-align;
+  .acquia-share-links{
+    border: 0;
+    padding-top: $medium-space/4;
+    float: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    a{
+      display: block;
+    }
+  }
+  li.ac-col{
+    @extend %no-margin-padding;
+    border: 0;
+  }
+}
+
+.ac-contact-style-compact{
+  li:last-child, li.last{
+    border-bottom-width: 1px;
+  }
+  .acquia-share-links{
+    .ac-font-icon-link{
+      @extend %body-bg-color !optional;
+    }
+  }
+}
+
+.ac-contact-style-list{
+  text-transform: capitalize;
+  .label{
+   // @extend %base-l-font-style;
+    @extend %sub-color !optional;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .detail, .detail a{
+    @extend %meta-color !optional;
+  }
+}
+
+.ac-contact-style-2-col{
+  li{
+   // @extend %base-l-font-style;
+    @extend %sub-color !optional;
+  }
+  li.acquia-share-links{
+    @extend %bordered-box;
+    @extend %content-divider-color !optional;
+    text-align: center;
+    clear: both;
+    border-width: 1px 0 0;
+    padding-top: $medium-space;
+    width: 100%;
+    margin-top: -11px;
+  }
+  .ac-col{
+    &.first{
+      ul{
+        @include right-space($medium-space, 'margin');
+      }
+    }
+    ul{
+      margin: 0
+    }
+  }
+  .detail .font-icon{
+    font-size: 16px;
+    @include right-space(5px, 'margin');
+  }
+}
+
+.icon-person:before{
+  content: '\e886'
+}
+.icon-website:before{
+  content: '\e89e';
+}

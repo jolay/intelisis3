@@ -1,0 +1,13 @@
+/** Nice Scroll Plugin Style
+--------------------------------------------------*/
+html.niceScroll { overflow: hidden; }
+
+#ascrail2000 div { -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+
+/** Nice Scroll Plugin Style
+--------------------------------------------------*/
+#ascrail2000 { z-index: 99990 !important; background-color: transparent; }
+
+#ascrail2000 div { background-color: #c4c4c4 !important; width: 10px !important; right: 0; }
+
+#ascrail2000-hr { display: none; }

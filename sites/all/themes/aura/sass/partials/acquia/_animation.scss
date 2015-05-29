@@ -1,0 +1,181 @@
+/** Built-in Acquia Animations
+-----------------------------------*/
+/* Appear Animation*/
+.ac-animate{
+  @extend %no-opacity;
+  position: relative
+}
+.fadeIn.ac-animate-processed{
+  @extend %no-opacity;
+}
+.ac-animate-processed{
+  @extend %full-opacity;
+}
+
+/* flip-x Animation*/
+.ac-flip-x,
+.ac-flip-y {
+  @extend %no-opacity;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-perspective: 1000;
+  -webkit-animation-duration: 0.6s;
+  -moz-animation-duration: 0.6s;
+  -o-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1;
+  -o-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.ac-animated.ac-flip-x{
+    @extend %full-opacity;
+    -webkit-animation-name: ac_flip_x;
+    -moz-animation-name: ac_flip_x;
+    -o-animation-name: ac_flip_x;
+    animation-name: ac_flip_x;
+}
+
+/* Flip Horizontally */
+@-webkit-keyframes ac_flip_x {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+@-moz-keyframes ac_flip_x {
+  0% {
+    -moz-transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    -moz-transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+@-o-keyframes ac_flip_x {
+  0% {
+    -o-transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    -o-transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+@keyframes ac_flip_x {
+  0% {
+    transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+/* flip-Y Animation*/
+.ac-animated.ac-flip-y{
+    @extend %full-opacity;
+    -webkit-animation-name: ac_flip_y;
+    -moz-animation-name: ac_flip_y;
+    -o-animation-name: ac_flip_y;
+    animation-name: ac_flip_y;
+}
+/* Flip Vertically */
+@-webkit-keyframes ac_flip_y {
+  0% {
+    -webkit-transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+@-moz-keyframes ac_flip_y {
+  0% {
+    -moz-transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    -moz-transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+@-o-keyframes ac_flip_y {
+  0% {
+    -o-transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    -o-transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+@keyframes ac_flip_y {
+  0% {
+    transform: perspective(400px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Appear Animation*/
+.ac_appear{
+  opacity: 1;
+  @include transform(scale(1));
+  @include animation(ac_appear .45s 1 cubic-bezier(0.445, 0.05, 0.55, 0.95));
+}
+
+@-webkit-keyframes ac_appear {
+	0% {
+		-webkit-transform: scale(0.3);
+ 		opacity: 0.1;
+	}
+	100% {
+		-webkit-transform: scale(1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes ac_appear {
+ 	0% {
+		-moz-transform: scale(0.3);
+		opacity: 0.1;
+	}
+	100% {
+		-moz-transform: scale(1);
+		opacity: 1;
+ 	}
+}
+ @-o-keyframes ac_appear {
+	0% {
+		-o-transform: scale(0.3);
+		opacity: 0.1;
+	}
+	100% {
+		-o-transform: scale(1);
+		opacity: 1;
+	}
+}
+@keyframes ac_appear {
+	0% {
+		transform: scale(0.3);
+		opacity: 0.1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+

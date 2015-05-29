@@ -1,0 +1,35 @@
+/** Porfolio options bars
+-----------------------------------*/
+.portfolio-options-bar{
+  .ac-col{
+    @extend %left-float;
+    margin-bottom: $medium-space/2;
+    width: 50%!important;
+    clear: none;
+  }
+  ul{
+    @extend %no-list-style;
+    @extend %no-margin-padding;
+  }
+  li{
+    display: inline-block;
+    @extend %left-float;
+    &.index a{
+      border: none;
+    }
+  }
+  a{
+    @extend %theme-active-color !optional;
+    font-size: 16px;
+    &.ac-prev{
+      margin: 0;
+    }
+  }
+}
+
+.ac-portfolio-nav{
+  @extend %left-float;
+  span{
+    display: none!important;
+  }
+}

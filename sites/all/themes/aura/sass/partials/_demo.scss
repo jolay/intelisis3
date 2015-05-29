@@ -1,0 +1,13 @@
+#ac-demo-skins{
+	
+	.ac-skin-preview.on,
+	a:hover{
+		i{
+			@extend %full-opacity;
+		}
+	}
+	i{
+		@extend %no-opacity;
+		@extend %default-anim;
+	}
+}

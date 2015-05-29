@@ -1,0 +1,31 @@
+/** social Icon Shortcode
+-----------------------------------*/
+.ac-socials{
+  @extend %no-margin-padding;
+  a{
+    display: inline-block
+  }
+}
+.ac-social-wrap{
+  @extend %relative-position;
+  @extend %inline-block-display;
+}
+.ac-social{
+  @extend %theme-bg !optional;
+  @extend %x-large-circled;
+  color: $white;
+  margin: ($medium-space/2) ($medium-space/2) ($medium-space/2) 0;
+  &.ac-subtle-style{
+    @extend %bordered-box;
+    @extend %theme-active-color !optional;
+    @extend %theme-border-color !optional;
+    background: transparent;
+  }
+  .icon-stumbleupon,
+  .icon-vimeo,
+  .icon-lastfm{
+    position: relative;
+    left: -2px;
+  }
+}
+  

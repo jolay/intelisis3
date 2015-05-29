@@ -1,0 +1,29 @@
+/* Misc
+ -----------------------------------------*/
+.l-page{
+}
+.mobile_active {
+	.l-page {
+		padding-top: 0;
+		overflow-x: hidden;
+	}
+	.l-header{
+		position:relative;
+	}
+}
+.l-page {
+	@extend %relative-position;
+	z-index: 1;
+}
+.no-sidebars{
+  .l-main {
+    padding-top: 2 * $medium-space;
+    padding-bottom: 2 * $medium-space;
+  }
+}
+// Node Layouts
+.full-width-no-topbar-footer{
+	.l-topbar{
+		display: none!important;
+	}
+}

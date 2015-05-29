@@ -1,0 +1,33 @@
+.contentSlider-wrap{
+	margin: 60px 0
+}
+.ac-slides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+	li{
+		&::first-child {
+			position: relative;
+			display: block;
+			float: left;
+		}
+		-webkit-backface-visibility: hidden;
+		position: absolute;
+		display: none;
+		width: 100%;
+		left: 0;
+		top: 0;
+	}
+	.slider-text, 
+	.slide-media{
+		display: inline-block;
+		vertical-align: middle;
+		float: none
+	}
+	.slide-media{
+		text-align: center;
+	}
+}

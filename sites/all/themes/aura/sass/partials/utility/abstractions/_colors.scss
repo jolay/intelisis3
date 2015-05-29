@@ -1,0 +1,207 @@
+
+// Color
+%theme-active-color{
+	 @if $use-less != 'TRUE' {
+			color: $theme-default-color;
+	 }
+}
+
+// Background
+%theme-bg{
+	 // Theme Background
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background: $theme-default-bg-color;
+	 }
+}
+
+// BG Color
+%theme-bg-color{
+	 // Theme Background Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background-color: $theme-default-bg-color;
+	 }
+}
+
+// Border
+%theme-border-color{
+	 @if $use-less != 'TRUE' {
+			border-color: $theme-default-color;
+	 }
+}
+
+// Fill color
+%theme-fill-color{
+	 // Theme Fill Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			fill: $theme-default-color;
+	 }
+}
+
+%overlaid-theme-color{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background: rgba($theme-default-color, .8);
+	 }
+}
+
+%body-color{
+	 // Body Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			color: $body-color;
+	 }
+}
+
+%body-bg-color{
+	 // Body Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background: $body-bg-color;
+	 }
+}
+
+%body-bg-color-trans{
+	 // Body Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background: rgba($body-bg-color, .5);
+	 }
+}
+
+%body-bg-color-drk{
+	 // Body Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background: $body-bg-color-drk;
+	 }
+}
+
+
+%content-divider-color{
+	 // Default Border
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			border-color: $default-border-color;
+	 }
+}
+
+%content-frame-color{
+	 // Default Border
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background-color: $hero-bg-color;
+	 }
+}
+
+%default-border-drk-color{
+	 // Default Border - Darker
+	 // $SKIN
+  @if $use-less != 'TRUE' {
+     border-color: darken($default-border-color, 7%);
+  }
+}
+
+%highlighted-section{
+	 // Highlighted Section
+	 // $SKIN
+	 background: $default-border-color;
+	 background: rgba(0, 0, 0, 0.03);
+}
+
+
+%light-bg{
+  // Theme Overlaid Color
+  // $SKIN
+  @if $use-less != 'TRUE' {
+     background-color: $lighter-grey;
+  }
+}
+
+%white-color{
+  color: $white;
+}
+
+%meta-color{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			  color: #252525;
+	 }
+}
+
+%sub-color{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			color: $body-sub-color;
+	 }
+}
+
+%footer-divider{
+  border-color: #242424;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+%sub-color-fill{
+  fill: $body-sub-color;
+}
+
+%sub-color-border{
+  border-color: $body-sub-color;
+}
+
+%sub-color-light{
+  color: lighten($body-sub-color, 20%);
+}
+
+%header-color{
+  color: $header-color;
+}
+
+%light-gradient-box{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			  background-color: #ebebeb;
+        @include background(linear-gradient(top, $white, #F9F9F9));
+	 }
+}
+
+%hard-gradient-box{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			background-color: #f7f7f7;
+			@include background(linear-gradient(top, #f7f7f7, #ebebeb));
+	 }
+
+}
+
+%dark-gradient-box{
+   background-color: transparent;
+   @include background-image(linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 10%,rgba(0, 0, 0, 0.75) 100%));
+}
+
+%inner-box-shadow{
+  @include box-shadow(inset 0 0 7px rgba(0,0,0,.1));
+}
+
+%anchor-color{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			color: $link-color;
+	 }
+}
+
+%anchor-border-color{
+	 // Theme Overlaid Color
+	 // $SKIN
+	 @if $use-less != 'TRUE' {
+			border-color: $link-color;
+	 }
+}

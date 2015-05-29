@@ -1,0 +1,20 @@
+/**
+ * $BREADCRUMB
+ */
+
+
+.breadcrumb {
+  @extend %hlist;
+  @extend %sub-list-font;
+
+  li {
+    padding-right: 0.4em;
+
+    &:last-child{
+    }
+  }
+  a {
+    text-transform: capitalize;
+  }
+  .sep{}
+}

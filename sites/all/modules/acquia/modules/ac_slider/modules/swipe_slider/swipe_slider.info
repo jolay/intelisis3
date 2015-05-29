@@ -1,0 +1,6 @@
+name = Acquia - Swipe Slider
+core = 7.x
+description = Implements Content Swipe Slide builder tool.
+dependencies[] = ac_slider
+package = AcquiaThemes
+

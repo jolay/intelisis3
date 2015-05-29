@@ -1,0 +1,27 @@
+/** TinyMce
+--------------------------------------------------*/
+.l-page table.mceLayout{
+  @extend %bordered-box;
+  @extend %content-divider-color !optional;
+  @extend %full-border-radius !optional;
+  margin-bottom: $large-space/2;
+  td.mceToolbar{
+    @extend %light-gradient-box !optional;
+    @extend %content-divider-color !optional;
+    @extend %top-edge-circled-border !optional;
+  }
+  a{
+    @extend %no-anim;
+  }
+  .mceStatusbar{
+    @extend %light-gradient-box !optional;
+    @extend %content-divider-color !optional;
+    @extend %bottom-edge-circled-border !optional;
+    height: 28px;
+  }
+  a.mceResize{
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+  }
+}

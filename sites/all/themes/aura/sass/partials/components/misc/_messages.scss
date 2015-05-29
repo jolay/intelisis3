@@ -1,0 +1,54 @@
+/**
+ * $MESSAGES
+ */
+.messages {
+  padding-left: 10px;
+  margin-bottom: $medium-space;
+  color: #333;
+  border: 1px solid;
+  .vc-message-icon{
+   @extend %ac-font-fontello;
+  }
+  ul{
+    list-style: none;
+  }
+  strong{
+    color: #333;
+  }
+  li{
+    padding: $medium-space/2 0;
+  }
+}
+
+.messages.status {
+  background: #A5CA68;
+  color: $white;
+  .vc-message-icon:before{
+    content: '\e89b';
+  }
+  strong{
+    color: #fff
+  }
+}
+
+.messages.warning {
+  background: $orange;
+  border-color:darken($orange, 10%);
+  .vc-message-icon:before{
+    content: '\e8ba';
+  }
+}
+
+.messages.error {
+    background: lighten($red, 5%);
+    border-color:darken($red, 10%);
+    .vc-message-icon:before{
+      content: '\e890';
+    }
+}
+
+.l-page{
+  .krumo-child *{
+    color: #333 !important
+  }
+}

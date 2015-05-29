@@ -1,0 +1,28 @@
+.acquia-modal .modal-close span { font: 20px 'fontadmin'; height: 20px; line-height: 20px; display: inline-block; text-align: center; }
+
+.acquia-modal-wrap .ctools-modal-content { padding: 0; margin: 0; }
+
+.acquia-modal div.modal-header { background-image: -webkit-gradient(linear, left 0, left 100%, from(rgba(40, 50, 60, 0)), to(rgba(40, 50, 60, 0.05))); background-image: -webkit-linear-gradient(top, rgba(40, 50, 60, 0), 0, rgba(40, 50, 60, 0.05), 100%); background-image: -moz-linear-gradient(top, rgba(40, 50, 60, 0) 0, rgba(40, 50, 60, 0.05) 100%); background-image: linear-gradient(to bottom, rgba(40, 50, 60, 0) 0%, rgba(40, 50, 60, 0.05) 100%); background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0028323c',endColorstr='#0c28323c',GradientType=0); filter: none; }
+
+.acquia-modal-wrap { -webkit-animation: acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Safari 4+ */ -moz-animation: acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Fx 5+ */ -o-animation: acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Opera 12+ */ animation: acquia_modal_pop 0.3s 1 cubic-bezier(0.175, 0.885, 0.32, 1.275); /* IE 10+ */ }
+.acquia-modal-wrap .ctools-modal-content { border: none; width: auto; }
+
+.acquia-modal { background: #f9fafc; }
+.acquia-modal div.modal-header { /** Modal header **/ background-color: #4c5566; height: 50px; line-height: 50px; position: relative; padding: 0 10px; }
+.acquia-modal div.modal-header .modal-title { position: absolute; top: 0; margin: 0; line-height: 53px; left: 14px; color: #fff; padding: 0; margin: 0; font-size: 18px; }
+.acquia-modal .modal-close { position: absolute; right: 15px; }
+.acquia-modal .modal-close span { color: #fa4c38; }
+.acquia-modal .modal-close span:before { content: '\e802'; }
+.acquia-modal .modal-close:hover { background-position: bottom left; }
+.acquia-modal div.modal-content { /** Modal Content **/ padding-left: .9em; }
+.acquia-modal div.modal-content > form { margin: 10px; }
+.acquia-modal div.modal-footer { /** Modal Footer **/ height: 50px; border-top: 1px solid #DFDFDF; box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.1); position: relative; bottom: 0; background: #f3f5f9; width: 100%; }
+
+#acquia-modal .form-item { position: relative; }
+#acquia-modal .modal-footer { height: 50px; border-top: 1px solid #DFDFDF; box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.1); position: relative; bottom: 0; background: #f3f5f9; width: 100%; }
+#acquia-modal .acquia-modal-save { position: absolute; right: 0; top: 50%; margin: -18px 20px 0 0; color: white !important; }
+
+/** Misc **/
+.acquia-modal-on .colorpicker { z-index: 1002; }
+
+.save-btn-on #edit-submit { display: none; }

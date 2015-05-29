@@ -1,0 +1,230 @@
+/** flexSlider - Default slider
+--------------------------------------------------*/
+.ac-slider{
+  @extend %relative-position;
+  &.ac-pager-enabled{
+    @extend %pager-space;
+  }
+  .slides li{
+    margin: 0
+  }
+  .ac-col{
+    clear: none !important;
+  }
+}
+.l-page .flexslider{
+  @extend %relative-position;
+  &.ac-pager-enabled{
+    @extend %pager-space;
+  }
+}
+.carousel{
+  .slides li{
+    @extend %low-opacity;
+    margin: 10px 10px 0 0;
+    &.flex-active-slide{
+      @extend %full-opacity;
+    }
+  }
+  img{
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+.ac-thumb-slider{
+  margin: 0;
+  @extend %no-margin;
+  > .s-i{
+    @extend %no-padding;
+  }
+}
+
+.slides{
+  @extend %no-list-style;
+  .item{
+  }
+}
+
+.no-touch .flex-direction-nav{
+  @include transition(opacity 0.25s ease-out);
+
+}
+
+.flex-direction-nav {
+  li > i:before{
+    display: none;
+  }
+  li{
+    margin: 0;
+  }
+  li a{
+    @extend %nav-prevnext;
+    &.flex-next{
+      @extend %light-nav-next;
+    }
+    &.flex-prev{
+      @extend %light-nav-prev;
+    }
+    i{
+     position: relative;
+     top: 50%;
+     margin-top: -18px;
+    }
+  }
+  .flex-disabled{
+    display: none;
+  }
+}
+.ac-slider:hover a{
+  @extend %full-opacity;
+}
+
+.flex-control-nav {
+  @extend %mini-slider-pager;
+  li{
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.flex-caption{
+  @extend %dark-gradient-box;
+  @extend %header-font !optional;
+  @extend %default-inv-text-shadow;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  width: 100%;
+  color: $white;
+  margin: 0;
+  text-align: left;
+  @include font-size($base-l-font-size);
+}
+.caption-inner{
+  padding: $large-space $large-space/2;
+  display: block;
+}
+
+.flex-control-nav.flex-control-thumbs {
+  position: static;
+  overflow: hidden;
+}
+
+.flex-control-thumbs li {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  border: 0;
+}
+
+.flex-control-thumbs img {
+  @extend %high-opacity;
+  display: block;
+  width: auto;
+  display: block;
+  cursor: pointer;
+  &.flex-active{
+    @extend %full-opacity;
+    width: 100%;
+    height: auto;
+    top:0;
+  }
+}
+
+// Carousel
+.l-page .flexslider.carousel{
+  margin-top: $medium-space/2;
+  li{
+    margin-top: 0;
+    cursor: pointer;
+  }
+  .flex-disabled{
+    display: none;
+  }
+}
+
+// Caption free style
+.l-page .ac-cption-free{
+  .flex-caption{
+    background: transparent;
+    width: 100%;
+    top:0;
+    bottom: 0;
+    height: 100%;
+  }
+  .caption-inner{
+    @extend %no-text-shadow;
+  }
+}
+
+.ac-vertical-carousel{
+  .carousel{
+    .flex-direction-nav{
+      @extend %full-opacity;
+    }
+  }
+  .preview-wrap{
+    .flex-direction-nav a{
+      @extend %no-box-shadow;
+      background-color: transparent;
+    }
+  }
+}
+
+.flex-viewport{
+  direction: ltr!important;
+}
+
+/** tablet view **/
+@include at-breakpoint($tab) {
+  .ac-vertical-carousel{
+    display: table;
+    width: 100%;
+    .carousel{
+      //width: 200px;
+      margin: 0!important;
+      text-align: center;
+      .flex-viewport{
+      }
+      li{
+        clear: both;
+        float: none;
+        margin: 0 auto;
+      }
+      .flex-direction-nav{
+        margin: 0;
+        a{
+          left: 50%;
+          margin-left: -$large-unit/2;
+        }
+        .flex-prev{
+          top: 0;
+          &:before{
+            background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%223%2015.5%2024%2024%22%20enable-background%3D%22new%203%2015.5%2024%2024%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20fill%3D%22%23606060%22%20points%3D%2215%2C24.4%209.3%2C30.1%209.7%2C30.6%2015%2C25.3%2020.3%2C30.6%2020.7%2C30.1%20%22%2F%3E%3C%2Fsvg%3E");
+          }
+        }
+        .flex-next{
+          top: auto;
+          bottom: 0;
+          margin-bottom: -$large-unit/2;
+          &:before{
+            background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%0A%09%20viewBox%3D%223%2015.5%2024%2024%22%20enable-background%3D%22new%203%2015.5%2024%2024%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cpolygon%20fill%3D%22%23606060%22%20points%3D%2215%2C30.6%2020.7%2C24.9%2020.3%2C24.4%2015%2C29.7%209.7%2C24.4%209.3%2C24.9%20%22%2F%3E%0A%3C%2Fsvg%3E");
+          }
+        }
+        .flex-disabled{
+          display: block;
+        }
+      }
+    }
+    .preview-wrap,
+    .thumb-wrap{
+      display: table-cell;
+      vertical-align: top;
+    }
+    .preview-wrap{
+      width: 80%;
+    }
+    .thumb-wrap{
+      width: 20%;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,0 +1,192 @@
+/* hero Section
+ -----------------------------------------*/
+$hero-vertical-padding: 35px;
+.l-hero {
+	background-color: $hero-bg-color;
+	background-repeat: no-repeat;
+	//background-size: cover;
+	position: relative;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	padding: $medium-space *2;
+	&.ac-full-stretch{
+		background-size: cover;
+	}
+	&.custom-bg{
+		position: relative;
+		background-position: center center;
+	}
+	&.no-custom-bg{
+		background: $hero-bg-color !important;
+		.container{
+			padding-bottom: 0;
+		}
+	}
+	&.custom-height{
+		padding: 0;
+	}
+	.hero-bg{
+		@include transition(all 1s);
+	}
+	.page-title{
+		line-height: 1.3;
+		margin: 0;
+	}
+	.subtitle{
+		margin-top: $large-space;
+	}
+}
+
+.l-page .l-hero-light{
+	&.l-hero-breadcrumb-simple .breadcrumb{
+		a, .sep{
+			color: $header-color-light;
+		}
+	}
+	.page-title, .subtitle{
+		color: $header-color-light;
+	}
+}
+
+.l-page .l-hero-dark{
+	&.l-hero-breadcrumb-simple .breadcrumb{
+		a, .sep{
+			color: $white;
+		}
+	}
+	.page-title,.subtitle{
+		color: $white;
+	}
+}
+
+.breadcrumb {
+  .sep:after{
+    @extend %ac-font-fontello;
+    @extend %mini-fontello-r-arrow;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 15px;
+    margin: 0 5px;
+		vertical-align: middle;
+  }
+}
+
+.l-hero-simple{
+	padding: ($medium-space*2) 0;
+	.l-region{
+		display: table;
+		width: 100%;
+	}
+	.block{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.page-title{
+		text-transform: capitalize;
+		@include font-size(19px);
+		font-weight: normal;
+	}
+	.subtitle{
+		@include font-size(14px);
+		margin: 0;
+		line-height: 1
+	}
+}
+
+// Fancy Style Hero
+.l-hero-fancy {
+	text-align: center;
+	.block{
+		width: 100%;
+	}
+	.block--ac-blocks-page-title {
+		font-size: 44px;
+		display: block;
+		line-height: 120%;
+		-ms-word-wrap: break-word;
+		word-wrap: break-word;
+	}
+	.page-title, .subtitle{
+		@extend %header-font !optional;
+		margin: 0;
+		text-transform: capitalize;
+	}
+	.page-title{
+		@include font-size(42px)
+	}
+	.subtitle{
+		line-height: 1.7;
+		margin-top: 15px;
+	}
+}
+
+.l-hero-breadcrumb-fancy{
+	.block--ac-blocks-breadcrumb {
+		width: 100%;
+		text-align: center;
+	}
+	.breadcrumb {
+		@extend %header-font !optional;
+		a{
+			@extend %top-edge-circled-border !optional;
+			@extend %light-gradient-box !optional;
+			@extend %bordered-box;
+			@extend %content-divider-color !optional;
+			@extend %inline-block-display;
+		}
+	}
+}
+
+.l-hero-breadcrumb-simple{
+	.lock--ac-blocks-breadcrumb{
+		.container{
+			padding: 0
+		}
+	}
+	.breadcrumb {
+		@extend %right-align;
+
+		a, .sep{
+			color: $header-color;
+		}
+		a:hover{
+			@extend %theme-active-color !optional;
+		}
+	}
+}
+
+.l-hero-breadcrumb-simple.boxed{
+	#breadcrumb{
+		@extend %right-float;
+	}
+}
+
+.subtitle{
+	font-weight: 400;
+}
+
+@include at-breakpoint($tab) {
+	// Fancy Breadcrumb
+	.l-hero-breadcrumb-fancy{
+		.block--ac-blocks-breadcrumb {
+			list-style: none;
+			margin: 0;
+			height: 41px;
+			line-height: 40px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	.l-hero-fancy {
+		.block--ac-blocks-page-title {
+			font-size: 44px;
+			display: block;
+			line-height: 120%;
+			padding: 0 0 $medium-space;
+			-ms-word-wrap: break-word;
+			word-wrap: break-word;
+		}
+	}
+}

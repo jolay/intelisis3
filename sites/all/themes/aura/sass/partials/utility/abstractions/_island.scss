@@ -1,0 +1,21 @@
+// $ISLAND
+%island,
+%islet {
+  display: block;
+  margin-bottom: $medium-space;
+ @extend %clearfix;
+
+  & > :last-child,
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+%island {
+  padding: $medium-space $horz-spacing-unit;
+}
+
+%islet {
+  margin-bottom: $medium-space / 2;
+  padding: ($medium-space / 2) ($horz-spacing-unit / 2);
+}

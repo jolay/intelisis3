@@ -1,0 +1,79 @@
+/** Message Shortcode
+-----------------------------------*/
+   
+.vc-message{
+   @extend %no-flickering;
+   @extend %bordered-box;
+   @extend %content-divider-color !optional;
+   @extend %full-border-radius !optional;
+   text-align: center;
+   background-color: #f8f8f8;
+   clear: both;
+   margin-bottom:$medium-space;
+   padding:17px;
+   color: $black;
+   &.ac-size-large{
+      padding: 35px;
+      .vc-message-content {
+         font-size: 1.15em;
+         line-height: 1.8
+      }
+   }
+   &.ac-border-dashed{
+      border-style: dashed;
+      border-width: 2px;
+   }
+   &.ac-border-none{
+      border: 0!important;
+   }
+   br{display: none}
+   .vc-message-content{
+      font-size: 1em;
+      p {
+         display: inline;
+      }
+   }
+   .vc-message-icon{
+      @extend %relative-position;
+      left: -0.5em;
+      font-size: 1.5em;
+      top: .1em;
+   }
+   
+   // types
+   &.ac-type-green{
+      background: $green;
+      color: $white;
+   }
+   &.ac-type-blue{
+      background: $blue;
+      border-color:darken($blue, 10%);
+      &, .vc-message-title{
+        color: $white;
+      }
+   }
+   &.ac-type-red{
+      background: lighten($red, 5%);
+      border-color:darken($red, 10%);
+   }
+   &.ac-type-orange{
+      background: $orange;
+      border-color:darken($orange, 10%);
+   }
+   &.ac-type-silver_dark{
+      background: $black;
+      color: $white;
+      border-color:lighten($black, 10%);
+      .vc-message-title{
+         color: $white;
+      }
+   }
+}
+
+.vc-message-title{
+   @extend %inline-block-display;
+   text-shadow: none;
+   font-weight: 500;
+   margin-right: 6px;
+   color: $black;
+}

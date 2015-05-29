@@ -1,0 +1,39 @@
+// Load utility, base and components
+@import "partials/utility";
+
+// Header
+.fixed_header_clone{
+	.site-branding__logo img{
+		max-width: 125px;
+	}
+}
+
+// Menu Style
+.main-menu{
+	.menu .sf-sub-indicator{
+		display: inline-block;
+	}
+}
+
+// Section style
+.ac-contact-style-compact{
+	.ac-section-style-2 &{
+		.ac-font-icon-link{
+      border: 0;
+			background: rgba(#000, .45);
+			display: inline-block
+		}
+		.font-icon{
+		 color: $white;
+		}
+	}
+}
+
+// Portfolio
+.ac-view-fade-in-bottom .title{
+	font-weight: 500
+}
+
+h5.s-title{
+	font-weight: normal;
+}

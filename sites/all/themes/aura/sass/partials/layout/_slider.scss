@@ -1,0 +1,41 @@
+/* slider
+ -----------------------------------------*/
+.l-slider-wrapper{
+}
+
+.ac-compact-slider{
+	margin: 50px auto!important;
+	@include box-shadow(0 2px 10px rgba(0, 0, 0, 0.75));
+}
+
+.block--ac-slider{
+	// Flex Slider
+	position: relative;
+	.slides li{
+		overflow: hidden;
+		position: relative;
+	}
+	.flex-caption {
+		//@extend %full-border-radius !optional;
+		@extend %slow-anim;
+		@extend %no-opacity;
+		bottom: 50px;
+		width: auto;
+		background: rgba(0, 0, 0, 0.75);
+		@include position(left, 50px);
+	}
+	.caption-inner {
+		padding: 10px 15px;
+	}
+	.flex-active-slide{
+		.flex-caption{
+				@extend %full-opacity;
+		}
+	}
+}
+
+// Layer slider
+.ls-container{
+/*	padding-bottom: 90px;
+*/	margin: 0;
+}
